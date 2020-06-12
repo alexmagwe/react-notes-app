@@ -1,38 +1,45 @@
 .App {
-  text-align: center;
+    color: #111;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+    text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav {
+    padding: 0 2em;
+    color: #111;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul li {
+    margin: 10px;
+    font-family: Poppins, Arial;
+}
+
+.login-container {
+    height: 80vh;
+    position: absolute;
+    width: 100%;
+    background-image: url(images/butterfly.jpg);
+    background-size: cover;
+    background-position: 20%, -20%;
+    background-repeat: no-repeat;
 }
