@@ -43,3 +43,7 @@ ul li {
     background-position: 20%, -20%;
     background-repeat: no-repeat;
 }
+
+#notes>div {
+    transition: all 0.3s ease-out;
+}
