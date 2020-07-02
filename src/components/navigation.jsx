@@ -5,7 +5,7 @@ import { Link} from 'react-router-dom';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import Button from '@material-ui/core/Button';
 import Usercontext from './context'
-import firebase from 'firebase/app' 
+import firebase from '../firebase/index' 
 import 'firebase/auth'
 
 const Navigation = (props) => {
@@ -17,7 +17,7 @@ const Navigation = (props) => {
   
 let {issignedin,setStatus,user}=useContext(Usercontext)
     const signOutHandler=()=>{
-      firebase.auth().signOut().then(()=>setStatus(!issignedin)
+      firebase.auth().signOut().then(()=>setStatus(false)
       )
     }
     return (
