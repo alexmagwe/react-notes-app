@@ -20,10 +20,10 @@ return <Redirect to ="/home"/>;}}
 
 }
  let styles={
-   font:{"fontFamily":"Lato"},
+   font:{"fontFamily":"Roboto"},
  
    text:{
-   fontFamily:'Poppins,Lato',
+    fontFamily:'Alata,sans-serif',
    textAlign:'center'
  
   }
