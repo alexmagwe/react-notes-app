@@ -3,7 +3,8 @@ import {List } from 'semantic-ui-react'
 import Button from '@material-ui/core/Button';
 
 
-function Notes1() {
+
+function Notes() {
     let[notes,setNotes]=useState([])
     useEffect(()=>{
         fetch('/notes/all').then(resp=>resp.json()).then(data=>{setNotes(data.notes)
@@ -16,7 +17,7 @@ function Notes1() {
       <List divided verticalAlign='middle'>
           {notes.map(el=>
           <List.Item>
-          <List.Content>{el.name}</List.Content>
+          <List.Content>{el}</List.Content>
           <List.Content floated='right'><Button>Download</Button></List.Content>
           </List.Item>
     )}</List>
@@ -32,4 +33,4 @@ function Notes1() {
     )
 }
 
-export default Notes1
+export default Notes

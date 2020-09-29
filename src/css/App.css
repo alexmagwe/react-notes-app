@@ -1,15 +1,12 @@
 @import '~antd/dist/antd.css';
 .App {
-    color: #111;
+    color: #fff;
 }
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-
-* {
     text-decoration: none;
     list-style: none;
 }
@@ -17,7 +14,11 @@
 nav {
     padding: 0 2em;
     color: #111;
+    width:100%;
+    min-height: 7vh;
+    max-height:10vh;
     display: flex;
+
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
@@ -34,13 +35,14 @@ nav ul {
 ul li {
     margin: 10px;
     font-family: Poppins, Arial;
+    font-size: 16px;
 }
 
 .login-container {
-    height: 80vh;
-    position: absolute;
+    min-height: 90vh;
+    /* position: absolute; */
     width: 100%;
-    background-image: url(images/butterfly.jpg);
+    background-image: url(../images/butterfly.jpg);
     background-size: cover;
     background-position: 20%, -20%;
     background-repeat: no-repeat;
@@ -52,37 +54,53 @@ ul li {
 
 
 /* modal */
+.opened{display: block;}
 
-.opened {
+.modal-container {
     display: block;
-    z-index: 100;
-    width: 50%;
-    /* position: relative; */
-    padding: 15px;
+    z-index: 1000;
+    width: 100%;
+    position:absolute;
+    /* border: 2px solid red; */
+    padding: 10px;
+    min-height:90vh;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    background-color: rgba(172, 120, 23,0.8);
+}
+.modal-box{
+    width:50%;
+    position:absolute;
+    top:30%;
+    left:50%;
+    transform: translate(-50%);
+    height:100px;
+    background-color:#1199;
     margin: auto;
-    margin-top: 10%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid silver;
-    box-shadow: 2px 2px 10px 1px #4e4c4c;
-    height: 10em;
-    background-color: azure;
+    box-shadow: 0 0 5px  rgb(2, 2, 2);
+    text-align: center;
+
+}
+.modal{
+        position:absolute;
+        top:50%;
+        left:50%;
+      width:40%;
+ transform: translate(-50%);
 }
 
-.opened::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    bottom: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #1116;
-    z-index: -1;
-}
+.modal-input{
+    width:100%;
+    border:none;
+    border-bottom:2px inset #eee;
+   outline: none;
+    padding: 2px 5px;
 
+    text-transform: uppercase;
+
+    background: transparent;
+}
 .closed {
     display: none;
 }

@@ -119,7 +119,7 @@ async function serverupload(){
     console.log(files)
     files.forEach(file=>formData.append('notes',file))
      
-    let res=await axios.post('add_notes',formData,{
+    let res=await axios.post('/upload',formData,{
             headers:{"Content-Type":"multipart/form-data",
                 unit},onUploadProgress:snap=>{
                 let prog=Math.round(snap.loaded/snap.total*100)
@@ -163,8 +163,8 @@ console.log(e.target)
 <h2 style={styles.header}> Contribute by Adding notes</h2>  
 <div style={styles.flexbox}>
     <form style={styles.form} onSubmit={handleSubmit}>      
-        <label htmlFor='unit'>Unit Acronym</label>
-        <input id='unit' placeholder='eg SPH_101' style={styles.input} {...bindValue} required type='text'/>
+        <label htmlFor='unit'>Unit code</label>
+        <input id='unit' placeholder='eg SPH101' style={styles.input} {...bindValue} required type='text'/>
         <input style={styles.hide} id='add_file' type='file' accept='file_extensions|*/pdf,*/docx'{...bindFiles} multiple/>
         <label htmlFor='add_file' ><Button variant='outlined' style={styles.buttontext}component='span'>&#43;</Button></label>
         <Button style={styles.upload}variant='outlined' aria-label='upload button'color='primary' type='submit' startIcon={<CloudUploadIcon />}>upload</Button>
