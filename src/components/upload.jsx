@@ -60,7 +60,8 @@ flexbox:{
     },
 input:{
     textTransform:'uppercase', 
-    margin:'1em'
+    margin:'1em',
+    color: 'black'
 },
 upload:{
     position:'relative',
@@ -90,11 +91,7 @@ useEffect(()=>{
     console.log('use efect ran:',files)
     
 },[files])
-useEffect(()=>{
-     axios.get('/getids').then(resp=>resp.json()).then(data=>{setUploadedfiles(data.files)})
 
-
-},[])
 // let [file,setFile]=useState({})
 const uploadit= file=>{
     console.log("name:",file.name)
@@ -121,7 +118,7 @@ async function serverupload(){
      
     let res=await axios.post('/upload',formData,{
             headers:{"Content-Type":"multipart/form-data",
-                unit},onUploadProgress:snap=>{
+                "unit_code":unit},onUploadProgress:snap=>{
                 let prog=Math.round(snap.loaded/snap.total*100)
                 setProgress(prog)
                                                }
@@ -142,9 +139,9 @@ const handleSubmit=async e=>{
     if (res.status===200){
         resetFiles()
         resetValue()
-        setUploadedfiles(res.data.files)
+        console.log(res.data)
     }
-    console.log(typeof res.status)
+
   
  
   
@@ -164,7 +161,7 @@ console.log(e.target)
 <div style={styles.flexbox}>
     <form style={styles.form} onSubmit={handleSubmit}>      
         <label htmlFor='unit'>Unit code</label>
-        <input id='unit' placeholder='eg SPH101' style={styles.input} {...bindValue} required type='text'/>
+        <input id='unit' autoFocus placeholder='eg SPH101' style={styles.input} {...bindValue} required type='text'/>
         <input style={styles.hide} id='add_file' type='file' accept='file_extensions|*/pdf,*/docx'{...bindFiles} multiple/>
         <label htmlFor='add_file' ><Button variant='outlined' style={styles.buttontext}component='span'>&#43;</Button></label>
         <Button style={styles.upload}variant='outlined' aria-label='upload button'color='primary' type='submit' startIcon={<CloudUploadIcon />}>upload</Button>

@@ -1,0 +1,27 @@
+.landing{
+    /* background:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(../images/library.jpg); */
+    background-color:burlywood;
+    width:100%;
+    background-size:cover;
+    z-index:-1;
+    padding:2em;
+    color:#000;
+    min-height:90vh;
+    overflow:auto;
+    background-position: center;
+ 
+}
+.hero-banner{
+    width:60%;
+position:absolute;
+    top:60%;
+}
+
+h1,h2,h3,h4{
+    color:inherit;
+    font-family: sans-serif;
+}
+
+.text-light{
+color:#fff;
+}

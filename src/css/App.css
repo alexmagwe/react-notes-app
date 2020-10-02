@@ -1,6 +1,6 @@
 @import '~antd/dist/antd.css';
 .App {
-    color: #fff;
+  color: #111;
 }
 
 * {
@@ -11,14 +11,13 @@
     list-style: none;
 }
 
-nav {
+.nav {
     padding: 0 2em;
+    background-color:#4e61ce;
     color: #111;
     width:100%;
-    min-height: 7vh;
-    max-height:10vh;
+    height:100%;
     display: flex;
-
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
@@ -52,78 +51,83 @@ ul li {
     transition: all 0.3s ease-out;
 }
 
+/* search bar */
+.search-container{
+    width:200px;
+    float:right;
+    margin:5px 1em;
+    z-index:1;
 
-/* modal */
-.opened{display: block;}
-
-.modal-container {
-    display: block;
-    z-index: 1000;
-    width: 100%;
-    position:absolute;
-    /* border: 2px solid red; */
-    padding: 10px;
-    min-height:90vh;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    background-color: rgba(172, 120, 23,0.8);
-}
-.modal-box{
-    width:50%;
-    position:absolute;
-    top:30%;
-    left:50%;
-    transform: translate(-50%);
-    height:100px;
-    background-color:#1199;
-    margin: auto;
-    box-shadow: 0 0 5px  rgb(2, 2, 2);
-    text-align: center;
 
 }
-.modal{
-        position:absolute;
-        top:50%;
-        left:50%;
-      width:40%;
- transform: translate(-50%);
-}
-
-.modal-input{
+.search-bar{
     width:100%;
-    border:none;
-    border-bottom:2px inset #eee;
-   outline: none;
-    padding: 2px 5px;
+    margin-bottom:10px;
+    position: relative;
+}
 
+.fa-search{
+    position:absolute;
+    right:10px;
+    cursor:pointer;
+    bottom:10px;
+    transition:0.3s ease-in-out
+}
+.fa-search:hover{
+    color:darkblue;
+}
+.search-input{
+    width:100%;
+    border:1px inset silver;
+    border-radius: 30px;
+    outline: none;
+    padding: 2px 5px;
+    font-size:16px;
     text-transform: uppercase;
 
     background: transparent;
 }
-.closed {
-    display: none;
+.results-container{
+    width:100%;
+   max-height:70vh;
+    overflow-y:auto ; 
 }
-
-.message-box {
-    width: 100%;
-    font-family: 'poppins', Arial, Helvetica, sans-serif;
-    /* box-shadow: 2px 2px 1px 1px #4e4c4c; */
-    height: 4em;
-    padding: 10px;
-    color: red;
-    text-align: center;
-}
-
-.search-box {
+.results-list {
+    width:100%;
+    height:auto;
     display: flex;
+    justify-content: center;
+    word-wrap: break-word;
+    align-content: center;
+    text-align: center;
     flex-direction: column;
-    background-color: azure;
-    /* margin-top: 2px; */
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius:10px;
+    color:inherit;
     flex-shrink: 1;
     flex-wrap: wrap;
-    border: 0.5px solid rgb(23, 59, 160);
-    border-top: none;
+
+
+}.open-search{
+    opacity:1;
+    transition:0.2s ease-in-out;
+}
+.close-search{
+    opacity:0;
+    pointer-events:none;
+}
+.single-result{
+    display:flex;
+    flex-direction: column;
+
+}
+.results-list li{
+    width:100%;
+    border-bottom:1px solid rgb(212, 212, 208);
+
+    font-family: sans-serif;
+    font-size:12px;
 }
 
 .button-text {
