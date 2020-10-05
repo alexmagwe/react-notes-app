@@ -54,7 +54,9 @@ ul li {
 /* search bar */
 .search-container{
     width:200px;
-    float:right;
+    /* float:right; */
+    position:absolute;
+    right:1em;
     clear: both; 
     margin:5px 1em;
     z-index:1;

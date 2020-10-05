@@ -35,11 +35,7 @@ const Landing = () => {
         return (
             <div className='landing'>
                 <Search source={data} />
-                {!isEmpty(notes)?(<Notes notes={notes}/>):null}
-                <div className='hero-banner'>
-                    <h2 className='hero-header'>Sign in to access personalized content</h2>
-                <Link to='/login'>  <Button variant="contained" color="primary"> Sign in</Button></Link>
-                </div>
+                {!isEmpty(notes) ?(<Notes notes={notes}/>):null}
             </div>
         );
     };

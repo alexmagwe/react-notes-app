@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button';
 
 
 function Notes(props) {
-    let notes=props.notes
+    let notes=props.notes;
     return (
-        <div className='notes'>
+       notes.notes.length>0?(<div className='notes'>
      <h4 className='notes-unit-name'>{notes.unit}</h4>
       <ul className='notes-list'>
           {notes.notes.map(el=>
@@ -16,8 +16,9 @@ function Notes(props) {
         </ul>
 
     
-        </div>
-    )
+        </div>):(<div className="unavailable"><h3>{notes.unit} resources not available yet</h3></div>
+          )
+          )
 }
 
 export default Notes

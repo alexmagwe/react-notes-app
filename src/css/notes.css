@@ -1,11 +1,11 @@
 .notes{
-    /* position:absolute;
-    top:30%; */
-    width:50%;
+    position:absolute;
+    top:30%;
+    width:60%;
     clear:both;
     padding-left:5px;
     background-color:rgb(255, 255, 255);
-    border:1px solid silver;
+    box-shadow: 0 0 2px 2px rgb(243, 241, 241);
     margin:5px;
 }
 .notes-list{
@@ -17,7 +17,9 @@
     padding:5px;
     justify-content: space-between;
     align-items:center;
-    border-bottom: 1px solid silver;
+    /* border-bottom: 1px solid silver; */
+        box-shadow: -2px 3px 4px rgb(223, 221, 221);
+
 
 }
 .notes-name{
@@ -25,15 +27,34 @@
     font-size: 12px;
 }
 .notes-unit-name{
-    font-weight:600;
+    font-weight:500;
     font-size:14px;
     width:100%;
     color:rgb(0, 0, 0);
-    border-bottom:2px solid silver;
+    border-bottom:1px solid silver;
 
+}
+.unavailable{
+    clear:both;
+    color:orange;
 }
 @media screen and (max-width:600px){
     .notes{
-        width:100%;
+        width:80%;
+        top:30%;
+        left:50%;
+        transform:translate(-50%);
+    }
+}
+@media screen and (max-width:340px){
+    .notes{
+        width:80%;
+         top:35%;
+    }
+}
+@media screen and (max-width:270px){
+    .notes{
+        width:80%;
+         top:45%;
     }
 }

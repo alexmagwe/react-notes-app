@@ -1,6 +1,6 @@
 .landing{
     /* background:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(../images/library.jpg); */
-    background-color:#eeeeee;
+    background-color:rgb(255, 255, 255);
     width:100%;
     background-size:cover;
     z-index:-1;

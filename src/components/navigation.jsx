@@ -23,9 +23,9 @@ let {issignedin,setStatus,user}=useContext(Usercontext)
     return (
             
            <nav className='nav' >
-              <Link style={navstyle} to='/home'><Button><HomeRoundedIcon/></Button></Link>
+              <Link style={navstyle} to='/'><Button><HomeRoundedIcon/></Button></Link>
                <ul>
-                {issignedin||user.email?(
+                {/* {issignedin||user.email?(
                 <>
                     <li>
                      <Link to='/contribute'><Button>Contribute</Button></Link>
@@ -43,7 +43,12 @@ let {issignedin,setStatus,user}=useContext(Usercontext)
                      </li>
                 </>
                    )
-}
+                
+                } */}
+                    <li>
+                        <Link style={navstyle} to='/about'><Button>About</Button></Link>
+                     </li>
+
                </ul>
            </nav>
          

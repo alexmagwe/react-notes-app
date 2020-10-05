@@ -12,6 +12,7 @@ import Landing from './components/home/landing'
 import Home from './components/home/Home' 
 import Login from './components/login'
 import Contribute from './components/contribute'
+import About from './components/About'
 import AddUnits from './components/addunits'
 import UpdateCourse from './components/home/UpdateCourse';
 import axios from 'axios'
@@ -74,11 +75,13 @@ function App() {
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
               <Route path='/contribute' exact component={Contribute}/>
-              <Route path='/' exact component={Landing}/>
-              {issignedin?(<Route path='/home' exact component={Home}/>):(<Redirect from='/home' to='/'/>)}
-              {!issignedin?(<Route path='/login' exact component={Login}/>):(<Redirect from='/login' to='/home'/>)}
+               <Route path='/' exact component={Landing}/>
+                <Route path='/about' exact component={About}/>
+
+              {/* {issignedin?(<Route path='/home' exact component={Home}/>):(<Redirect from='/home' to='/'/>)}
+              {!issignedin?(<Route path='/login' exact component={Login}/>):(<Redirect from='/login' to='/home'/>)} 
               <Route path='/upload' exact component={Upload}/>
-              <Route path='/addunits' exact component={AddUnits}/>
+              <Route path='/addunits' exact component={AddUnits}/>  */}
             </Switch>
           </Router>
         </div>
