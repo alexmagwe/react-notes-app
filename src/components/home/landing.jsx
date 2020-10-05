@@ -16,7 +16,7 @@ const Landing = () => {
         axios.get(units).then(resp=>{setData(resp.data)
         setLoading(false)
         })
-        },[units])
+        },[units,setLoading])
 
     useEffect(() => {
         let url='/notes/all'
@@ -26,7 +26,7 @@ const Landing = () => {
             setLoading(false)})
         }
     
-    }, [selected])
+    }, [selected,setLoading])
 
     useEffect(() => {
     // setLoading(false)
