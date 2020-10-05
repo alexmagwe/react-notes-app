@@ -17,7 +17,7 @@ useEffect(() => {
   useEffect(()=>{
      if (course.code){
          let payload={course_code:course.code}
-        axios.post('/course/units',payload).then(res=>setUnits(res.data)).catch(err=>console.error(err))
+        axios.post('/api/course/units',payload).then(res=>setUnits(res.data)).catch(err=>console.error(err))
      }
      },[course,setUnits])
 

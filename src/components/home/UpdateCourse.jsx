@@ -15,14 +15,14 @@ const UpdateCourse=props=>{
   const [searchTerm,setSearchTerm]=useState('')
 
   useEffect(() => {
-    let url='/courses/all'
+    let url='/api/courses/all'
     axios.get(url).then(resp=>setData(resp.data)).catch(err=>alert(err))
   
   }, [])  
 const updateServer=(details)=>{
   let data={"email":user.email,"course_code":details.code}
   
-  axios.post('add/mycourse',data).then(res=>setCourse(res.data)).catch(err=>alert(err))
+  axios.post('/api/add/mycourse',data).then(res=>setCourse(res.data)).catch(err=>alert(err))
 
 }
   useSearch(searchTerm,courses,setResults,'code')

@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const Landing = () => {
     const {setLoading}=useContext(Loadingcontext)
-    let units='/units/all'
+    let units='/api/units/all'
     const [data,setData] = useState([])
     const [notes,setNotes]=useState({})
     const {selected}=useContext(Searchcontext)
@@ -19,7 +19,7 @@ const Landing = () => {
         },[units,setLoading])
 
     useEffect(() => {
-        let url='/notes/all'
+        let url='/api/notes/all'
         if (!isEmpty(selected)){
             setLoading(true)
             axios.post(url,{"unit_code":selected.code}).then(resp=>{setNotes(resp.data)

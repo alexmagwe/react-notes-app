@@ -53,7 +53,7 @@ function App() {
           setCourse(c)
         }
         else{
-          axios.post('/course/details',data).then(res=>{console.log('response',res.data);
+          axios.post('/api/course/details',data).then(res=>{console.log('response',res.data);
             if  (res.data.code){
               localStorage.setItem('course',JSON.stringify(res.data))
               setCourse({"name":res.data.name,"code":res.data.code})
