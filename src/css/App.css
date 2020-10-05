@@ -55,6 +55,7 @@ ul li {
 .search-container{
     width:200px;
     float:right;
+    clear: both; 
     margin:5px 1em;
     z-index:1;
 

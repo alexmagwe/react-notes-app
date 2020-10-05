@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import './css/App.css';
 import './css/landing.css';
+import './css/notes.css'
 import './css/search-modal.css'
 import {Redirect,Switch,BrowserRouter as Router,Route} from 'react-router-dom'
 import Navigation from './components/navigation'
-import Usercontext from './components/context'
+import {Usercontext,Searchcontext} from './components/context'
 import firebase from './firebase/index'
 import Upload from './components/upload'
 import Landing from './components/home/landing' 
@@ -21,6 +22,8 @@ function App() {
     let [course,setCourse]=useState({})
     let [updatecourse,setUpdatecourse]=useState(false)
     let [issignedin, setStatus]=useState(false)
+    let [selected, setSelected] = useState({})
+
     const [results, setResults] = useState([])
 
     useEffect(()=>{ firebase.auth().onAuthStateChanged(u=> {  
@@ -64,21 +67,22 @@ function App() {
 
     return (
       <Usercontext.Provider value={{issignedin,results,setResults,setStatus,user,setUpdatecourse,updatecourse,course,setCourse,units,setUnits}}>   
+       <Searchcontext.Provider value={{selected,setSelected}}>
         <div className="App">
           <Router>
             <Navigation/>
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
               <Route path='/contribute' exact component={Contribute}/>
-              <Route path='/home' exact component={Home}/>
-              {issignedin?(<Redirect from='/login' to='/home'/>):(<Route path='/login' exact component={Login}/>)}
-              {issignedin?(<Redirect from='/' to='/home'/>):<Route path='/' exact component={Landing}/>}
-              {!issignedin?(<Redirect from='/home' to='/'/>):<Route path='/' exact component={Landing}/>}
+              <Route path='/' exact component={Landing}/>
+              {issignedin?(<Route path='/home' exact component={Home}/>):(<Redirect from='/home' to='/'/>)}
+              {!issignedin?(<Route path='/login' exact component={Login}/>):(<Redirect from='/login' to='/home'/>)}
               <Route path='/upload' exact component={Upload}/>
               <Route path='/addunits' exact component={AddUnits}/>
             </Switch>
           </Router>
         </div>
+        </Searchcontext.Provider>
       </Usercontext.Provider>
     );
  }

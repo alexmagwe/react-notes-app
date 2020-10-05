@@ -1,33 +1,20 @@
-import React,{useState,useEffect} from 'react'
-import {List } from 'semantic-ui-react'
+import React from 'react'
+
 import Button from '@material-ui/core/Button';
 
 
-
-function Notes() {
-    let[notes,setNotes]=useState([])
-    useEffect(()=>{
-        fetch('/notes/all').then(resp=>resp.json()).then(data=>{setNotes(data.notes)
-        console.log(data.notes)
-    })
-},[])
+function Notes(props) {
+    let notes=props.notes
     return (
-        <div>
-     <h2>Notes</h2>
-      <List divided verticalAlign='middle'>
-          {notes.map(el=>
-          <List.Item>
-          <List.Content>{el}</List.Content>
-          <List.Content floated='right'><Button>Download</Button></List.Content>
-          </List.Item>
-    )}</List>
+        <div className='notes'>
+     <h4 className='notes-unit-name'>{notes.unit}</h4>
+      <ul className='notes-list'>
+          {notes.notes.map(el=>
+          <li  className='notes-item'key={el.id}>
+          <h4 className='notes-name'>{el.name}</h4>
+        <Button href={`https://drive.google.com/file/d/${el.gid}/view`} target="_blank">View</Button></li>)}
+        </ul>
 
-  <List.Item>
-      <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-      <List.Content>Lena</List.Content>
-    </List.Item>
     
         </div>
     )

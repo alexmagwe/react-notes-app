@@ -1,12 +1,19 @@
 import React,{useEffect,useContext,useState} from 'react';
 import axios from 'axios'
 // import Button from '@material-ui/core/Button';
+import {isEmpty} from '../helpers'
 import Search from '../search/Search'
-import Usercontext from '../context.js';
+import {Usercontext,Searchcontext} from '../context.js';
 
 const Home = () => {
     const {user,course,units,setUnits}=useContext(Usercontext)
-
+    const{selected}=useContext(Searchcontext)
+useEffect(() => {
+    if (!isEmpty(selected)){
+        console.log('selected',selected)
+    }
+ 
+}, [selected])
   useEffect(()=>{
      if (course.code){
          let payload={course_code:course.code}

@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import firebase from '../firebase/index';
-import Usercontext from './context';
+import {Usercontext} from './context';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Redirect } from 'react-router';

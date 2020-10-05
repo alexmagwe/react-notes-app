@@ -1,4 +1,4 @@
 import { createContext } from 'react';
 
-const Usercontext = createContext()
-export default Usercontext
+export const Usercontext = createContext()
+export const Searchcontext=createContext()

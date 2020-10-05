@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom';
 // import HomeIcon from '@material-ui/icons/Home';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import Button from '@material-ui/core/Button';
-import Usercontext from './context'
+import {Usercontext} from './context'
 import firebase from '../firebase/index' 
 import 'firebase/auth'
 

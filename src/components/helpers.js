@@ -15,7 +15,7 @@ export const Fetch=(url,method,payload='')=>{
            }
         return data
     }
-      
+  //try catch block t ocatch invalid regexp characters that user tpyes    
   export const Search=(term,data,category)=>{
     try{
         let res=data.filter(item=>item[category].toLowerCase().match(term.toLowerCase()))
@@ -31,4 +31,7 @@ export const Capitalize=(str)=>{
 
     return str.charAt(0).toUpperCase() + str.slice(1); 
 
+}
+export const isEmpty=(obj)=>{
+    return Object.keys(obj).length === 0;
 }

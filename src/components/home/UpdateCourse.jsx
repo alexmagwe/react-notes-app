@@ -4,11 +4,12 @@ import Results from '../search/Results'
 import Modal from '../Modal';
 import {useSearch} from '../hooks/myhooks'
 
-import Usercontext from '../context';
+import {Usercontext,Searchcontext} from '../context';
 
 const UpdateCourse=props=>{
   let [ref,desc]=['course code','name']
   const {user,setUpdatecourse,updatecourse,setCourse}=useContext(Usercontext)
+  const {selected,setSelected}=useContext(Searchcontext)
   const [courses,setData]=useState([])
   const [results, setResults] = useState([])
   const [searchTerm,setSearchTerm]=useState('')
@@ -18,11 +19,6 @@ const UpdateCourse=props=>{
     axios.get(url).then(resp=>setData(resp.data)).catch(err=>alert(err))
   
   }, [])  
- useEffect(() => {
-  console.log('results',results)
-  
-  }, [results])  
-
 const updateServer=(details)=>{
   let data={"email":user.email,"course_code":details.code}
   
@@ -45,8 +41,6 @@ const updateServer=(details)=>{
 
   const handleChange=(e)=>{
     setSearchTerm(e.target.value)
-    console.log('setting search term')
- 
   }
 
 
