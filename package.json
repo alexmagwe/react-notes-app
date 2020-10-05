@@ -8,12 +8,10 @@
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
-        "antd": "^4.3.4",
         "axios": "^0.19.2",
         "babel": "^6.23.0",
         "firebase": "^7.14.5",
         "loadash": "^1.0.0",
-        "lunr": "^2.3.9",
         "node-sass": "^4.14.1",
         "nodemon": "^2.0.4",
         "react": "^16.13.1",
@@ -22,8 +20,7 @@
         "react-lunr": "^1.0.0",
         "react-router": "^5.2.0",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "^3.4.3",
-        "semantic-ui-react": "^0.88.2"
+        "react-scripts": "^3.4.3"
     },
     "scripts": {
         "start": "react-scripts start",

@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+
 .App {
   color: #111;
 }
@@ -12,18 +12,19 @@
 }
 
 .nav {
-    padding: 0 2em;
+    padding:5px 2em;
     background-color:#4e61ce;
     color: #111;
     width:100%;
     height:100%;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-nav ul {
+.nav-list {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
@@ -31,10 +32,12 @@ nav ul {
     align-items: center;
 }
 
-ul li {
-    margin: 10px;
+
+.nav-list li {
+    /* margin: 10px; */
     font-family: Poppins, Arial;
-    font-size: 16px;
+    font-size: 14px;
+
 }
 
 .login-container {
@@ -73,7 +76,7 @@ ul li {
     position:absolute;
     right:10px;
     cursor:pointer;
-    bottom:10px;
+    bottom:5px;
     transition:0.3s ease-in-out
 }
 .fa-search:hover{

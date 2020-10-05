@@ -4,12 +4,12 @@ import Results from '../search/Results'
 import Modal from '../Modal';
 import {useSearch} from '../hooks/myhooks'
 
-import {Usercontext,Searchcontext} from '../context';
+import {Usercontext} from '../context';
 
 const UpdateCourse=props=>{
   let [ref,desc]=['course code','name']
   const {user,setUpdatecourse,updatecourse,setCourse}=useContext(Usercontext)
-  const {selected,setSelected}=useContext(Searchcontext)
+  // const {selected,setSelected}=useContext(Searchcontext)
   const [courses,setData]=useState([])
   const [results, setResults] = useState([])
   const [searchTerm,setSearchTerm]=useState('')
@@ -28,7 +28,7 @@ const updateServer=(details)=>{
   useSearch(searchTerm,courses,setResults,'code')
 
   const handleClose = (el) => {        
-      // setCourse(el)
+      setCourse(el)
       localStorage.setItem('course',JSON.stringify(el))
       updateServer(el)
       setUpdatecourse(false);

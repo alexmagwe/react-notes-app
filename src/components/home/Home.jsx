@@ -1,4 +1,4 @@
-import React,{useEffect,useContext,useState} from 'react';
+import React,{useEffect,useContext} from 'react';
 import axios from 'axios'
 // import Button from '@material-ui/core/Button';
 import {isEmpty} from '../helpers'
@@ -6,7 +6,7 @@ import Search from '../search/Search'
 import {Usercontext,Searchcontext} from '../context.js';
 
 const Home = () => {
-    const {user,course,units,setUnits}=useContext(Usercontext)
+    const {course,units,setUnits}=useContext(Usercontext)
     const{selected}=useContext(Searchcontext)
 useEffect(() => {
     if (!isEmpty(selected)){

@@ -1,10 +1,15 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 import Button from '@material-ui/core/Button';
 
 
 function Notes(props) {
-    let notes=props.notes;
+    let {notes,setNotes}=props.notes;
+    useEffect(() => {
+    return () => {
+        setNotes({})
+    }
+}, [setNotes])
     return (
        notes.notes.length>0?(<div className='notes'>
      <h4 className='notes-unit-name'>{notes.unit}</h4>
