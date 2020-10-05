@@ -1,25 +1,29 @@
 import React,{useState,useEffect,useContext}from 'react';
 import Search from '../search/Search.jsx'
-import {Searchcontext} from '../context'
+import {Searchcontext,Loadingcontext} from '../context'
 import {isEmpty} from '../helpers'
 import Notes from '../notes'
 import axios from 'axios'
 
 const Landing = () => {
-
-    let url='/units/all'
+    const {setLoading}=useContext(Loadingcontext)
+    let units='/units/all'
     const [data,setData] = useState([])
     const [notes,setNotes]=useState({})
     const {selected}=useContext(Searchcontext)
     
     useEffect(() => {
-        axios.get(url).then(resp=>setData(resp.data))
-        },[url])
+        axios.get(units).then(resp=>{setData(resp.data)
+        setLoading(false)
+        })
+        },[units])
 
     useEffect(() => {
         let url='/notes/all'
         if (!isEmpty(selected)){
-            axios.post(url,{"unit_code":selected.code}).then(resp=>setNotes(resp.data))
+            setLoading(true)
+            axios.post(url,{"unit_code":selected.code}).then(resp=>{setNotes(resp.data)
+            setLoading(false)})
         }
     
     }, [selected])

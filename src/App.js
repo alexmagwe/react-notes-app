@@ -5,9 +5,11 @@ import './css/notes.css'
 import './css/search-modal.css'
 import {Redirect,Switch,BrowserRouter as Router,Route} from 'react-router-dom'
 import Navigation from './components/navigation'
-import {Usercontext,Searchcontext} from './components/context'
+import {Usercontext,Searchcontext,Loadingcontext} from './components/context'
 import firebase from './firebase/index'
-// import Upload from './components/upload'
+import { TransverseLoading } from 'react-loadingg';
+
+
 import Landing from './components/home/landing' 
 // import Home from './components/home/Home' 
 // import Login from './components/login'
@@ -20,6 +22,7 @@ import axios from 'axios'
 function App() {  
     let [user,setUser]=useState({})
     let [units, setUnits] = useState([])
+    let [loading,setLoading]=useState(true)
     let [course,setCourse]=useState({})
     let [updatecourse,setUpdatecourse]=useState(false)
     let [issignedin, setStatus]=useState(false)
@@ -54,9 +57,11 @@ function App() {
             if  (res.data.code){
               localStorage.setItem('course',JSON.stringify(res.data))
               setCourse({"name":res.data.name,"code":res.data.code})
+              setLoading(false)
             }
             else{
               setUpdatecourse(true)
+              setLoading(false)
             }
               })
           .catch(err=>alert(err));
@@ -67,11 +72,15 @@ function App() {
 
 
     return (
+      <Loadingcontext.Provider value={{loading,setLoading}}>
       <Usercontext.Provider value={{issignedin,results,setResults,setStatus,user,setUpdatecourse,updatecourse,course,setCourse,units,setUnits}}>   
        <Searchcontext.Provider value={{selected,setSelected}}>
         <div className="App">
           <Router>
-            <Navigation/>
+        
+              <Navigation/>
+                <div className={loading?"loading dark-loading":"loading loading-closed"}>
+              <TransverseLoading/></div>
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
               <Route path='/contribute' exact component={Contribute}/>
@@ -87,7 +96,7 @@ function App() {
         </div>
         </Searchcontext.Provider>
       </Usercontext.Provider>
-    );
+    </Loadingcontext.Provider>);
  }
 
 export default App;
