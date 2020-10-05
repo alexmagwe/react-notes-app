@@ -12,7 +12,7 @@ function Notes(props) {
 }, [setNotes])
     return (
        notes.notes.length>0?(<div className='notes'>
-     <h4 className='notes-unit-name'>{notes.unit}</h4>
+     <h4 className='notes-unit-name'><span className='unit-code'>{notes.code}</span> {notes.unit}</h4>
       <ul className='notes-list'>
           {notes.notes.map(el=>
           <li  className='notes-item'key={el.id}>

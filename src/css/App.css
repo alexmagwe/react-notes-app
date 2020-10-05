@@ -159,3 +159,10 @@
     opacity:0;
   height:0;
 }
+.about{
+    width:100%;
+    padding:1em;
+    text-align: center;
+    font-family: sans-serif;
+
+}

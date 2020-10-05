@@ -7,13 +7,12 @@ import {Redirect,Switch,BrowserRouter as Router,Route} from 'react-router-dom'
 import Navigation from './components/navigation'
 import {Usercontext,Searchcontext,Loadingcontext} from './components/context'
 import firebase from './firebase/index'
-import { TransverseLoading } from 'react-loadingg';
-
-
+// import { TransverseLoading } from 'react-loadingg';
+import { CircleToBlockLoading } from 'react-loadingg';
 import Landing from './components/home/landing' 
 // import Home from './components/home/Home' 
 // import Login from './components/login'
-import Contribute from './components/contribute'
+// import Contribute from './components/contribute'
 import About from './components/About'
 // import AddUnits from './components/addunits'
 import UpdateCourse from './components/home/UpdateCourse';
@@ -80,10 +79,10 @@ function App() {
         
               <Navigation/>
                 <div className={loading?"loading dark-loading":"loading loading-closed"}>
-              <TransverseLoading/></div>
+             <CircleToBlockLoading/></div>
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
-              <Route path='/contribute' exact component={Contribute}/>
+              {/* <Route path='/contribute' exact component={Contribute}/> */}
                <Route path='/' exact component={Landing}/>
                 <Route path='/about' exact component={About}/>
 

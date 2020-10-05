@@ -13,6 +13,7 @@ const Landing = () => {
     const {selected}=useContext(Searchcontext)
     
     useEffect(() => {
+        setLoading(true)
         axios.get(units).then(resp=>{setData(resp.data)
         setLoading(false)
         })

@@ -44,9 +44,9 @@ const Navigation = (props) => {
                        <li> <Link to='/about'>
                            <Button>About</Button></Link>
                     </li>
-                      <li>
+                      {/* <li>
                         <Link to='/contribute'><Button>Contribute</Button></Link>
-                     </li>
+                     </li> */}
 
                </ul>
            </div>
