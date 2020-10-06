@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Button from '@material-ui/core/Button';
 import {useControlledInput,useUploadFile} from './hooks/myhooks';
@@ -6,9 +6,8 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import  axios from 'axios';
+import {Searchcontext,Loadingcontext} from './context'
 import {storage} from '../firebase'
-import { responsiveArray } from 'antd/lib/_util/responsiveObserve';
-import {List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 function Upload() {
 const[unit,bindValue,resetValue]=useControlledInput('')
@@ -17,6 +16,8 @@ const [uploadedfiles,setUploadedfiles]=useState([]);
 const[progress,setProgress]=useState(0);
 const[urls,setUrls]=useState([])
 const [uploading,isUploading]=useState(false);
+const {setLoading}=useContext(Loadingcontext)
+
 const styles={
     
 hide:{
@@ -44,7 +45,7 @@ flexbox:{
         margin:'auto',
         flexWrap:'wrap',
         flexDirection:'column',
-        alignItems:'cenTer',
+        alignItems:'center',
         justifyContent:'space-between   '
 
     },
@@ -54,7 +55,7 @@ flexbox:{
         width:'100%',
         margin:'auto',
         flexWrap:'wrap',
-        alignItems:'cenTer',
+        alignItems:'center',
         justifyContent:'space-between   '
 
     },
@@ -67,6 +68,9 @@ upload:{
     position:'relative',
     bottom:'0',
     margin:'1em',
+    borderRadius:'10px',
+    backgroundColor: '#4e61ce',
+    padding:'10px',
     left:'0'
     
 },
@@ -89,6 +93,7 @@ center:{textAlign:'center'},
 }
 useEffect(()=>{
     console.log('use efect ran:',files)
+    setLoading(false)
     
 },[files])
 
@@ -113,10 +118,9 @@ const uploadit= file=>{
 async function serverupload(){
     // try{
     const formData=new FormData()
-    console.log(files)
     files.forEach(file=>formData.append('notes',file))
-     
-    let res=await axios.post('/upload',formData,{
+    const apiurl='http://alex2kepler.pythonanywhere.com/upload'
+    let res=await axios.post(apiurl,formData,{
             headers:{"Content-Type":"multipart/form-data",
                 "unit_code":unit},onUploadProgress:snap=>{
                 let prog=Math.round(snap.loaded/snap.total*100)
@@ -130,16 +134,27 @@ async function serverupload(){
 
     
 }
+
+useEffect(()=>{
+    if(uploadedfiles.length>0){
+        let payload={"notes":uploadedfiles,"unit_code":unit.toUpperCase()}
+        console.log('payload',payload)
+        setLoading(true)
+        axios.post('/api/add/notes',payload).then(resp=>{
+            setLoading(false)
+    }).catch(err=>alert(err))
+}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[uploadedfiles,setLoading])
+
 const handleSubmit=async e=>{
     e.preventDefault()
-    console.log(unit.toUpperCase())
-
     //  await files.forEach(file=>serverupload(file).then(res=>console.log(res)).catch(err=>console.error(err)))
     let res=await serverupload()
     if (res.status===200){
+        setUploadedfiles(res.data)
         resetFiles()
-        resetValue()
-        console.log(res.data)
+    
     }
 
   
@@ -164,7 +179,7 @@ console.log(e.target)
         <input id='unit' autoFocus placeholder='eg SPH101' style={styles.input} {...bindValue} required type='text'/>
         <input style={styles.hide} id='add_file' type='file' accept='file_extensions|*/pdf,*/docx'{...bindFiles} multiple/>
         <label htmlFor='add_file' ><Button variant='outlined' style={styles.buttontext}component='span'>&#43;</Button></label>
-        <Button style={styles.upload}variant='outlined' aria-label='upload button'color='primary' type='submit' startIcon={<CloudUploadIcon />}>upload</Button>
+        <button style={styles.upload}variant='outlined' aria-label='upload button'color='primary' type='submit' startIcon={<CloudUploadIcon />}>upload</button>
     </form>
  <ProgressBar value={progress}/>
     {files.length>0?(
@@ -181,19 +196,6 @@ console.log(e.target)
             ))}
             </div> ):null}
         </div>
-           {uploadedfiles.length>0?(
-           <div>
-                <List divided verticalAlign='middle'>
-                {uploadedfiles.map(el=>
-                <List.Item>
-                <List.Content>{el.id}</List.Content>
-                <List.Content floated='right'>
-                          <a href={`https://drive.google.com/file/d/${el.id}/view`} target="_blank" rel="noopener">view</a>
-                </List.Content>
-                </List.Item>
-                )}</List>)
-        </div>):null}
- 
     </div>
     )
     }

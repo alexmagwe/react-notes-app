@@ -12,7 +12,8 @@ import { CircleToBlockLoading } from 'react-loadingg';
 import Landing from './components/home/landing' 
 // import Home from './components/home/Home' 
 // import Login from './components/login'
-// import Contribute from './components/contribute'
+import Contribute from './components/contribute'
+import Upload from './components/upload'
 import About from './components/About'
 // import AddUnits from './components/addunits'
 import UpdateCourse from './components/home/UpdateCourse';
@@ -82,9 +83,10 @@ function App() {
              <CircleToBlockLoading/></div>
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
-              {/* <Route path='/contribute' exact component={Contribute}/> */}
+              <Route path='/contribute' exact component={Contribute}/>
                <Route path='/' exact component={Landing}/>
                 <Route path='/about' exact component={About}/>
+              <Route path='/upload' exact component={Upload}/>
 
               {/* {issignedin?(<Route path='/home' exact component={Home}/>):(<Redirect from='/home' to='/'/>)}
               {!issignedin?(<Route path='/login' exact component={Login}/>):(<Redirect from='/login' to='/home'/>)} 
