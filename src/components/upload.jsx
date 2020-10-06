@@ -119,7 +119,7 @@ async function serverupload(){
     // try{
     const formData=new FormData()
     files.forEach(file=>formData.append('notes',file))
-    const apiurl='http://alex2kepler.pythonanywhere.com/upload'
+    const apiurl='https://alex2kepler.pythonanywhere.com/upload'
     let res=await axios.post(apiurl,formData,{
             headers:{"Content-Type":"multipart/form-data",
                 "unit_code":unit},onUploadProgress:snap=>{
