@@ -1,7 +1,7 @@
 
 import { useState,useEffect } from 'react'
 import {Search} from '../helpers'
-
+const allowedExts=['pdf','docx','txt','epub','ppt','doc','pptx']
 export function useControlledInput(initial = "") {
     
     const [value, setValue] = useState(initial)
@@ -26,14 +26,28 @@ export function useUploadFile(initial = []) {
         copy.splice(i, 1)
         setFiles(copy)
     }
+    const isValid=(name)=>{
+        let fileExt = name.split('.').pop();
+        return allowedExts.includes(fileExt)
+      
+    }
     const bindFiles = {
         files,
-        onChange: e => {setFiles([...files, ...e.target.files]);
+        onChange: e => {
+            let valid=[]
+            let filelist=[...e.target.files]
+            console.log(filelist)
+            filelist.forEach(file=>{
+                if (isValid(file.name)){
+                    valid.push(file)
+                }
+            setFiles([...files,...valid])
+            })
         }
     }
 
 
-    return [files, bindFiles, removeFile, resetFiles]
+    return [files, bindFiles, removeFile, resetFiles,isValid]
 }
 
 

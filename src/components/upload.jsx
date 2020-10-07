@@ -126,7 +126,7 @@ function Upload() {
                     <input id='unit' ref={inputref} placeholder='unit code' className='upload-input' value={value} onChange={handleChange} required type='text'/>
                     {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
  
-                   <input className='hide' id='add_file' type='file' accept='file_extensions|*/pdf,*/docx'{...bindFiles} multiple/>
+                   <input className='hide' id='add_file' type='file' {...bindFiles} multiple/>
                     <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
                     <Button variant='outlined' aria-label='upload button' color='primary' type='submit'>Upload</Button>
                 </form>
