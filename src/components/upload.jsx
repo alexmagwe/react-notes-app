@@ -13,7 +13,7 @@ import {allUnitsUrl,addNotesUrl,uploadUrl} from './urls'
 import {useSearch} from './hooks/myhooks'
 function Upload() {
       let [ref,desc]=['unit code','name']
-
+    const [history,setHistory]=useState({})
     const[files,bindFiles,removeFile,resetFiles]=useUploadFile([])
     const [uploadedfiles,setUploadedfiles]=useState([]);
     const[progress,setProgress]=useState(0);
@@ -23,6 +23,7 @@ function Upload() {
     const {data,setData}=useContext(Datacontext)
     const [results, setResults] = useState([])
     const [value, setValue] = useState('')
+
 
 
     let inputref=useRef()
@@ -43,7 +44,14 @@ function Upload() {
         if (!isEmpty(selected)){
         setUnitCode(selected.code)}
 
+
     },[selected])
+
+      useEffect(()=>{
+        return ()=>{
+            setSelected(history)//set historical selcted value from landing page
+        }
+    },[history,setSelected])
 //RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
     useEffect(()=>{
         if(uploadedfiles.length>0){
@@ -52,6 +60,7 @@ function Upload() {
             axios.post(addNotesUrl,payload).then(resp=>{
             setLoading(false)
             setProgress(0)
+            setSelected({})
         }).catch(err=>{alert(err)
         setLoading(false)}
         )
@@ -99,8 +108,11 @@ function Upload() {
         setValue(e.target.value)//to 
     }
 
-    const handleClose = (el) => {        
+    const handleClose = (el) => {  
+        let prev=selected
+        setHistory(prev)     
         setSelected(el)
+        
         setValue(el.code)
         setResults([])
    };

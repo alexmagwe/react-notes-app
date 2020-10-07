@@ -14,11 +14,12 @@ useEffect(()=>{
           <div className='cards-container'>
               <div className='card card1'>
                  <Link to='/upload'> 
-                 <h3 className='card-text'>Add Notes</h3></Link>
+                 <h3 className='card-text'>Add Notes</h3>
+                 </Link>
               </div>
 
             <div className='card card2'>
-                <Link Link to='/addunits'> 
+                <Link to='/addunits'> 
                     <h3 className='card-text'>Add Unit</h3>
                 </Link> 
             </div>
