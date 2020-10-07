@@ -1,200 +1,137 @@
-import React,{useEffect,useState,useContext} from 'react'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import React,{useEffect,useState,useContext,useRef} from 'react'
 import Button from '@material-ui/core/Button';
-import {useControlledInput,useUploadFile} from './hooks/myhooks';
+import {useUploadFile} from './hooks/myhooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import  axios from 'axios';
-import {Searchcontext,Loadingcontext} from './context'
-import {storage} from '../firebase'
-import { Link } from 'react-router-dom';
+
+import {isEmpty} from './helpers'
+import {Searchcontext,Loadingcontext,Datacontext} from './context'
+import Results from './search/Results'
+import {allUnitsUrl,addNotesUrl,uploadUrl} from './urls'
+import {useSearch} from './hooks/myhooks'
 function Upload() {
-const[unit,bindValue,resetValue]=useControlledInput('')
-const[files,bindFiles,removeFile,resetFiles]=useUploadFile([])
-const [uploadedfiles,setUploadedfiles]=useState([]);
-const[progress,setProgress]=useState(0);
-const[urls,setUrls]=useState([])
-const [uploading,isUploading]=useState(false);
-const {setLoading}=useContext(Loadingcontext)
+      let [ref,desc]=['unit code','name']
 
-const styles={
+    const[files,bindFiles,removeFile,resetFiles]=useUploadFile([])
+    const [uploadedfiles,setUploadedfiles]=useState([]);
+    const[progress,setProgress]=useState(0);
+    const [unitCode,setUnitCode]=useState('')
+    const {setLoading}=useContext(Loadingcontext)
+    const {selected,setSelected}=useContext(Searchcontext)
+    const {data,setData}=useContext(Datacontext)
+    const [results, setResults] = useState([])
+    const [value, setValue] = useState('')
+
+
+    let inputref=useRef()
+
+    const [searchTerm,setSearchTerm]=useState('')
     
-hide:{
-    display:'none'
-},
-buttontext:{
-    fontWeight:'bold'},
-form:{
-    display:'flex',
-justifyContent:'center',
-    alignItems:'center',
-    flexWrap:'wrap',
-    // height:'50vh',
-    width:'30%',
-    // border:'1px solid red',
-    position:'relative',
-    // flexDirection:'column',
-    padding:'1em'
+    useSearch(searchTerm,data,setResults,'code')
 
-},
-flexbox:{
-        display:'flex',
-        padding:'1em 5em',
-        width:'100%',
-        margin:'auto',
-        flexWrap:'wrap',
-        flexDirection:'column',
-        alignItems:'center',
-        justifyContent:'space-between   '
+    useEffect(()=>{
+      if (isEmpty(data)){
+          axios.get(allUnitsUrl).then(res=>setData(res.data)).catch(err=>{alert(err)})
+      }
+      setLoading(false)
+      inputref.current.focus()
+        },[data,setData,setLoading])
 
-    },
-    flexboxh:{
-        display:'flex',
-        padding:'1em 5em',
-        width:'100%',
-        margin:'auto',
-        flexWrap:'wrap',
-        alignItems:'center',
-        justifyContent:'space-between   '
+    useEffect(()=>{
+        if (!isEmpty(selected)){
+        setUnitCode(selected.code)}
 
-    },
-input:{
-    textTransform:'uppercase', 
-    margin:'1em',
-    color: 'black'
-},
-upload:{
-    position:'relative',
-    bottom:'0',
-    margin:'1em',
-    borderRadius:'10px',
-    backgroundColor: '#4e61ce',
-    padding:'10px',
-    left:'0'
-    
-},
-margins:{
-    margin:'10px'
-},
-header:{
-    marginBottom:'1em',
-textAlign:'center'
-},
-container:{
-paddingTop:'3%'},
-
-center:{textAlign:'center'},
-
-   textstyles:{
-        textAlign:'center'
-    }
-
-}
-useEffect(()=>{
-    console.log('use efect ran:',files)
-    setLoading(false)
-    
-},[files])
-
-// let [file,setFile]=useState({})
-const uploadit= file=>{
-    console.log("name:",file.name)
-    const uploadTask=storage.ref('notes').child(file.name).put(file);
-    uploadTask.on('state_changed',snapshot=>{
-        let prog=Math.round(snapshot.bytesTransferred/snapshot.totalBytes*100)
-    setProgress(prog)
-    },
-    error=>{
-        console.log(error)
-    },()=>{
-        storage.ref("notes").child(file.name).getDownloadURL()
-        .then(url=>{setUrls([...urls,url]);
-        setProgress(0);
-        })
-
-    })
-}
-async function serverupload(){
-    // try{
-    const formData=new FormData()
-    files.forEach(file=>formData.append('notes',file))
-    const apiurl='https://alex2kepler.pythonanywhere.com/upload'
-    let res=await axios.post(apiurl,formData,{
-            headers:{"Content-Type":"multipart/form-data",
-                "unit_code":unit},onUploadProgress:snap=>{
-                let prog=Math.round(snap.loaded/snap.total*100)
-                setProgress(prog)
-                                               }
-})
-     
-    return res
-
-
-
-    
-}
-
-useEffect(()=>{
-    if(uploadedfiles.length>0){
-        let payload={"notes":uploadedfiles,"unit_code":unit.toUpperCase()}
-        console.log('payload',payload)
-        setLoading(true)
-        axios.post('/api/add/notes',payload).then(resp=>{
+    },[selected])
+//RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
+    useEffect(()=>{
+        if(uploadedfiles.length>0){
+            setLoading(true)
+            let payload={"notes":uploadedfiles,"unit_code":unitCode.toUpperCase()}
+            axios.post(addNotesUrl,payload).then(resp=>{
             setLoading(false)
-    }).catch(err=>alert(err))
-}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[uploadedfiles,setLoading])
+            setProgress(0)
+        }).catch(err=>{alert(err)
+        setLoading(false)}
+        )
+    }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        },[uploadedfiles,setLoading])
+    async function serverupload(){
+        const formData=new FormData()
+        files.forEach(file=>formData.append('notes',file))
 
-const handleSubmit=async e=>{
-    e.preventDefault()
-    //  await files.forEach(file=>serverupload(file).then(res=>console.log(res)).catch(err=>console.error(err)))
-    let res=await serverupload()
-    if (res.status===200){
-        setUploadedfiles(res.data)
-        resetFiles()
-    
+        try{
+        let res=await axios.post(uploadUrl,formData,{
+                headers:{"Content-Type":"multipart/form-data",
+                    "unit_code":unitCode},onUploadProgress:snap=>{
+                    let prog=Math.round(snap.loaded/snap.total*100)
+                    setProgress(prog)
+                    }       
+                })
+            return res  
+        }
+        catch(err){
+            alert(err)
+        }
+    }
+    const handleSubmit=async e=>{
+        e.preventDefault()
+       
+    if (files.length>0){
+         let res=await serverupload()
+        if (res.status===200){
+            setUploadedfiles(res.data)
+            resetFiles()
+        
+        }
     }
 
-  
- 
-  
-}
-const handleDelete=(e,i)=>{
-    // const notes=document.querySelector('#notes')
-    console.log(i)
-        // notes.childNodes[i].style.opacity='0'
-    removeFile(i)
-console.log(e.target)
-}
+    }
+    const handleDelete=(e,i)=>{
+        console.log(i)
+        removeFile(i)
+    }
 
-  
+    const handleChange=(e)=>{
+        setSearchTerm(e.target.value)
+        setValue(e.target.value)//to 
+    }
+
+    const handleClose = (el) => {        
+        setSelected(el)
+        setValue(el.code)
+        setResults([])
+   };
+
+    
     return (
-        <div style={styles.container}>
-<h2 style={styles.header}> Contribute by Adding notes</h2>  
-<div style={styles.flexbox}>
-    <form style={styles.form} onSubmit={handleSubmit}>      
-        <label htmlFor='unit'>Unit code</label>
-        <input id='unit' autoFocus placeholder='eg SPH101' style={styles.input} {...bindValue} required type='text'/>
-        <input style={styles.hide} id='add_file' type='file' accept='file_extensions|*/pdf,*/docx'{...bindFiles} multiple/>
-        <label htmlFor='add_file' ><Button variant='outlined' style={styles.buttontext}component='span'>&#43;</Button></label>
-        <button style={styles.upload}variant='outlined' aria-label='upload button'color='primary' type='submit' startIcon={<CloudUploadIcon />}>upload</button>
-    </form>
- <ProgressBar value={progress}/>
-    {files.length>0?(
-    <div id='notes'>
-            {files.map((book,i)=>(
-            <div style={styles.flexboxh} data-key={i} key={i}>
-                <li >{book.name}</li> 
-                    <span>
-                    <IconButton key={i} data-key={i} onClick={(e)=>handleDelete(e,i)} aria-label="delete" style={styles.margins}>
-                        <DeleteIcon />
-                    </IconButton>
-                    </span>
-                </div>
-            ))}
-            </div> ):null}
+        <div className='upload-container'>
+            <h2 className='upload-header'> Contribute by Adding notes</h2>  
+            <div className='upload-flexbox'>
+                <form className='upload-form' onSubmit={handleSubmit}>      
+                    <input id='unit' ref={inputref} placeholder='unit code' className='upload-input' value={value} onChange={handleChange} required type='text'/>
+                    {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
+ 
+                   <input className='hide' id='add_file' type='file' accept='file_extensions|*/pdf,*/docx'{...bindFiles} multiple/>
+                    <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
+                    <Button variant='outlined' aria-label='upload button' color='primary' type='submit'>Upload</Button>
+                </form>
+                <ProgressBar value={progress}/>
+                {files.length>0?(
+                <div className='toupload-container'>
+                        {files.map((book,i)=>(
+                        <div className='toupload-item' data-key={i} key={i}>
+                            <li  className='upload-item-name'>{book.name}</li> 
+                                <span>
+                                <IconButton key={i} data-key={i} onClick={(e)=>handleDelete(e,i)} aria-label="delete" className='margins'>
+                                    <DeleteIcon />
+                                </IconButton>
+                                </span>
+                            </div>
+                        ))}
+                </div> ):null}
         </div>
     </div>
     )

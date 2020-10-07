@@ -24,9 +24,11 @@
 .notes-item{
     display:flex;
     padding:5px;
+    width:100%;
     justify-content: space-between;
     align-items:center;
-    /* border-bottom: 1px inset silver; */
+    display:flex;
+    flex-wrap:wrap;
     box-shadow: -2px 2px 4px rgb(223, 221, 221);
 }
 .unit-code{
@@ -35,9 +37,10 @@
     margin-right:12px;
 }
 .notes-name{
-    height:100%;
+    word-break: break-all;
     font-weight: 400;
     font-size: 12px;
+
 }
 .notes-unit-name{
     padding:5px;

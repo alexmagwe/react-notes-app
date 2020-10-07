@@ -1,0 +1,8 @@
+export const allUnitsUrl='/api/units/all'
+export const coursesUrl='/api/courses/all'
+export const addMyCourseUrl='/api/add/mycourse'
+export const getCourseUrl='/api/course/details'
+export const unitNotesUrl='/api/notes/all'
+export const courseUnitsUrl='/api/course/units'
+export const addNotesUrl='/api/add/notes'
+export const uploadUrl='https://alex2kepler.pythonanywhere.com/upload'

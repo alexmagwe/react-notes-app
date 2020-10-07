@@ -3,6 +3,7 @@ import axios from 'axios';
 import Results from '../search/Results' 
 import Modal from '../Modal';
 import {useSearch} from '../hooks/myhooks'
+import {addMyCourseUrl,coursesUrl} from '../urls'
 
 import {Usercontext} from '../context';
 
@@ -16,13 +17,13 @@ const UpdateCourse=props=>{
 
   useEffect(() => {
     let url='/api/courses/all'
-    axios.get(url).then(resp=>setData(resp.data)).catch(err=>alert(err))
+    axios.get(coursesUrl).then(resp=>setData(resp.data)).catch(err=>alert(err))
   
   }, [])  
 const updateServer=(details)=>{
   let data={"email":user.email,"course_code":details.code}
   
-  axios.post('/api/add/mycourse',data).then(res=>setCourse(res.data)).catch(err=>alert(err))
+  axios.post(addMyCourseUrl,data).then(res=>setCourse(res.data)).catch(err=>alert(err))
 
 }
   useSearch(searchTerm,courses,setResults,'code')

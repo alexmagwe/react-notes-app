@@ -10,14 +10,20 @@
     text-decoration: none;
     list-style: none;
 }
+.primary{
+    color:rgb(8, 84, 184);
 
+}
+.md{
+    font-size:18px;
+}
 .nav {
-    padding:5px 2em;
-    background-color:#4e61ce;
+    padding:1em 2em;
+    background-color:transparent;
     color: #111;
     width:100%;
     height:100%;
-
+    margin-bottom: 1em;;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

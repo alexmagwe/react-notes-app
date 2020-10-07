@@ -1,39 +1,37 @@
 import React,{useState,useEffect,useContext}from 'react';
 import Search from '../search/Search.jsx'
-import {Searchcontext,Loadingcontext} from '../context'
+import {Searchcontext,Loadingcontext,Datacontext} from '../context'
 import {isEmpty} from '../helpers'
+import {allUnitsUrl,unitNotesUrl} from '../urls'
+
 import Notes from '../notes'
 import axios from 'axios'
 
 const Landing = () => {
     const {setLoading}=useContext(Loadingcontext)
-    let units='/api/units/all'
-    const [data,setData] = useState([])
+    const {data,setData} = useContext(Datacontext)
     const [notes,setNotes]=useState({})
     const {selected}=useContext(Searchcontext)
     
     useEffect(() => {
+        if(isEmpty(data)){
         setLoading(true)
-        axios.get(units).then(resp=>{setData(resp.data)
-        setLoading(false)
-        })
-        },[units,setLoading])
+        axios.get(allUnitsUrl).then(resp=>{setData(resp.data)
+        setLoading(false)}
+        )}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        },[setLoading,setData])
 
     useEffect(() => {
-        let url='/api/notes/all'
+        
         if (!isEmpty(selected)){
             setLoading(true)
-            axios.post(url,{"unit_code":selected.code}).then(resp=>{setNotes(resp.data)
-            setLoading(false)})
+            axios.post(unitNotesUrl,{"unit_code":selected.code}).then(resp=>{setNotes(resp.data)
+             setLoading(false)})
         }
     
     }, [selected,setLoading])
 
-    useEffect(() => {
-    // setLoading(false)
-        
-        },[data])
-    
         return (
             <div className='landing'>
                 <Search source={data} />

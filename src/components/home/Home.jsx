@@ -4,6 +4,7 @@ import axios from 'axios'
 import {isEmpty} from '../helpers'
 import Search from '../search/Search'
 import {Usercontext,Searchcontext} from '../context.js';
+import {courseUnitsUrl} from '../urls'
 
 const Home = () => {
     const {course,units,setUnits}=useContext(Usercontext)
@@ -17,7 +18,7 @@ useEffect(() => {
   useEffect(()=>{
      if (course.code){
          let payload={course_code:course.code}
-        axios.post('/api/course/units',payload).then(res=>setUnits(res.data)).catch(err=>console.error(err))
+        axios.post(courseUnitsUrl,payload).then(res=>setUnits(res.data)).catch(err=>console.error(err))
      }
      },[course,setUnits])
 

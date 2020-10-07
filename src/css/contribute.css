@@ -1,0 +1,48 @@
+:root{
+    --card2-bg:#40a8c4;
+    --card1-bg:#07689f;
+
+}
+.pd2{
+    padding:0 2em;
+}
+
+.cards-container{
+    display:flex;
+    width:100%;
+    min-height:50vh;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card-text{
+    color:#fff;
+
+}
+.card{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:250px;
+    border-radius: 2px;
+    margin:1em 0;
+    height:200px;
+transition: all 0.3s ease-in-out;
+}
+.card1{
+ background-color: var(--card1-bg);
+
+}
+.card2{
+    background-color:var(--card2-bg);
+}
+.card:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+@media screen and (max-width:600px){
+   .cards-container .card{
+        width:100%;
+        margin: 0;
+    }
+}

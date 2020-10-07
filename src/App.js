@@ -2,10 +2,13 @@ import React,{useState,useEffect} from 'react';
 import './css/App.css';
 import './css/landing.css';
 import './css/notes.css'
+import './css/upload.css'
 import './css/search-modal.css'
+import './css/contribute.css'
+
 import {Redirect,Switch,BrowserRouter as Router,Route} from 'react-router-dom'
 import Navigation from './components/navigation'
-import {Usercontext,Searchcontext,Loadingcontext} from './components/context'
+import {Usercontext,Searchcontext,Loadingcontext,Datacontext} from './components/context'
 import firebase from './firebase/index'
 // import { TransverseLoading } from 'react-loadingg';
 import { CircleToBlockLoading } from 'react-loadingg';
@@ -19,15 +22,14 @@ import About from './components/About'
 import UpdateCourse from './components/home/UpdateCourse';
 import axios from 'axios'
 
-function App() {  
+function App() {
     let [user,setUser]=useState({})
-    let [units, setUnits] = useState([])
+    let [data,setData] = useState({})
     let [loading,setLoading]=useState(true)
     let [course,setCourse]=useState({})
     let [updatecourse,setUpdatecourse]=useState(false)
     let [issignedin, setStatus]=useState(false)
     let [selected, setSelected] = useState({})
-
     const [results, setResults] = useState([])
 
     useEffect(()=>{ firebase.auth().onAuthStateChanged(u=> {  
@@ -73,8 +75,9 @@ function App() {
 
     return (
       <Loadingcontext.Provider value={{loading,setLoading}}>
-      <Usercontext.Provider value={{issignedin,results,setResults,setStatus,user,setUpdatecourse,updatecourse,course,setCourse,units,setUnits}}>   
+      <Usercontext.Provider value={{issignedin,results,setResults,setStatus,user,setUpdatecourse,updatecourse,course,setCourse}}>   
        <Searchcontext.Provider value={{selected,setSelected}}>
+        <Datacontext.Provider value={{data,setData}}>
         <div className="App">
           <Router>
         
@@ -95,6 +98,7 @@ function App() {
             </Switch>
           </Router>
         </div>
+        </Datacontext.Provider>
         </Searchcontext.Provider>
       </Usercontext.Provider>
     </Loadingcontext.Provider>);
