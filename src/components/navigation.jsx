@@ -41,7 +41,8 @@ const Navigation = (props) => {
                    )
                 
                 } */}
-                       <li> <Link to='/about'>
+                       <li>
+                           <Link to='/about'>
                            <Button>About</Button></Link>
                     </li>
                       <li>

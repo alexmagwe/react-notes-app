@@ -5,7 +5,7 @@ import './css/notes.css'
 import './css/upload.css'
 import './css/search-modal.css'
 import './css/contribute.css'
-
+import './css/error.css'
 import {Redirect,Switch,BrowserRouter as Router,Route} from 'react-router-dom'
 import Navigation from './components/navigation'
 import {Usercontext,Searchcontext,Loadingcontext,Datacontext} from './components/context'
@@ -21,6 +21,7 @@ import About from './components/About'
 // import AddUnits from './components/addunits'
 import UpdateCourse from './components/home/UpdateCourse';
 import axios from 'axios'
+import ErrorPage from './components/errors/404';
 
 function App() {
     let [user,setUser]=useState({})
@@ -90,6 +91,8 @@ function App() {
                <Route path='/' exact component={Landing}/>
                 <Route path='/about' exact component={About}/>
               <Route path='/upload' exact component={Upload}/>
+                <Route path='*' component={ErrorPage}/>
+
 
               {/* {issignedin?(<Route path='/home' exact component={Home}/>):(<Redirect from='/home' to='/'/>)}
               {!issignedin?(<Route path='/login' exact component={Login}/>):(<Redirect from='/login' to='/home'/>)} 
