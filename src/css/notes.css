@@ -2,7 +2,8 @@
     position:absolute;
     top:30%;
     left:2em;
-
+    max-height:65vh;
+    overflow:auto;
     width:60%;
     clear:both;
     padding:15px;
