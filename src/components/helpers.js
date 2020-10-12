@@ -17,9 +17,14 @@ export const Fetch=(url,method,payload='')=>{
     }
   //try catch block t ocatch invalid regexp characters that user tpyes    
   export const Search=(term,data,category)=>{
+      const defaultcategory='name'
     try{
-        let res=data.filter(item=>item[category].toLowerCase().match(term.toLowerCase()))
-        return res
+        let res1=data.filter(item=>item[category].toLowerCase().match(term.toLowerCase()))
+      
+        let res2=data.filter(item=>item[defaultcategory].toLowerCase().match(term.toLowerCase()))
+            
+        return [...res1,...res2]
+    
 
     }
     catch{

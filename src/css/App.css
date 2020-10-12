@@ -179,3 +179,8 @@
     font-family: sans-serif;
 
 }
+@media screen and (max-width:300px){
+  .search-container{
+      width:80vw;
+    }
+  }

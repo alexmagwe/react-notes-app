@@ -40,6 +40,7 @@
 .notes-name{
     word-break: break-all;
     font-weight: 400;
+    max-width:65% ;
     font-size: 12px;
 
 }
@@ -71,10 +72,7 @@
     }
 }
 @media screen and (max-width:270px){
-    .notes{
-        width:80%;
-         top:45%;
-    }
+ 
      .unavailable{
      position:absolute;
     top:40%;

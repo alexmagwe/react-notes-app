@@ -5,7 +5,7 @@ import {Searchcontext} from '../context'
 import {useSearch} from '../hooks/myhooks'
 
 const Search = (props) => {
-    let [ref,desc]=['Unit code','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
+    let [ref,desc]=['Unit','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
     const [results,setResults]=useState([])
     const {setSelected}=useContext(Searchcontext)
     const [searchTerm,setSearchTerm]=useState('')
