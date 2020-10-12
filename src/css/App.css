@@ -1,6 +1,10 @@
 
 .App {
   color: #111;
+  background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.4)),url('../images/oldcover.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height:100vh;
 }
 
 * {
@@ -19,11 +23,12 @@
 }
 .nav {
     padding:1em 2em;
-    background-color:transparent;
+    background-color:#cd935e;
     color: #111;
     width:100%;
     height:100%;
-    margin-bottom: 1em;;
+    position:sticky;
+    top:0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -81,27 +86,29 @@
     position:absolute;
     right:10px;
     cursor:pointer;
-    bottom:5px;
+    color:#E8DBD5;
+    bottom:7px;
     transition:0.3s ease-in-out
 }
 .fa-search:hover{
-    color:darkblue;
+    color:#eee;
 }
 .search-input{
     width:100%;
     border:1px inset silver;
-    border-radius: 30px;
+    background-color: aliceblue;
+    border-radius: 10px;
     outline: none;
     padding: 5px;
     font-size:16px;
     text-transform: uppercase;
-
-    background: transparent;
 }
 .results-container{
     width:100%;
     box-shadow: 0 0 2px 2px rgb(243, 241, 241);
    max-height:70vh;
+       border-radius:10px;
+
     overflow-y:auto ; 
 }
 .results-list {

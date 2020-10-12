@@ -19,7 +19,7 @@ const Navigation = (props) => {
     return (
             
            <div className='nav' >
-              <Link to='/'><Button><HomeRoundedIcon/>Beta</Button></Link>
+              <Link to='/'><Button><HomeRoundedIcon/></Button></Link>
                <ul className='nav-list'>
                 {/* {issignedin||user.email?(
                 <>

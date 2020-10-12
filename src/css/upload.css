@@ -66,6 +66,8 @@
         border-radius: 5px;
         text-align: center;
         outline: none;
+        padding:10px;
+        width:100%;
         color:black 
     }
 .upload-item-name{
