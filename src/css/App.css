@@ -39,13 +39,12 @@
     display: flex;
     list-style: none;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 
 .nav-list li {
-    /* margin: 10px; */
     font-family: Poppins, Arial;
     font-size: 14px;
 
@@ -170,6 +169,7 @@
 }
 .loading-closed{
     opacity:0;
+    transform:translateY(-200px);
   height:0;
 }
 .about{

@@ -2,7 +2,7 @@ import React,{useState,useRef,useEffect} from 'react'
 
 const SearchBar=(props)=>{
     const {handleSearch,searchTerm,ref} =props.form
-    const [open, setState] = useState(false)
+    const [open, setState] = useState(true)
     let focusref=useRef()
 
     useEffect(() => {

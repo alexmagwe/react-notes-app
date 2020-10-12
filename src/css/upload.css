@@ -6,7 +6,7 @@
 .upload-header{
     margin-bottom: 1em ;
     text-align: center;
-    color:rgb(33, 142, 150);
+    color:rgb(252, 252, 252);
 
 }
 
@@ -36,24 +36,25 @@
             width: 100% ;
             margin: auto ;
             /* border:1px solid rgb(16, 139, 63); */
-        padding:1em;
+            padding:1em;
             flex-wrap: wrap ;
-            /* flex-direction: row; */
             align-items: flex-start ;
             justify-content: space-evenly;  
 
         }
-        .toupload-container{
-            width:50%;
-            height:65vh;
-            overflow: auto;
-            /* border: 1px solid firebrick; */
+    .toupload-container{
+        width:50%;
+        margin-top:10px;
+        max-height:50vh;
+        border-radius: 5px;;
+        background-color:#fafafa56 ;
+        overflow: auto;
         }
     .toupload-item{
             display: flex ;
             padding:5px;
-            /* border: 1px solid firebrick; */
             flex-wrap: wrap ;
+            width:100%;
             align-items: center ;
             justify-content: space-between ;
 
@@ -71,8 +72,10 @@
         color:black 
     }
 .upload-item-name{
-    width:70%;
-    word-break: normal;
+    max-width:70%;
+    word-wrap: break-word;
+    /* word-break: break-all; */
+    
 }
 .margins{
     margin: 10px 
@@ -89,9 +92,6 @@
 @media screen and (max-width:600px){
     .toupload-container{
         width:100%;
-    }
-    .upload-item-name{
-    word-break: normal;
     }
 }
 @media screen and (max-width:200px){

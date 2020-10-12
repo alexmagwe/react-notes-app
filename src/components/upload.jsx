@@ -12,7 +12,7 @@ import Results from './search/Results'
 import {allUnitsUrl,addNotesUrl,uploadUrl} from './urls'
 import {useSearch} from './hooks/myhooks'
 function Upload() {
-      let [ref,desc]=['unit code','name']
+      let [ref,desc]=['unit','name']
     const [history,setHistory]=useState({})
     const[files,bindFiles,removeFile,resetFiles]=useUploadFile([])
     const [uploadedfiles,setUploadedfiles]=useState([]);
@@ -123,7 +123,7 @@ function Upload() {
             <h2 className='upload-header'> Contribute by Adding notes</h2>  
             <div className='upload-flexbox'>
                 <form className='upload-form' onSubmit={handleSubmit}>      
-                    <input id='unit' ref={inputref} placeholder='unit code' className='upload-input' value={value} onChange={handleChange} required type='text'/>
+                    <input id='unit' ref={inputref} placeholder={ref} className='upload-input' value={value} onChange={handleChange} oninvalid="inputref.current.setCustomValidity('Please enter the unit for the files')" required type='text'/>
                     {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
  
                    <input className='hide' id='add_file' type='file' {...bindFiles} multiple/>
@@ -135,7 +135,7 @@ function Upload() {
                 <div className='toupload-container'>
                         {files.map((book,i)=>(
                         <div className='toupload-item' data-key={i} key={i}>
-                            <li  className='upload-item-name'>{book.name}</li> 
+                            <span  className='upload-item-name'>{book.name}</span> 
                                 <span>
                                 <IconButton key={i} data-key={i} onClick={(e)=>handleDelete(e,i)} aria-label="delete" className='margins'>
                                     <DeleteIcon />
