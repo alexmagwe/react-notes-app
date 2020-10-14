@@ -1,7 +1,7 @@
 
 .error-container {  
   min-height: 100vh;
-  background: url("https://wallpapercave.com/wp/6SLzBEY.jpg") no-repeat left top;
+/*   background: url("https://wallpapercave.com/wp/6SLzBEY.jpg") no-repeat left top; */
   background-size: cover;  
   overflow: hidden;
   display: flex;
