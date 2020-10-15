@@ -9,7 +9,7 @@ function Results(props) {
              <ul className='results-list'>{results.map((el,i)=>
                 <Button key={i} onClick={()=>handleClose(el)}>
                     <li className='single-result result-text'>
-                        <small>{el[ref]}</small>
+                        <small className='grey'>{el['code']}</small>
                         {el[desc]}
                      </li>
                 </Button>
