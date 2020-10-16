@@ -9,7 +9,7 @@ const Search = (props) => {
     const [results,setResults]=useState([])
     const {setSelected}=useContext(Searchcontext)
     const [searchTerm,setSearchTerm]=useState('')
-    useSearch(searchTerm,props.source,setResults,'code',4)//last argument specifies min characters typed for it to start searching
+    useSearch(searchTerm,props.source,setResults,'code',3)//last argument specifies min characters typed for it to start searching
 
      const handleSearch=e=>{
         setSearchTerm(e.target.value)
