@@ -9,8 +9,9 @@ function About() {
     }, [setLoading])
     return (
         <div className='about'>
-            Biblioteka is a platform for accessing University notes
-        </div>
+            <h3 className='about-paragraph'>
+            Biblioteka is a search platform for accessing University notes
+       </h3> </div>
     )
 }
 
