@@ -1,9 +1,6 @@
 
 .App {
   color: #111;
-  background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.4)),url('../images/oldcover.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
   /* min-height:100vh; */
   max-height:100vh;
   overflow:auto;
