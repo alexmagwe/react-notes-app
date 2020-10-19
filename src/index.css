@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height:100vh;
+  min-height:100vh;
+  max-height: 100vh;
+  overflow: hidden;
   background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.4)),url('./images/oldcover.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -15,7 +17,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-html {
-  height: 100%;
 }
