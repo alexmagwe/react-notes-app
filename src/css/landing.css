@@ -1,6 +1,4 @@
 .landing{
-    /* background:linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url(../images/library.jpg); */
-    /* background-color:rgb(255, 255, 255); */
     width:100%;
     background-size:cover;
     z-index:-1;
@@ -11,10 +9,21 @@
     background-position: center;
  
 }
-.hero-banner{
-    width:60%;
-position:absolute;
-    top:60%;
+.landing-banner{
+    color:skyblue;
+}
+
+.landing-info{
+    /* width:60%; */
+    position:absolute;
+    text-align: center;
+    top:20%;
+    font-family:Verdana, sans-serif;
+    font-weight:500;
+    font-size:22px;
+    color:rgb(226, 226, 226);
+    left:50%;
+    transform:translate(-50%);
 }
 
 h1,h2,h3,h4{

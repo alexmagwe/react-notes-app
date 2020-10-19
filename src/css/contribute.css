@@ -41,12 +41,26 @@ transition: all 0.3s ease-in-out;
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.support-paragraph{
+    width:70%;
+    letter-spacing: 1px;
+    font-family:sans-serif;
+    padding:1em;
+    margin:auto;
+    color:#ddd;
+
+}
 @media screen and (max-width:600px){
    .cards-container .card{
         width:100%;
         margin: 0;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
+    }
+    .support-paragraph{
+        width:90%;
+        font-size:18px;
     }
     .cards-container{
         justify-content:center;

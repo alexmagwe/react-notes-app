@@ -11,7 +11,7 @@ const Landing = () => {
     const {setLoading}=useContext(Loadingcontext)
     const {data,setData} = useContext(Datacontext)
     const [notes,setNotes]=useState({})
-    const {selected}=useContext(Searchcontext)
+    const {selected,movetop}=useContext(Searchcontext)
     
     useEffect(() => {
         if(isEmpty(data)){
@@ -34,6 +34,10 @@ const Landing = () => {
 
         return (
             <div className='landing'>
+                <p className={!movetop?'landing-info':'hide'}>
+                    <h1 className='landing-banner'>Biblioteka</h1>
+                    Access Course Resources
+                </p>
                 <Search source={data} />
                 {!isEmpty(notes) ?(<Notes notes={{notes,setNotes}}/>):null}
             </div>

@@ -5,9 +5,9 @@ import {Searchcontext} from '../context'
 import {useSearch} from '../hooks/myhooks'
 
 const Search = (props) => {
-    let [ref,desc]=['Unit','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
+    let [ref,desc]=['Search Unit Code or Name','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
     const [results,setResults]=useState([])
-    const {setSelected}=useContext(Searchcontext)
+    const {setSelected,movetop,setMoveTop}=useContext(Searchcontext)
     const [searchTerm,setSearchTerm]=useState('')
     useSearch(searchTerm,props.source,setResults,'code',3)//last argument specifies min characters typed for it to start searching
 
@@ -19,9 +19,10 @@ const Search = (props) => {
         setResults([])
         setSelected(choice)
         setSearchTerm('')
+        setMoveTop(true)
     };
     return (
-        <div className='search-container'>
+        <div className={movetop?'search-container-top':"search-container"}>
             <SearchBar form={{handleSearch,searchTerm,ref}}/>
             {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
         </div>
