@@ -11,6 +11,7 @@ import Navigation from './components/navigation'
 import {Usercontext,Searchcontext,Loadingcontext,Datacontext} from './components/context'
 import firebase from './firebase/index'
 // import { TransverseLoading } from 'react-loadingg';
+import Footer from './components/footer'
 import { CircleToBlockLoading } from 'react-loadingg';
 import Landing from './components/home/landing' 
 // import Home from './components/home/Home' 
@@ -99,6 +100,7 @@ function App() {
               <Route path='/upload' exact component={Upload}/>
               <Route path='/addunits' exact component={AddUnits}/>  */}
             </Switch>
+            <Footer />
           </Router>
         </div>
         </Datacontext.Provider>
