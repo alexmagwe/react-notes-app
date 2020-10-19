@@ -20,7 +20,8 @@
         "react-loadingg": "^1.7.2",
         "react-router": "^5.2.0",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "^3.4.3"
+        "react-scripts": "^3.4.3",
+        "react-spinners-kit": "^1.9.1"
     },
     "scripts": {
         "start": "react-scripts start",

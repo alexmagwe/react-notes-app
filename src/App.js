@@ -19,6 +19,8 @@ import Landing from './components/home/landing'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload'
 import About from './components/About'
+import {MagicSpinner} from "react-spinners-kit";
+
 // import AddUnits from './components/addunits'
 import UpdateCourse from './components/home/UpdateCourse';
 import axios from 'axios'
@@ -87,7 +89,8 @@ function App() {
         
               <Navigation/>
                 <div className={loading?"loading dark-loading":"loading loading-closed"}>
-             <CircleToBlockLoading/></div>
+             <MagicSpinner size={100} color='skyblue' loading={loading}/>
+             </div>
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
               <Route path='/contribute' exact component={Contribute}/>
