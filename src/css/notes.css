@@ -61,18 +61,25 @@
     .notes{
         width:80%;
         top:30%;
+        margin:auto;
         left:50%;
         transform:translate(-50%);
     }
 }
-@media screen and (max-width:340px){
+@media screen and (max-width:396px){
     .notes{
         width:80%;
-         top:35%;
+         top:30%;
+    }
+}
+@media screen and (max-width:300px){
+    .notes{
+        width:80%;
+         top:45%;
     }
 }
 @media screen and (max-width:270px){
- 
+    
      .unavailable{
      position:absolute;
     top:40%;

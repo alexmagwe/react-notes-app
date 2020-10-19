@@ -4,15 +4,11 @@
     height:100%;
 } 
 .upload-header{
-    margin-bottom: 1em ;
+    margin: 1em ;
     text-align: center;
-    color:rgb(252, 252, 252);
+    color:skyblue;
 
-}
-
-    .hide{
-        display:none;
-    }
+}   
     .buttontext{
         font-weight: bold ;
     }

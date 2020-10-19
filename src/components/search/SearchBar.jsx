@@ -1,22 +1,14 @@
-import React,{useState,useRef,useEffect} from 'react'
+import React,{useRef} from 'react'
 
 const SearchBar=(props)=>{
     const {handleSearch,searchTerm,ref} =props.form
-    const [open, setState] = useState(true)
+
     let focusref=useRef()
 
-    useEffect(() => {
-        if (open){
-            focusref.current.focus()}
-    }, [open])
-
-    const handleOpen=()=>{
-        setState(current=>!current)
-    }
+   
         return (
             <div className='search-bar'>
-                    <input ref={focusref} className={open?'open-search search-input':'search-input close-search'} onChange={handleSearch} value={searchTerm} placeholder={`${ref}`} />
-                    <i  onClick={handleOpen}className='fa fa-search'></i>
+                    <input autoComplete='off' ref={focusref} className='open-search search-input' onChange={handleSearch} value={searchTerm} placeholder={`${ref}`} />
             </div>
         )
 }

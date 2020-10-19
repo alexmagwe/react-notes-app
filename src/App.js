@@ -16,13 +16,14 @@ import { CircleToBlockLoading } from 'react-loadingg';
 import Landing from './components/home/landing' 
 // import Home from './components/home/Home' 
 // import Login from './components/login'
-import Contribute from './components/contribute'
+import Contribute from './components/contribute/contribute'
 import Upload from './components/upload'
 import About from './components/About'
 // import AddUnits from './components/addunits'
 import UpdateCourse from './components/home/UpdateCourse';
 import axios from 'axios'
 import ErrorPage from './components/errors/404';
+import Support from './components/contribute/support';
 
 function App() {
     let [user,setUser]=useState({})
@@ -31,6 +32,7 @@ function App() {
     let [course,setCourse]=useState({})
     let [updatecourse,setUpdatecourse]=useState(false)
     let [issignedin, setStatus]=useState(false)
+    let [movetop,setMoveTop]=useState(false)
     let [selected, setSelected] = useState({})
     const [results, setResults] = useState([])
 
@@ -78,7 +80,7 @@ function App() {
     return (
       <Loadingcontext.Provider value={{loading,setLoading}}>
       <Usercontext.Provider value={{issignedin,results,setResults,setStatus,user,setUpdatecourse,updatecourse,course,setCourse}}>   
-       <Searchcontext.Provider value={{selected,setSelected}}>
+       <Searchcontext.Provider value={{selected,setSelected,movetop,setMoveTop}}>
         <Datacontext.Provider value={{data,setData}}>
         <div className="App">
           <Router>
@@ -89,6 +91,7 @@ function App() {
             {updatecourse && issignedin?<UpdateCourse />:null}
             <Switch>
               <Route path='/contribute' exact component={Contribute}/>
+               <Route path='/support' exact component={Support}/>
                <Route path='/' exact component={Landing}/>
                 <Route path='/about' exact component={About}/>
               <Route path='/upload' exact component={Upload}/>
