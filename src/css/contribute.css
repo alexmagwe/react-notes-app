@@ -1,6 +1,6 @@
 :root{
-    --card2-bg:#AE5348;
-    --card1-bg:#4B2823;
+    --card2-bg:linear-gradient(45deg,#321fdb 0%,#1f1498 100%);
+    --card1-bg:linear-gradient(45deg,#e55353 0%,#d93737 100%);
 
 }
 .pd2{
@@ -31,11 +31,11 @@
 transition: all 0.3s ease-in-out;
 }
 .card1{
- background-color: var(--card1-bg);
+ background: var(--card1-bg);
 
 }
 .card2{
-    background-color:var(--card2-bg);
+    background:var(--card2-bg);
 }
 .card:hover{
     transform: scale(1.1);

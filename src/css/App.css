@@ -2,6 +2,7 @@
 .App {
     color: #111;
     width:100%;
+    font-family: Verdana,sans-serif;
     height:100%;
 }
 
@@ -124,6 +125,124 @@ color:#777;
     font-size:14px;
     /* text-transform: uppercase; */
 }
+.text-light{
+color:#eee;
+}
+.text-dark{
+color:#111;
+}
+.font-sm{
+font-size:14px;
+}
+.font-md{
+font-size:18px;
+}
+.font-lg{
+font-size:24px;
+}
+.mg-s{
+margin:1em;
+}
+.ml-2{
+margin-left: 2em;
+
+
+}
+
+.mr-s{
+margin-right:5px;
+}
+.mb-2{
+margin-bottom: 1em;
+}
+.center-20{
+position:absolute;
+left:50%;
+transform: translate(-50%);
+top:20%
+}
+.rounded-md{
+border:2px inset silver;
+border-radius:20px;
+}
+
+.rounded-sm{
+border-radius:5px;
+}
+.center-30{
+position:absolute;
+left:50%;
+transform: translate(-50%);
+top:30%
+}
+.center-40{
+position:absolute;
+left:50%;
+transform: translate(-50%);
+top:40%
+}
+.moderator-form form{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+}
+.center-10{
+position:absolute;
+left:50%;
+transform: translate(-50%);
+top:10%
+}
+.blend{
+background-color:#cd935e;
+}
+.cnt{
+text-align: center;
+}
+.tr{
+background-color: transparent;
+}
+.full{
+width:100%;
+min-height:90vh;  
+}
+.dark{
+background-color: #130f0fc2;
+}
+.shadow{
+box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)}
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform: translate(-50%);
+}
+.form-input{ 
+    font-family:inherit;
+    background-color: aliceblue;
+    outline: none;
+    padding: 10px;
+    font-size:14px;
+ 
+}
+.container{
+padding:2em;
+}
+.bb-only{
+    border:none;
+    background-color: transparent;
+    border-bottom:2px solid #000000;
+
+}
+.form-container{
+width:400px;
+min-height:150px;
+display:flex;
+flex-direction:column;
+justify-content: space-evenly;
+align-items: flex-start;
+flex-wrap: wrap;
+}
 .results-container{
     width:100%;
     box-shadow: 0 0 2px 2px rgb(243, 241, 241);
@@ -209,12 +328,8 @@ color:#777;
 }
 .about-paragraph{
     text-align: center;
-    width:70%;
-    font-size:18px;
+    width:80%;
     letter-spacing:1px;
-    color:#222;
-    font-family: Verdana, sans-serif;
-
 }
 .footer{
     position:absolute;
@@ -246,6 +361,9 @@ color:#777;
     }
      .search-container-top{
       width:80%;
+    }
+    .form-container{
+    width:80%;
     }
 
   }
