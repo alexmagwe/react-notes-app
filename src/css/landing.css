@@ -11,6 +11,10 @@
 }
 .landing-banner{
     color:skyblue;
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+    
 }
 
 .landing-info{

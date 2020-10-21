@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 
 function Results(props) {
-    const {handleClose,results,ref,desc}={...props.props}
+    const {handleClose,results,desc}={...props.props}
     return (
         <div className='results-container'>
              <ul className='results-list'>{results.map((el,i)=>

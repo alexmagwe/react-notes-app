@@ -35,7 +35,7 @@ const Landing = () => {
         return (
             <div className='landing'>
                 <p className={!movetop?'landing-info':'hide'}>
-                    <h1 className='landing-banner'>Biblioteka</h1>
+                    <span className='landing-banner'>Biblioteka</span>
                     Access Course Resources
                 </p>
                 <Search source={data} />
