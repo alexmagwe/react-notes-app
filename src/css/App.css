@@ -32,6 +32,9 @@ color:#777;
  .hide{
         display:none;
     }
+.faded{
+    color:#777;
+}
 .nav {
     padding:1em 2em;
     background-color:#cd935e;
@@ -246,7 +249,7 @@ flex-wrap: wrap;
 .results-container{
     width:100%;
     box-shadow: 0 0 2px 2px rgb(243, 241, 241);
-   max-height:70vh;
+   max-height:50vh;
        border-radius:10px;
 
     overflow-y:auto ; 
@@ -303,13 +306,15 @@ flex-wrap: wrap;
     align-items: center;
     z-index:1000;
     left:0;
-    background:rgb(0, 0, 0);
     transition:all 0.4s ease-in-out;
 
 }
-.dark-loading{
-        opacity:1;
+.dark-bg{
+        background-color:#000;
 
+}
+.vague-bg{
+    background-color:#7779;
 }
 .loading-closed{
     opacity:0;

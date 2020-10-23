@@ -1,10 +1,11 @@
 import React,{useEffect} from 'react'
-
-import Button from '@material-ui/core/Button';
+import NoteItem from './NoteItem';
 
 
 function Notes(props) {
     let {notes,setNotes}=props.notes;
+    let showlink=props.showlink
+  
     useEffect(() => {
     return () => {
         setNotes({})
@@ -15,9 +16,8 @@ function Notes(props) {
      <h4 className='notes-unit-name'><span className='unit-code'>{notes.code}</span> {notes.unit}</h4>
       <ul className='notes-list'>
           {notes.notes.map(el=>
-          <li  className='notes-item'key={el.id}>
-          <h4 className='notes-name'>{el.name}</h4>
-        <Button href={`https://drive.google.com/file/d/${el.gid}/view`} target="_blank">View</Button></li>)}
+          <NoteItem item={el} showlink={showlink} />
+          )} 
         </ul>
 
     
