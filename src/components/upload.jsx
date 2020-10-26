@@ -5,14 +5,14 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import  axios from 'axios';
-
 import {isEmpty} from './helpers'
 import {Searchcontext,Loadingcontext,Datacontext} from './context'
 import Results from './search/Results'
 import {allUnitsUrl,addNotesUrl,uploadUrl} from './urls'
 import {useSearch} from './hooks/myhooks'
+
 function Upload() {
-      let [ref,desc]=['unit','name']
+    let [ref,desc]=['unit','name']
     const [history,setHistory]=useState({})
     const[files,bindFiles,removeFile,resetFiles]=useUploadFile([])
     const [uploadedfiles,setUploadedfiles]=useState([]);
@@ -52,7 +52,7 @@ function Upload() {
             setSelected(history)//set historical selcted value from landing page
         }
     },[history,setSelected])
-//RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
+    //RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
     useEffect(()=>{
         if(uploadedfiles.length>0){
             setLoading(true)
@@ -128,7 +128,7 @@ function Upload() {
  
                    <input className='hide' id='add_file' type='file' {...bindFiles} multiple/>
                     <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
-                    <Button variant='outlined' aria-label='upload button' color='primary' type='submit'>Upload</Button>
+                    <Button variant='contained' aria-label='upload button' color='primary' type='submit'>Upload</Button>
                 </form>
                 <ProgressBar value={progress}/>
                 {files.length>0?(

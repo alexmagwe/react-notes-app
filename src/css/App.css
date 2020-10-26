@@ -367,3 +367,13 @@ flex-wrap: wrap;
     }
 
   }
+  @media screen and (max-height:400px){
+
+    .search-container{
+        top:55%;
+    }
+    .footer{
+        width:20%;
+        right:0;
+    }
+  } 
