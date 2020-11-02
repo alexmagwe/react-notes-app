@@ -6,7 +6,8 @@ import Box from '@material-ui/core/Box';
 export default function ProgressBar(props) {
            let {value}={...props}
   return (
-   value>0?( <Box position="relative" display="inline-flex">
+   value>0?( <div className='progress-bar'>
+     <Box position="relative" display="inline-flex">
       <CircularProgress variant="static" {...props} />
       <Box
         top={0}
@@ -22,7 +23,7 @@ export default function ProgressBar(props) {
       <Typography variant="caption" component="div" color="textSecondary">{
         `${value}%`}</Typography>   
       </Box>
-    </Box>):null
+    </Box></div>):null
   );
 }
 

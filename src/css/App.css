@@ -101,6 +101,17 @@ color:#777;
 
 
 }
+.progress-bar{
+    position:absolute;
+    top:50%;
+    right:0;
+    transform: translateY(-15%);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#fff3;
+}
 .search-bar{
     width:100%;
     margin-bottom:10px;
@@ -372,3 +383,13 @@ flex-wrap: wrap;
     }
 
   }
+  @media screen and (max-height:400px){
+
+    .search-container{
+        top:55%;
+    }
+    .footer{
+        width:20%;
+        right:0;
+    }
+  } 
