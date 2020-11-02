@@ -1,16 +1,17 @@
 import React,{useEffect,useState,useContext,useRef} from 'react'
 import Button from '@material-ui/core/Button';
-import {useUploadFile} from './hooks/myhooks';
+import {useUploadFile} from '../hooks/myhooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import  axios from 'axios';
-import {isEmpty} from './helpers'
-import {Searchcontext,Loadingcontext,Datacontext} from './context'
-import Results from './search/Results'
-import {allUnitsUrl,addNotesUrl,uploadUrl} from './urls'
-import {useSearch} from './hooks/myhooks'
-
+import Notes from '../notes'
+import {isEmpty} from '../helpers'
+import {Searchcontext,Loadingcontext,Datacontext} from '../context'
+import Results from '../search/Results'
+import {allUnitsUrl,addNotesUrl,uploadUrl, unitNotesUrl} from '../urls'
+import {useSearch} from '../hooks/myhooks'
+import NoteItem from '../NoteItem';
 function Upload() {
     let [ref,desc]=['unit','name']
     const [history,setHistory]=useState({})
@@ -18,12 +19,12 @@ function Upload() {
     const [uploadedfiles,setUploadedfiles]=useState([]);
     const[progress,setProgress]=useState(0);
     const [unitCode,setUnitCode]=useState('')
-    const {setLoading}=useContext(Loadingcontext)
+    const {setLoading,setLoaderBackground}=useContext(Loadingcontext)
     const {selected,setSelected}=useContext(Searchcontext)
     const {data,setData}=useContext(Datacontext)
     const [results, setResults] = useState([])
     const [value, setValue] = useState('')
-
+    const [notes,setNotes]=useState([])
 
 
     let inputref=useRef()
@@ -32,27 +33,53 @@ function Upload() {
     
     useSearch(searchTerm,data,setResults,'code')
 
+// useEffect(() => {
+//     return () => {
+//     }
+// }, [setNotes])
+
     useEffect(()=>{
       if (isEmpty(data)){
-          axios.get(allUnitsUrl).then(res=>setData(res.data)).catch(err=>{alert(err)})
+          console.log('quering api for data')
+          setLoading(true)
+          axios.get(allUnitsUrl).then(res=>{setData(res.data)
+        setLoading(false)}
+
+          ).catch(err=>
+            {         
+                setLoading(false)
+                alert(err)})
       }
-      setLoading(false)
       inputref.current.focus()
-        },[data,setData,setLoading])
+    },[data,setData,setLoading])
 
     useEffect(()=>{
         if (!isEmpty(selected)){
-        setUnitCode(selected.code)}
+        setUnitCode(selected.code)
+        let data={"unit_code":selected.code}
+        setLoading(true)
+        axios.post(unitNotesUrl,data)
+        .then(res=>{setNotes(res.data)
+            setLoading(false)
+        })
+        .catch(err=>{setLoading(false)
+            alert(err)})
+    }
 
 
-    },[selected])
+    },[selected,setLoading])
 
-      useEffect(()=>{
+    useEffect(()=>{
+        setLoaderBackground('vague')
         return ()=>{
             setSelected(history)//set historical selcted value from landing page
+            setLoaderBackground('dark')
+            setNotes({})
+
+
         }
-    },[history,setSelected])
-    //RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
+    },[history,setLoaderBackground,setSelected])
+//RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
     useEffect(()=>{
         if(uploadedfiles.length>0){
             setLoading(true)
@@ -120,12 +147,13 @@ function Upload() {
     
     return (
         <div className='upload-container'>
-            <h2 className='upload-header'> Contribute by Adding notes</h2>  
+            <h2 className='upload-header'> Contribute by Adding notes</h2> 
+
             <div className='upload-flexbox'>
                 <form className='upload-form' onSubmit={handleSubmit}>      
-                    <input id='unit' ref={inputref} placeholder={ref} className='upload-input' value={value} onChange={handleChange} oninvalid="inputref.current.setCustomValidity('Please enter the unit for the files')" required type='text'/>
+                    <input id='unit' ref={inputref} placeholder={ref} className='upload-input' 
+                    value={value} onChange={handleChange} onInvalid={()=>inputref.current.setCustomValidity('Please enter the unit for the files')} required type='text'/>
                     {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
- 
                    <input className='hide' id='add_file' type='file' {...bindFiles} multiple/>
                     <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
                     <Button variant='contained' aria-label='upload button' color='primary' type='submit'>Upload</Button>                
@@ -144,6 +172,15 @@ function Upload() {
                             </div>
                         ))}
                 </div> ):null}
+                {!isEmpty(notes) && notes.notes.length>0 ?
+                    (<ul className='current-files-list'> 
+                        <h3 className='faded'>Current available resources for {unitCode}</h3>
+                        {notes.notes.map((note,i)=><NoteItem  key={i} item={note} showlink={ false}/>)}
+                    </ul>)
+                    :null
+                 }
+
+
         </div>
     </div>
     )
