@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import  axios from 'axios';
-<<<<<<< HEAD:src/components/upload/upload.jsx
 import Notes from '../notes'
 import {isEmpty} from '../helpers'
 import {Searchcontext,Loadingcontext,Datacontext} from '../context'
@@ -13,14 +12,6 @@ import Results from '../search/Results'
 import {allUnitsUrl,addNotesUrl,uploadUrl, unitNotesUrl} from '../urls'
 import {useSearch} from '../hooks/myhooks'
 import NoteItem from '../NoteItem';
-=======
-import {isEmpty} from './helpers'
-import {Searchcontext,Loadingcontext,Datacontext} from './context'
-import Results from './search/Results'
-import {allUnitsUrl,addNotesUrl,uploadUrl} from './urls'
-import {useSearch} from './hooks/myhooks'
-
->>>>>>> a816ae93023ac82881fab486424f41aa15f0d6a7:src/components/upload.jsx
 function Upload() {
     let [ref,desc]=['unit','name']
     const [history,setHistory]=useState({})
@@ -87,13 +78,8 @@ function Upload() {
 
 
         }
-<<<<<<< HEAD:src/components/upload/upload.jsx
     },[history,setLoaderBackground,setSelected])
 //RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
-=======
-    },[history,setSelected])
-    //RUNS AFTER FILES HAVE BEEN UPOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
->>>>>>> a816ae93023ac82881fab486424f41aa15f0d6a7:src/components/upload.jsx
     useEffect(()=>{
         if(uploadedfiles.length>0){
             setLoading(true)
@@ -170,15 +156,9 @@ function Upload() {
                     {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
                    <input className='hide' id='add_file' type='file' {...bindFiles} multiple/>
                     <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
-<<<<<<< HEAD:src/components/upload/upload.jsx
-                    <Button variant='outlined' aria-label='upload button' color='primary' type='submit'>Upload</Button>
-                    <ProgressBar value={progress}/>
-                </form>
-=======
                     <Button variant='contained' aria-label='upload button' color='primary' type='submit'>Upload</Button>                
                     <ProgressBar value={progress}/>
                     </form>
->>>>>>> a816ae93023ac82881fab486424f41aa15f0d6a7:src/components/upload.jsx
                 {files.length>0?(
                 <div className='toupload-container'>
                         {files.map((book,i)=>(
