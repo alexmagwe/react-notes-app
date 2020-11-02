@@ -128,9 +128,9 @@ function Upload() {
  
                    <input className='hide' id='add_file' type='file' {...bindFiles} multiple/>
                     <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
-                    <Button variant='contained' aria-label='upload button' color='primary' type='submit'>Upload</Button>
-                </form>
-                <ProgressBar value={progress}/>
+                    <Button variant='contained' aria-label='upload button' color='primary' type='submit'>Upload</Button>                
+                    <ProgressBar value={progress}/>
+                    </form>
                 {files.length>0?(
                 <div className='toupload-container'>
                         {files.map((book,i)=>(

@@ -98,6 +98,17 @@ color:#777;
 
 
 }
+.progress-bar{
+    position:absolute;
+    top:50%;
+    right:0;
+    transform: translateY(-15%);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#fff3;
+}
 .search-bar{
     width:100%;
     margin-bottom:10px;
