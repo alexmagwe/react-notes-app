@@ -39,7 +39,7 @@ const Landing = () => {
                     Access Course Resources
                 </p>
                 <Search source={data} />
-                {!isEmpty(notes) ?(<Notes notes={{notes,setNotes}}/>):null}
+                {!isEmpty(notes) ?(<Notes showlink={true} notes={{notes,setNotes}}/>):null}
             </div>
         );
     };
