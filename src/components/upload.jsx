@@ -77,6 +77,9 @@ function Upload() {
                     "unit_code":unitCode},onUploadProgress:snap=>{
                     let prog=Math.round(snap.loaded/snap.total*100)
                     setProgress(prog)
+                    if (prog===100){
+                        setLoading(true)
+                    }
                     }       
                 })
             return res  
