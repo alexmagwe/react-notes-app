@@ -40,7 +40,6 @@ function Upload() {
 
     useEffect(()=>{
       if (isEmpty(data)){
-          console.log('quering api for data')
           setLoading(true)
           axios.get(allUnitsUrl).then(res=>{setData(res.data)
         setLoading(false)}
@@ -96,7 +95,8 @@ function Upload() {
         },[uploadedfiles,setLoading])
     async function serverupload(){
         const formData=new FormData()
-        files.forEach(file=>formData.append('notes',file))
+        let filescopy=[...files]
+        filescopy.forEach(file=>formData.append('notes',file))
 
         try{
         let res=await axios.post(uploadUrl,formData,{
@@ -104,9 +104,6 @@ function Upload() {
                     "unit_code":unitCode},onUploadProgress:snap=>{
                     let prog=Math.round(snap.loaded/snap.total*100)
                     setProgress(prog)
-                    if (prog===100){
-                        setLoading(true)
-                    }
                     }       
                 })
             return res  
