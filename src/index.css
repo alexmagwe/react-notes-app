@@ -6,9 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height:100vh;
-  background-color:#111;
   height:auto;
-  background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.4)),url('./images/oldcover.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 
