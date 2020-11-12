@@ -11,7 +11,7 @@ const Landing = () => {
     const {setLoading}=useContext(Loadingcontext)
     const {data,setData} = useContext(Datacontext)
     const [notes,setNotes]=useState({})
-    const {selected,movetop}=useContext(Searchcontext)
+    const {selected,setSelected,movetop}=useContext(Searchcontext)
     
     useEffect(() => {
         if(isEmpty(data)){
@@ -21,7 +21,11 @@ const Landing = () => {
         )}
         // eslint-disable-next-line react-hooks/exhaustive-deps
         },[setLoading,setData])
-
+useEffect(()=>{
+    return ()=>{
+        setSelected({})
+    }
+},[setSelected])
     useEffect(() => {
         
         if (!isEmpty(selected)){
@@ -29,7 +33,7 @@ const Landing = () => {
             axios.post(unitNotesUrl,{"unit_code":selected.code}).then(resp=>{setNotes(resp.data)
              setLoading(false)})
         }
-    
+      
     }, [selected,setLoading])
 
         return (

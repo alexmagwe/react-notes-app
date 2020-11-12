@@ -15,8 +15,9 @@ function Notes(props) {
        notes.notes.length>0?(<div className='notes'>
      <h4 className='notes-unit-name'><span className='unit-code'>{notes.code}</span> {notes.unit}</h4>
       <ul className='notes-list'>
-          {notes.notes.map(el=>
-          <NoteItem item={el} showlink={showlink} />
+          {notes.notes.map((el,i)=>
+
+          <NoteItem key={i} item={el} showlink={showlink} />
           )} 
         </ul>
 

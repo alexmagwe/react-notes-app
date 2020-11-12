@@ -32,12 +32,6 @@ function Upload() {
     const [searchTerm,setSearchTerm]=useState('')
     
     useSearch(searchTerm,data,setResults,'code')
-
-// useEffect(() => {
-//     return () => {
-//     }
-// }, [setNotes])
-
     useEffect(()=>{
       if (isEmpty(data)){
           setLoading(true)
