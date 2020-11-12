@@ -5,7 +5,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import  axios from 'axios';
-import Notes from '../notes'
 import {isEmpty} from '../helpers'
 import {Searchcontext,Loadingcontext,Datacontext} from '../context'
 import Results from '../search/Results'
