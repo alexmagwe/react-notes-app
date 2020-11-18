@@ -5,6 +5,15 @@
     font-family: Verdana,sans-serif;
     height:100%;
 }
+.banner{
+    position:absolute;
+    width:300px;
+    top:-250px;
+    height:300px;
+}
+.banner img{
+    width:100%;
+}
 
 * {
     box-sizing: border-box;
@@ -372,6 +381,13 @@ flex-wrap: wrap;
   .search-container{
     width:80%;
     margin:1em auto;
+    }
+    .nav{
+        width:100%;
+    }
+    .banner{
+        top:-150px;
+        width:200px;
     }
      .search-container-top{
       width:80%;

@@ -3,6 +3,7 @@ import Search from '../search/Search.jsx'
 import {Searchcontext,Loadingcontext,Datacontext} from '../context'
 import {isEmpty} from '../helpers'
 import {allUnitsUrl,unitNotesUrl} from '../urls'
+import logo from '../../images/logo.png'
 
 import Notes from '../notes'
 import axios from 'axios'
@@ -39,8 +40,8 @@ useEffect(()=>{
         return (
             <div className='landing'>
                 <p className={!movetop?'landing-info':'hide'}>
-                    <span className='landing-banner'>Biblioteka</span>
-                    Access Course Resources
+                    <img className='landing-banner' src={logo} alt='Biblioteka'/>
+                   <span className='text-dark font-lg'> Access Course Resources</span>
                 </p>
                 <Search source={data} />
                 {!isEmpty(notes) ?(<Notes showlink={true} notes={{notes,setNotes}}/>):null}

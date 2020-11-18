@@ -24,6 +24,7 @@ import axios from 'axios'
 import ErrorPage from './components/errors/404';
 import Support from './components/contribute/support';
 import Loader from './components/Loader';
+import Banner from './components/Banner';
 
 function App() {
     let [user,setUser]=useState({})
@@ -85,7 +86,7 @@ function App() {
         <Datacontext.Provider value={{data,setData}}>
         <div className="App">
           <Router>
-        
+        <Banner/>
               <Navigation/>
               <Loader bg={`${loaderbg}`}/>
             {updatecourse && issignedin?<UpdateCourse />:null}
