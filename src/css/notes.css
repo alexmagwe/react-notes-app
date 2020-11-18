@@ -22,13 +22,12 @@
     margin:1px 0;
     padding:5px;
     background-color:rgb(237, 237, 237);
-
     width:100%;
     justify-content: space-between;
     align-items:center;
     display:flex;
     flex-wrap:wrap;
-    box-shadow: -4px 2px 2px rgb(181, 179, 179);
+    box-shadow: -4px 2px 2px rgb(213, 211, 211);
 }
 .unit-code{
     color:#111;
@@ -38,8 +37,9 @@
 .notes-name{
     word-break: break-all;
     font-weight: 400;
+    text-transform:capitalize;
     max-width:70% ;
-    font-size: 12px;
+    font-size: 14px;
 
 }
 .notes-unit-name{
