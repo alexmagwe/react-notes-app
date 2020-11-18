@@ -25,7 +25,7 @@
     align-items: center;
     width:250px;
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    box-shadow: 0 4px 5px rgba(0,0,0,0.6);
     margin:1em 0;
     height:200px;
 transition: all 0.3s ease-in-out;
@@ -44,11 +44,9 @@ transition: all 0.3s ease-in-out;
 
 .support-paragraph{
     width:70%;
-    letter-spacing: 1px;
-    font-family:sans-serif;
     padding:1em;
+    font-family:sans-serif;
     margin:auto;
-    color:#ddd;
 
 }
 @media screen and (max-width:600px){

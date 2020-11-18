@@ -3,7 +3,7 @@ import Search from '../search/Search.jsx'
 import {Searchcontext,Loadingcontext,Datacontext} from '../context'
 import {isEmpty} from '../helpers'
 import {allUnitsUrl,unitNotesUrl} from '../urls'
-
+import logo from '../../images/logo.png'
 import Notes from '../notes'
 import axios from 'axios'
 
@@ -11,7 +11,7 @@ const Landing = () => {
     const {setLoading}=useContext(Loadingcontext)
     const {data,setData} = useContext(Datacontext)
     const [notes,setNotes]=useState({})
-    const {selected,setSelected,movetop}=useContext(Searchcontext)
+    const {selected,movetop}=useContext(Searchcontext)
     
     useEffect(() => {
         if(isEmpty(data)){
@@ -21,11 +21,7 @@ const Landing = () => {
         )}
         // eslint-disable-next-line react-hooks/exhaustive-deps
         },[setLoading,setData])
-useEffect(()=>{
-    return ()=>{
-        setSelected({})
-    }
-},[setSelected])
+
     useEffect(() => {
         
         if (!isEmpty(selected)){
@@ -39,7 +35,7 @@ useEffect(()=>{
         return (
             <div className='landing'>
                 <p className={!movetop?'landing-info':'hide'}>
-                    <span className='landing-banner'>Biblioteka</span>
+               <img  className='landing-logo' src={logo} alt='Biblioteka'/>
                     Access Course Resources
                 </p>
                 <Search source={data} />
