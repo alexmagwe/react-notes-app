@@ -23,6 +23,7 @@ function Upload() {
     const [results, setResults] = useState([])
     const [value, setValue] = useState('')
     const [notes, setNotes] = useState([])
+    const [uploaded, setUploaded] = useState(false)
 
 
     let inputref = useRef()
@@ -47,7 +48,7 @@ function Upload() {
     }, [data, setData, setLoading])
 
     useEffect(() => {
-        if (selected) {
+        if (selected || uploaded) {
             setUnitCode(selected.code)
             let data = { "unit_code": selected.code }
             setLoading(true)
@@ -63,13 +64,14 @@ function Upload() {
         }
 
 
-    }, [selected, setLoading])
+    }, [selected,uploaded,setLoading])
 
     useEffect(() => {
         setLoaderBackground('vague')
         return () => {
             setLoaderBackground('dark')
             setNotes({})
+            setSelected(null)
 
 
         }
@@ -80,9 +82,8 @@ function Upload() {
             setLoading(true)
             let payload = { "notes": uploadedfiles, "unit_code": unitCode.toUpperCase() }
             axios.post(addNotesUrl, payload).then(resp => {
-                setLoading(false)
                 setProgress(0)
-                setSelected(null)
+                setUploaded(true)
             }).catch(err => {
                 alert(err)
                 setLoading(false)
