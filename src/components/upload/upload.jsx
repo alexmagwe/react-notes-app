@@ -145,7 +145,7 @@ function Upload() {
 
     return (
         <div className='upload-container'>
-            <h2 className='upload-header'> Contribute by Adding notes</h2>
+            <h2 className='upload-header text-secondary'> Contribute by Adding notes</h2>
 
             <div className='upload-flexbox'>
                 <form className='upload-form' onSubmit={handleSubmit}>

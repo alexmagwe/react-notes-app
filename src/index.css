@@ -7,9 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height:100vh;
   height:auto;
-  background-image:linear-gradient(45deg,rgba(238, 236, 236, 0.885),rgba(250, 244, 244, 0.809)),url('./images/oldcover.jpg');
+  background-image:linear-gradient(45deg,rgba(153, 35, 35, 0.377),rgba(34, 97, 139, 0.699)),url('./images/butterfly.jpg');
     /* background-image:linear-gradient(),url('./images/oldcover.jpg'); */
-
   background-size: cover;
   background-repeat: no-repeat;
 

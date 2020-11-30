@@ -1,11 +1,12 @@
 .notes{
     position:absolute;
-    top:30%;
-    left:4em;
+    top:32%;
+    left:8em;
     max-height:65vh;
     overflow:auto;
-    width:60%;
+    width:55%;
     clear:both;
+    z-index:0;
     padding:15px;
     background-color:#fff;
 
@@ -59,7 +60,7 @@
 @media screen and (max-width:600px){
     .notes{
         width:80%;
-        top:30%;
+        top:35%;
         margin:auto;
         left:50%;
         transform:translate(-50%);
@@ -89,9 +90,9 @@
 @media screen and (max-height:400px){
     .notes{
         width:80%;
-         top:50%;
+         top:65%;
     }
     .unavailable{
-    top:50%;
+    top:60%;
 }
 }

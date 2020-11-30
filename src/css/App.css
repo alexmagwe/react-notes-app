@@ -36,11 +36,11 @@ color:#777;
     color:#777;
 }
 .nav {
-    padding:1em 2em;
-    background-color:#cd945e00;
+    padding:2em 2em 10px 2em;
+    background-color:#e0d7ce00;
     color: #111;
     margin: auto;
-    width:95%;
+    width:80%;
     height:100%;
     /* position:sticky;  */
     z-index:1000;
@@ -57,13 +57,6 @@ color:#777;
     flex-wrap: wrap;
     /* justify-content: center; */
     align-items: center;
-}
-
-
-.nav-list li {
-    font-family: Poppins, Arial;
-    font-size: 14px;
-
 }
 
 .login-container {
@@ -85,20 +78,19 @@ color:#777;
     width:400px;
     position:absolute;
     left:50%;
-    top:43%;
+    top:50%;
     transform:translate(-50%);
     clear: both; 
     margin:5px 1em;
-    z-index:1;
     transition: all 0.2s ease-in-out;
 }
 .search-container-top{
-    width:220px;
+    width:250px;
     position:absolute;
-    right:3em;
-    clear: both; 
-    margin:5px 1em;
-    z-index:1;
+    right:0;
+    z-index:100;
+    margin:5px 0;
+    margin-right:8em;
 
 
 }
@@ -140,6 +132,10 @@ color:#777;
     padding: 10px;
     font-size:16px;
     /* text-transform: uppercase; */
+}
+.text-secondary{
+    color:rgb(113, 225, 240);
+ 
 }
 .text-light{
 color:#eee;
@@ -261,10 +257,9 @@ flex-wrap: wrap;
 }
 .results-container{
     width:100%;
-    box-shadow: 0 0 2px 2px rgb(243, 241, 241);
+    box-shadow: 0 0 100px 10000px rgba(8, 8, 8, 0.651);
    max-height:50vh;
-       border-radius:10px;
-
+    border-radius:2px;
     overflow-y:auto ; 
 }
 .results-list {
@@ -278,7 +273,6 @@ flex-wrap: wrap;
     flex-direction: column;
     flex: 1;
     background-color: rgb(255, 255, 255);
-    border-radius:10px;
     color:inherit;
     flex-shrink: 1;
     flex-wrap: wrap;
@@ -344,7 +338,6 @@ flex-wrap: wrap;
     justify-content:center;
     display:flex;
     align-items: center;
-    background-color:#cd945eec;
     
 }
 .about-paragraph{
@@ -365,30 +358,36 @@ flex-wrap: wrap;
 }
 @media screen and (max-width:300px){
   .search-container-top{
-    width:80%;
+    width:100%;
     left:50%;
     transform: translate(-50%);
     }
-     .search-container-top{
-      width:80%;
-    }
-
   }
 
   @media screen and (max-width:600px){
   .search-container{
-    width:80%;
-    margin:1em auto;
- 
+    width:70%;
+    margin:10px auto;
     }
-     .search-container-top{
-      width:80%;
+    .nav{
+        width:100%;
     }
+   
     .form-container{
     width:80%;
     }
 
   }
+  @media screen and (min-width:1600px){
+
+      .form-container{
+      width:80%;
+      }
+      .search-container{
+        top:45%;
+    }
+  
+    }
   @media screen and (max-height:600px){
 
     .search-container{

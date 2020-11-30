@@ -36,7 +36,9 @@ const Landing = () => {
             <div className='landing'>
                 <p className={!movetop?'landing-info':'hide'}>
                <img  className='landing-logo' src={logo} alt='Biblioteka'/>
-                    Access Course Resources
+                    
+                    <h4 className='text-secondary'> Access Course Resources</h4>
+
                 </p>
                 <Search source={data} />
                 {!isEmpty(notes) ?(<Notes showlink={true} notes={{notes,setNotes}}/>):null}
