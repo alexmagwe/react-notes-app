@@ -1,19 +1,22 @@
-import React, { useEffect, useState, useContext, useRef } from 'react'
+import React, { useEffect, useState, useContext, useRef, useCallback } from 'react'
 import Button from '@material-ui/core/Button';
-import { useUploadFile } from '../hooks/myhooks';
+import { useUploadFile, } from '../hooks/myhooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import axios from 'axios';
 import { isEmpty } from '../helpers'
-import {Loadingcontext, Datacontext } from '../context'
+import { Loadingcontext, Datacontext } from '../context'
 import Results from '../search/Results'
 import { allUnitsUrl, addNotesUrl, uploadUrl, unitNotesUrl } from '../urls'
 import { useSearch } from '../hooks/myhooks'
 import NoteItem from '../NoteItem';
+import { useDropzone } from 'react-dropzone'
+import DragOverScreen from './DragOverScreen'
+
 function Upload() {
     let [ref, desc] = ['unit', 'name']
-    const [files, bindFiles, removeFile, resetFiles] = useUploadFile([])
+    const [files, bindFiles, isValid,handleDropFiles, removeFile, resetFiles,] = useUploadFile([])
     const [uploadedfiles, setUploadedfiles] = useState([]);
     const [progress, setProgress] = useState(0);
     const [unitCode, setUnitCode] = useState('')
@@ -24,6 +27,20 @@ function Upload() {
     const [value, setValue] = useState('')
     const [notes, setNotes] = useState([])
     const [uploaded, setUploaded] = useState(false)
+
+    const onDrop = useCallback(acceptedFiles => {
+        let validFiles = []
+        acceptedFiles.forEach(file => {
+            if (isValid(file.name)) {
+                validFiles.push(file)
+            }
+        })
+
+        handleDropFiles(validFiles)
+    }, [isValid,handleDropFiles])
+    const { getRootProps, isDragActive } = useDropzone({
+        onDrop
+    })
 
 
     let inputref = useRef()
@@ -64,7 +81,7 @@ function Upload() {
         }
 
 
-    }, [selected,uploaded,setLoading])
+    }, [selected, uploaded, setLoading])
 
     useEffect(() => {
         setLoaderBackground('vague')
@@ -127,7 +144,6 @@ function Upload() {
 
     }
     const handleDelete = (e, i) => {
-        console.log(i)
         removeFile(i)
     }
 
@@ -144,7 +160,11 @@ function Upload() {
 
 
     return (
-        <div className='upload-container'>
+        <div {...getRootProps()} className='upload-container'>
+            {
+                isDragActive ?
+                    <DragOverScreen /> : null
+            }
             <h2 className='upload-header text-secondary'> Contribute by Adding notes</h2>
 
             <div className='upload-flexbox'>
@@ -177,6 +197,7 @@ function Upload() {
                     </ul>)
                     : null
                 }
+                {/* <input {...getInputProps()} /> */}
 
 
             </div>
