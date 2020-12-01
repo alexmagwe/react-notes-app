@@ -26,12 +26,11 @@ export function useUploadFile(initial = []) {
         let exists = false
         files.map(el => {
             if (dropfile.name === el.name)exists = true;
-            return
+            return false
         })
         return exists
     }
     const handleDropFiles = (dropfiles) => {
-        console.log('handle drop', files, dropfiles)
         const filteredFiles = []
         if (files.length === 0) {
             setFiles([...dropfiles])
@@ -42,6 +41,7 @@ export function useUploadFile(initial = []) {
             if (!exists(file)) {
                 filteredFiles.push(file)
             }
+            return file
         })
         setFiles([...files, ...filteredFiles])
     }
@@ -61,7 +61,6 @@ export function useUploadFile(initial = []) {
         onChange: e => {
             let valid = []
             let filelist = [...e.target.files]
-            console.log(filelist)
             filelist.forEach(file => {
                 if (isValid(file.name) & !exists(file)) {
                     valid.push(file)

@@ -18,7 +18,6 @@ function Upload() {
     let [ref, desc] = ['unit', 'name']
     const [files, bindFiles, isValid,handleDropFiles, removeFile, resetFiles,] = useUploadFile([])
     const [uploadedfiles, setUploadedfiles] = useState([]);
-    const [fileNames, setFileNames] = useState([])
     const [progress, setProgress] = useState(0);
     const [unitCode, setUnitCode] = useState('')
     const { setLoading, setLoaderBackground } = useContext(Loadingcontext)
