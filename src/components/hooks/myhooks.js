@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { Search } from '../helpers'
-const allowedExts = ['pdf', 'docx', 'txt', 'epub', 'ppt', 'doc', 'pptx', 'mp4', '.avi', 'jpg', 'png']
+const allowedExts = ['pdf', 'docx', 'txt', 'epub', 'ppt', 'doc', 'pptx',]
 export function useControlledInput(initial = "") {
 
     const [value, setValue] = useState(initial)
