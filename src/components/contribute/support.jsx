@@ -1,5 +1,5 @@
 import React,{useEffect,useContext} from 'react'
-import {Loadingcontext} from '../context'
+import {Loadingcontext} from '../../context'
 
 function Support() {
     const {setLoading}=useContext(Loadingcontext)

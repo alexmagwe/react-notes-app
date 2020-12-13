@@ -4,7 +4,6 @@ export const Fetch=(url,method,payload='')=>{
     let data=[]
     switch(method){
         case 'GET':
-            console.log('fetching data using usefetch metohd =get')
             return axios.get(url)
         case 'POST':
             return axios.post(url,payload)

@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react'
-import { Search } from '../helpers'
+import { Search } from '../../helpers'
 const allowedExts = ['pdf', 'docx', 'txt', 'epub', 'ppt', 'doc', 'pptx',]
 export function useControlledInput(initial = "") {
 

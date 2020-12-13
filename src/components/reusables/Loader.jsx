@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import {Loadingcontext} from './context'
+import {Loadingcontext} from '../../context'
 // import { CircleToBlockLoading } from 'react-loadingg';
 // import { TransverseLoading } from 'react-loadingg';
 

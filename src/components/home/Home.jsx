@@ -1,10 +1,10 @@
 import React,{useEffect,useContext} from 'react';
 import axios from 'axios'
 // import Button from '@material-ui/core/Button';
-import {isEmpty} from '../helpers'
+import {isEmpty} from '../../helpers'
 import Search from '../search/Search'
-import {Usercontext,Searchcontext} from '../context.js';
-import {courseUnitsUrl} from '../urls'
+import {Usercontext,Searchcontext} from '../../context.js';
+import {courseUnitsUrl} from '../api/urls'
 
 const Home = () => {
     const {course,units,setUnits}=useContext(Usercontext)

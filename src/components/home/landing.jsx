@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Search from '../search/Search.jsx'
-import { Searchcontext, Loadingcontext, Datacontext } from '../context'
-import { isEmpty } from '../helpers'
-import { allUnitsUrl, unitNotesUrl } from '../urls'
+import { Searchcontext, Loadingcontext, Datacontext } from '../../context'
+import { isEmpty } from '../../helpers'
+import { allUnitsUrl, unitNotesUrl } from '../api/urls'
 import logo from '../../images/logo.png'
-import Notes from '../notes'
+import Notes from '../notes/notes'
 import axios from 'axios'
 
 const Landing = () => {

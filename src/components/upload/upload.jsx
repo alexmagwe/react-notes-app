@@ -1,16 +1,15 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from 'react'
 import Button from '@material-ui/core/Button';
-import { useUploadFile, } from '../hooks/myhooks';
+import { useUploadFile,useSearch} from '../hooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
 import axios from 'axios';
-import { isEmpty } from '../helpers'
-import { Loadingcontext, Datacontext } from '../context'
+import { isEmpty } from '../../helpers'
+import { Loadingcontext, Datacontext } from '../../context'
 import Results from '../search/Results'
-import { allUnitsUrl, addNotesUrl, uploadUrl, unitNotesUrl } from '../urls'
-import { useSearch } from '../hooks/myhooks'
-import NoteItem from '../NoteItem';
+import { allUnitsUrl, addNotesUrl, uploadUrl, unitNotesUrl } from '../api/urls'
+import NoteItem from '../notes/NoteItem';
 import { useDropzone } from 'react-dropzone'
 import DragOverScreen from './DragOverScreen'
 
