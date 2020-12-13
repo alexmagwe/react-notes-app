@@ -1,8 +1,8 @@
 import React,{useState,useContext} from 'react';
 import SearchBar from './SearchBar.jsx'
 import  Results from './Results'
-import {Searchcontext} from '../context'
-import {useSearch} from '../hooks/myhooks'
+import {Searchcontext} from '../../context'
+import {useSearch} from '../hooks'
 
 const Search = (props) => {
     let [ref,desc]=['Search Unit Code or Name','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed

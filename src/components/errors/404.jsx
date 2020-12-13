@@ -1,5 +1,5 @@
 import React,{useRef,useEffect,useContext} from 'react'
-import {Loadingcontext} from '../context'
+import {Loadingcontext} from '../../context'
 function ErrorPage() {
     const {setLoading}=useContext(Loadingcontext)
     const mouseref=useRef()
