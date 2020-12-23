@@ -5,9 +5,8 @@
    
 } 
 .upload-header{
-    margin: 1em ;
+    margin: 1em auto;
     text-align: center;
-    color:skyblue;
 
 }   
     .buttontext{
@@ -86,7 +85,7 @@
         margin:1em;
         top:20%;
         padding:1em;
-         min-width:350px;
+         min-width:300px;
         background-color:rgb(252, 252, 252);
         border-radius:5px;
 
@@ -114,7 +113,8 @@
 
 @media screen and (max-width:600px){
     .toupload-container{
-        width:100%;
+        min-width:80%;
+        width:90%;
     }
 }
 @media screen and (max-width:200px){

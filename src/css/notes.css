@@ -1,14 +1,14 @@
 .notes{
     position:absolute;
-    top:30%;
-    left:3em;
+    top:32%;
+    left:8em;
     max-height:65vh;
     overflow:auto;
-    width:60%;
+    width:55%;
     clear:both;
+    z-index:0;
     padding:15px;
     background-color:#fff;
-    /* box-shadow: 0 0 2px 2px rgb(243, 241, 241); */
 
 }
 .notes-list{
@@ -18,19 +18,17 @@
     /* box-shadow: 0 0 4px rgb(223, 221, 221); */
 
 }
-.notes-list:nth-child(even){
-    background-color:#eee;
-
-}
 .notes-item{
     display:flex;
+    margin:1px 0;
     padding:5px;
+    background-color:rgb(237, 237, 237);
     width:100%;
     justify-content: space-between;
     align-items:center;
     display:flex;
     flex-wrap:wrap;
-    box-shadow: -2px 2px 4px rgb(223, 221, 221);
+    box-shadow: -4px 2px 2px rgb(213, 211, 211);
 }
 .unit-code{
     color:#111;
@@ -40,8 +38,9 @@
 .notes-name{
     word-break: break-all;
     font-weight: 400;
-    max-width:65% ;
-    font-size: 12px;
+    text-transform:capitalize;
+    max-width:70% ;
+    font-size: 14px;
 
 }
 .notes-unit-name{
@@ -55,12 +54,13 @@
      position:absolute;
     top:30%;
     width:60%;
-    color:orange;
+    margin-left: 1em;
+    color:rgb(204, 79, 7);
 }
 @media screen and (max-width:600px){
     .notes{
         width:80%;
-        top:30%;
+        top:35%;
         margin:auto;
         left:50%;
         transform:translate(-50%);
@@ -84,16 +84,15 @@
      position:absolute;
     top:40%;
     width:80%;
-    color:orange;
+
 }
 }
 @media screen and (max-height:400px){
     .notes{
         width:80%;
-         top:50%;
+         top:65%;
     }
     .unavailable{
-    top:50%;
-    color:orange;
+    top:60%;
 }
 }
