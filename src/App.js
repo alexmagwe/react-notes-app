@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     console.log('APP MOUNTED')
     ReactGA.initialize('G-G4R2V9QXJR')
-    ReactGA.pageview(window.location.pathname)
+    ReactGA.pageview(window.location.pathname+window.location.search)
   }, [])
   return (
     <Loadingcontext.Provider value={{ loading, setLoading, loaderbg, setLoaderBackground }}>
