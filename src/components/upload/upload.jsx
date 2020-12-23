@@ -4,7 +4,7 @@ import { useUploadFile,useSearch} from '../hooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
-import ReactGa from 'react-ga'
+import ReactGA from 'react-ga'
 import axios from 'axios';
 import { isEmpty } from '../../helpers'
 import { Loadingcontext, Datacontext } from '../../context'
@@ -132,7 +132,7 @@ function Upload() {
     }
     const handleSubmit = async e => {
         e.preventDefault()
-        ReactGa.event({
+        ReactGA.event({
             category:'Button',
             action:'someone uploaded notes'
         });
