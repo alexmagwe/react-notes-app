@@ -12,7 +12,7 @@ import {Searchcontext,Loadingcontext,Datacontext} from './context'
 import Footer from './components/footer'
 import Landing from './components/home/landing'
 // import Home from './components/home/Home' 
-import ReactGA from 'react-ga'
+import ReactGa from 'react-ga'
 // import Login from './components/login'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
@@ -30,8 +30,8 @@ function App() {
   let [selected, setSelected] = useState({})
 
   useEffect(() => {
-    ReactGA.initialize('G-9BXVYEL9N8')
-    ReactGA.pageview(window.location.pathname)
+    ReactGa.initialize('G-9BXVYEL9N8')
+    ReactGa.pageview(window.location.pathname)
   }, [])
   return (
     <Loadingcontext.Provider value={{ loading, setLoading, loaderbg, setLoaderBackground }}>
