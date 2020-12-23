@@ -8,7 +8,11 @@ import './css/contribute.css'
 import './css/error.css'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Navigation from './components/nav/navigation'
+<<<<<<< HEAD
 import { Searchcontext, Loadingcontext, Datacontext } from './components/context'
+=======
+import {Searchcontext,Loadingcontext,Datacontext} from './context'
+>>>>>>> 5d05b3a0609f40d6ffa4925c941039dfb34458f4
 import Footer from './components/footer'
 import Landing from './components/home/landing'
 // import Home from './components/home/Home' 
@@ -20,7 +24,7 @@ import About from './components/About'
 // import AddUnits from './components/addunits'
 import ErrorPage from './components/errors/404';
 import Support from './components/contribute/support';
-import Loader from './components/Loader';
+import Loader from './components/reusables/Loader';
 
 function App() {
   let [data, setData] = useState({})
