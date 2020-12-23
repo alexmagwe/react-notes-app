@@ -12,7 +12,6 @@ import {Searchcontext,Loadingcontext,Datacontext} from './context'
 import Footer from './components/footer'
 import Landing from './components/home/landing'
 // import Home from './components/home/Home' 
-import ReactGA from 'react-ga'
 // import Login from './components/login'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
@@ -28,11 +27,6 @@ function App() {
   let [movetop, setMoveTop] = useState(false)
   const [loaderbg, setLoaderBackground] = useState('dark')
   let [selected, setSelected] = useState({})
-  
-  useEffect(() => {
-    console.log('APP MOUNTED')
-    ReactGA.pageview(window.location.pathname+window.location.search)
-  }, [])
   return (
     <Loadingcontext.Provider value={{ loading, setLoading, loaderbg, setLoaderBackground }}>
       <Searchcontext.Provider value={{ selected, setSelected, movetop, setMoveTop }}>
