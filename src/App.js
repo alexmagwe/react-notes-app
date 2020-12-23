@@ -30,7 +30,7 @@ function App() {
   let [selected, setSelected] = useState({})
 
   useEffect(() => {
-    ReactGA.initialize('iG-9BXVYEL9N8')
+    ReactGA.initialize('G-9BXVYEL9N8')
     ReactGA.pageview(window.location.pathname)
   }, [])
   return (
