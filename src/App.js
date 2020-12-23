@@ -28,10 +28,9 @@ function App() {
   let [movetop, setMoveTop] = useState(false)
   const [loaderbg, setLoaderBackground] = useState('dark')
   let [selected, setSelected] = useState({})
-
+  
   useEffect(() => {
     console.log('APP MOUNTED')
-    ReactGA.initialize('G-G4R2V9QXJR')
     ReactGA.pageview(window.location.pathname+window.location.search)
   }, [])
   return (
