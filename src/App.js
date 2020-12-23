@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState,useEffect } from 'react';
 import './css/App.css';
 import './css/landing.css';
 import './css/notes.css'
@@ -6,12 +6,13 @@ import './css/upload.css'
 import './css/search-modal.css'
 import './css/contribute.css'
 import './css/error.css'
-import {Switch,BrowserRouter as Router,Route} from 'react-router-dom'
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Navigation from './components/nav/navigation'
-import {Searchcontext,Loadingcontext,Datacontext} from './components/context'
+import { Searchcontext, Loadingcontext, Datacontext } from './components/context'
 import Footer from './components/footer'
-import Landing from './components/home/landing' 
+import Landing from './components/home/landing'
 // import Home from './components/home/Home' 
+import ReactGA from 'react-ga'
 // import Login from './components/login'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
@@ -22,37 +23,40 @@ import Support from './components/contribute/support';
 import Loader from './components/Loader';
 
 function App() {
-    let [data,setData] = useState({})
-    let [loading,setLoading]=useState(true)
-    let [movetop,setMoveTop]=useState(false)
-    const [loaderbg, setLoaderBackground] = useState('dark')
-    let [selected, setSelected] = useState({})
+  let [data, setData] = useState({})
+  let [loading, setLoading] = useState(true)
+  let [movetop, setMoveTop] = useState(false)
+  const [loaderbg, setLoaderBackground] = useState('dark')
+  let [selected, setSelected] = useState({})
 
+  useEffect(() => {
+    ReactGA.initialize('iG-9BXVYEL9N8')
+    ReactGA.pageview(window.location.pathname)
+  }, [])
+  return (
+    <Loadingcontext.Provider value={{ loading, setLoading, loaderbg, setLoaderBackground }}>
+      <Searchcontext.Provider value={{ selected, setSelected, movetop, setMoveTop }}>
+        <Datacontext.Provider value={{ data, setData }}>
+          <div className="App">
+            <Router>
 
-    return (
-      <Loadingcontext.Provider value={{loading,setLoading,loaderbg, setLoaderBackground}}>
-       <Searchcontext.Provider value={{selected,setSelected,movetop,setMoveTop}}>
-        <Datacontext.Provider value={{data,setData}}>
-        <div className="App">
-          <Router>
-        
-              <Navigation/>
-              <Loader bg={`${loaderbg}`}/>
-  
-            <Switch>
-              <Route path='/contribute' exact component={Contribute}/>
-               <Route path='/support' exact component={Support}/>
-               <Route path='/' exact component={Landing}/>
-                <Route path='/about' exact component={About}/>
-              <Route path='/upload' exact component={Upload}/>
-                <Route path='*' component={ErrorPage}/>
-            </Switch>
-            <Footer />
-          </Router>
-        </div>
+              <Navigation />
+              <Loader bg={`${loaderbg}`} />
+
+              <Switch>
+                <Route path='/contribute' exact component={Contribute} />
+                <Route path='/support' exact component={Support} />
+                <Route path='/' exact component={Landing} />
+                <Route path='/about' exact component={About} />
+                <Route path='/upload' exact component={Upload} />
+                <Route path='*' component={ErrorPage} />
+              </Switch>
+              <Footer />
+            </Router>
+          </div>
         </Datacontext.Provider>
-        </Searchcontext.Provider>
+      </Searchcontext.Provider>
     </Loadingcontext.Provider>);
- }
+}
 
 export default App;
