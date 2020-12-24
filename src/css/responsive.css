@@ -1,8 +1,8 @@
 @media screen and (max-width:300px) {
     .search-container-top {
         width: 100%;
-        left: 50%;
-        transform: translate(-50%);
+        /* left: 50%; */
+        /* transform: translate(-50%); */
     }
 }
 
@@ -16,11 +16,6 @@
         top: -150px;
         width: 200px;
     }
-
-    .search-container-top {
-        width: 80%;
-    }
-
     .form-container {
         width: 80%;
     }
@@ -108,7 +103,6 @@
 
     .search-container-top {
         position: relative;
-        width: 90%;
         margin: 0 auto;
 
     }
@@ -129,9 +123,9 @@
 
 
     .search-container-top {
-        position: relative;
-        width: 90%;
-        margin: 0 auto;
+        top:-50px;
+        right:-50px;
+        width:80%;
 
     }
 

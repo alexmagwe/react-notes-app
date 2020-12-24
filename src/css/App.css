@@ -132,7 +132,8 @@ h4 {
 .search-container-top {
     width: 250px;
     position: absolute;
-    right: 0;
+    top:-100px;
+    right: -120px;
     z-index: 100;
     margin: 5px 0;
     margin-right: 8em;
@@ -161,14 +162,10 @@ h4 {
 .fa-search {
     position: absolute;
     right: 10px;
-    cursor: pointer;
-    color: #E8DBD5;
-    bottom: 7px;
+    width:30px;
+    filter: contrast(10%) sepia(300%);
+    bottom: 8px;
     transition: 0.3s ease-in-out
-}
-
-.fa-search:hover {
-    color: #eee;
 }
 
 .search-input {
