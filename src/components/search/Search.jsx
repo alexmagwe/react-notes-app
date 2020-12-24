@@ -5,7 +5,7 @@ import {Searchcontext} from '../../context'
 import {useSearch} from '../hooks'
 
 const Search = (props) => {
-    let [ref,desc]=['Search Unit Code or Name','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
+    let [ref,desc]=['Enter Unit Code or Name','name']//change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
     const [results,setResults]=useState([])
     const {setSelected,movetop,setMoveTop}=useContext(Searchcontext)
     const [searchTerm,setSearchTerm]=useState('')
@@ -22,7 +22,7 @@ const Search = (props) => {
         setMoveTop(true)
     };
     return (
-        <div className={movetop?'search-container-top':"search-container"}>
+        <div className={movetop?'search-container-top':""}>
             <SearchBar form={{handleSearch,searchTerm,ref}}/>
             {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
         </div>

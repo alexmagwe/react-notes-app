@@ -4,7 +4,6 @@ import { useUploadFile,useSearch} from '../hooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
-import ReactGA from 'react-ga'
 import axios from 'axios';
 import { isEmpty } from '../../helpers'
 import { Loadingcontext, Datacontext } from '../../context'
@@ -30,6 +29,7 @@ function Upload() {
 
     const onDrop = useCallback(acceptedFiles => {
         let validFiles = []
+        acceptedFiles.reverse()
         acceptedFiles.forEach(file => {
             if (isValid(file.name)) {
                 validFiles.push(file)
@@ -41,6 +41,10 @@ function Upload() {
     const { getRootProps, isDragActive } = useDropzone({
         onDrop
     })
+    useEffect(() => {
+        console.log(files)
+     
+    }, [files])
 
 
     let inputref = useRef()
@@ -115,6 +119,7 @@ function Upload() {
         filescopy.forEach(file => formData.append('notes', file))
 
         try {
+            console.log('uploading')
             let res = await axios.post(uploadUrl, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -132,10 +137,6 @@ function Upload() {
     }
     const handleSubmit = async e => {
         e.preventDefault()
-        ReactGA.event({
-            category:'Button',
-            action:'someone uploaded notes'
-        });
         if (files.length > 0) {
             let res = await serverupload()
             if (res.status === 200) {

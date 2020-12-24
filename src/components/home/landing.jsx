@@ -3,7 +3,6 @@ import Search from '../search/Search.jsx'
 import { Searchcontext, Loadingcontext, Datacontext } from '../../context'
 import { isEmpty } from '../../helpers'
 import { allUnitsUrl, unitNotesUrl } from '../api/urls'
-import logo from '../../images/logo.png'
 import Notes from '../notes/notes'
 import axios from 'axios'
 
@@ -39,11 +38,16 @@ const Landing = () => {
 
     return (
         <div className='landing'>
-            <div className={!movetop ? 'landing-info' : 'hide'}>
-                <img className='landing-logo' src={logo} alt='Biblioteka' />
-                <h4 className='text-secondary'> Access Course Resources</h4>
+            <div className='landing-content'>
+
+                <div className={!movetop ? 'landing-info' : 'hide'}>
+                    <h4 className='text-primary'> <span className='u-line'>Access all</span> Course notes and other Resources from anywhere</h4>
+                </div>
+                <div className='search-container'>
+                    <h4 className='text-primary font-20 mb-2'>Search our catalogue for hundreds of resources</h4>
+                    <Search source={data} />
+                </div>
             </div>
-            <Search source={data} />
             {!isEmpty(notes) ? (<Notes showlink={true} notes={{ notes, setNotes }} />) : null}
         </div>
     );

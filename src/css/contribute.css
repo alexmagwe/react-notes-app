@@ -1,8 +1,4 @@
-:root{
-    --card2-bg:linear-gradient(45deg,#321fdb 0%,#1f1498 100%);
-    --card1-bg:linear-gradient(45deg,#e55353 0%,#d93737 100%);
 
-}
 .pd2{
     padding:0 2em;
 }
@@ -12,8 +8,8 @@
     width:100%;
     justify-content: space-evenly;
     align-items: center;
-    flex-wrap: wrap;
     min-height:50vh;
+    flex-wrap: wrap;
 }
 .card-text{
     color:#fff;

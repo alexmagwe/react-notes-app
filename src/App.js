@@ -1,14 +1,15 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import './css/App.css';
 import './css/landing.css';
 import './css/notes.css'
 import './css/upload.css'
+import './css/responsive.css'
 import './css/search-modal.css'
 import './css/contribute.css'
 import './css/error.css'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Navigation from './components/nav/navigation'
-import {Searchcontext,Loadingcontext,Datacontext} from './context'
+import { Searchcontext, Loadingcontext, Datacontext } from './context'
 import Footer from './components/footer'
 import Landing from './components/home/landing'
 // import Home from './components/home/Home' 
@@ -20,6 +21,7 @@ import About from './components/About'
 import ErrorPage from './components/errors/404';
 import Support from './components/contribute/support';
 import Loader from './components/reusables/Loader';
+import Graphik from './components/Graphik';
 
 function App() {
   let [data, setData] = useState({})
@@ -45,6 +47,8 @@ function App() {
                 <Route path='/upload' exact component={Upload} />
                 <Route path='*' component={ErrorPage} />
               </Switch>
+              <Graphik />
+
               <Footer />
             </Router>
           </div>
