@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, {useEffect, useContext } from 'react';
 import Search from '../search/Search.jsx'
 import { Searchcontext, Loadingcontext, Datacontext } from '../../context'
 import { isEmpty } from '../../helpers'
-import { allUnitsUrl, unitNotesUrl } from '../api/urls'
-import Notes from '../notes/notes'
+import { allUnitsUrl} from '../api/urls'
 import axios from 'axios'
 
 const Landing = () => {
     const { setLoading } = useContext(Loadingcontext)
     const { data, setData } = useContext(Datacontext)
-    const [notes, setNotes] = useState({})
-    const { selected, movetop } = useContext(Searchcontext)
+    const {movetop,setMoveTop } = useContext(Searchcontext)
 
     useEffect(() => {
         if (isEmpty(data)) {
@@ -21,20 +19,12 @@ const Landing = () => {
             }
             )
         }
+        return ()=>{
+            setMoveTop(false)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setLoading, setData])
 
-    useEffect(() => {
-
-        if (!isEmpty(selected)) {
-            setLoading(true)
-            axios.post(unitNotesUrl, { "unit_code": selected.code }).then(resp => {
-                setNotes(resp.data)
-                setLoading(false)
-            })
-        }
-
-    }, [selected, setLoading])
 
     return (
         <div className='landing'>
@@ -48,7 +38,8 @@ const Landing = () => {
                     <Search source={data} />
                 </div>
             </div>
-            {!isEmpty(notes) ? (<Notes showlink={true} notes={{ notes, setNotes }} />) : null}
+            {/* {!isEmpty(notes) ? (<Notes showlink={true} notes={{ notes, setNotes }} />) : null} */}
+
         </div>
     );
 };
