@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from 'react'
 import Button from '@material-ui/core/Button';
-import { useUploadFile,useSearch} from '../hooks';
+import { useUploadFile, useSearch } from '../hooks';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
-import ReactGA from 'react-ga'
 import axios from 'axios';
 import { isEmpty } from '../../helpers'
 import { Loadingcontext, Datacontext } from '../../context'
@@ -16,9 +15,11 @@ import DragOverScreen from './DragOverScreen'
 
 function Upload() {
     let [ref, desc] = ['unit', 'name']
-    const [files, bindFiles, isValid,handleDropFiles, removeFile, resetFiles,] = useUploadFile([])
-    const [uploadedfiles, setUploadedfiles] = useState([]);
-    const [progress, setProgress] = useState(0);
+    const [files, bindFiles, isValid, handleDropFiles, removeFile, resetFiles,] = useUploadFile([])
+    const [uploadedfiles, setUploadedfiles] = useState([])
+    const [progress, setProgress] = useState(0)
+    //disable upload button after submission
+    const [disable, setDisable] = useState(false)
     const [unitCode, setUnitCode] = useState('')
     const { setLoading, setLoaderBackground } = useContext(Loadingcontext)
     const [selected, setSelected] = useState(null)
@@ -37,7 +38,7 @@ function Upload() {
         })
 
         handleDropFiles(validFiles)
-    }, [isValid,handleDropFiles])
+    }, [isValid, handleDropFiles])
     const { getRootProps, isDragActive } = useDropzone({
         onDrop
     })
@@ -132,11 +133,8 @@ function Upload() {
     }
     const handleSubmit = async e => {
         e.preventDefault()
-        ReactGA.event({
-            category:'Button',
-            action:'someone uploaded notes'
-        });
         if (files.length > 0) {
+            setDisable(val => !val)
             let res = await serverupload()
             if (res.status === 200) {
                 setUploadedfiles(res.data)
@@ -177,7 +175,7 @@ function Upload() {
                     {results.length > 0 && searchTerm.length > 0 ? (<Results props={{ handleClose, results, ref, desc }} />) : null}
                     <input className='hide' id='add_file' type='file' {...bindFiles} multiple />
                     <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
-                    <Button variant='contained' aria-label='upload button' color='primary' type='submit'>Upload</Button>
+                    <Button variant='contained' disabled={disable} aria-label='upload button' color='primary' type='submit'>Upload</Button>
                     <ProgressBar value={progress} />
                 </form>
                 {files.length > 0 ? (
