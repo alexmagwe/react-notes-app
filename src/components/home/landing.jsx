@@ -30,11 +30,11 @@ const Landing = () => {
         <div className='landing'>
             <div className='landing-content'>
 
-                <div className={!movetop ? 'landing-info' : 'hide'}>
+                <div className='landing-info'>
                     <h4 className='text-primary'> <span className='u-line'>Access all</span> Course notes and other Resources from anywhere</h4>
                 </div>
-                <div className={!movetop?'search-container':'search-container-top'}>
-                    <h4 className={!movetop?'text-primary font-20 mb-2':'hide'} >Search our catalogue for hundreds of resources</h4>
+                <div className='search-container'>
+                    <h4 className='text-primary font-20 mb-2' >Search our catalogue for hundreds of resources</h4>
                     <Search source={data} />
                 </div>
             </div>

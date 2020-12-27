@@ -4,6 +4,7 @@ import './css/landing.css';
 import './css/notes.css'
 import './css/upload.css'
 import './css/responsive.css'
+import './css/unit.css'
 import './css/search-modal.css'
 import './css/contribute.css'
 import './css/error.css'

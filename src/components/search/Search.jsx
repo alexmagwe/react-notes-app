@@ -23,10 +23,10 @@ const Search = (props) => {
         setSearchTerm('')
     };
     return (
-        <div>
+        <>
             <SearchBar form={{handleSearch,searchTerm,ref}}/>
             {results.length>0 && searchTerm.length>0?(<Results props={{handleClose,results,ref,desc}}/>):null}
-        </div>
+        </>
     );
 };
 

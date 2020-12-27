@@ -12,11 +12,12 @@
     --card1-bg: linear-gradient(45deg, #e55353 0%, #d93737 100%);
     --secondary-color: rgb(113, 225, 240);
     --primary: #fff;
+    --secondary:#7C2500;
 
 
 }
 
-h1,
+h1
 h2,
 h3,
 h4 {
@@ -70,24 +71,21 @@ h4 {
 }
 
 .grey {
-    color: #777;
+    color: silver;
 }
 
 .hide {
     display: none;
 }
 
-.faded {
-    color: #777;
-}
-
 .nav {
     color: #111;
     width: 85%;
-    padding: 2em 0 0 0;
+    padding:1em 0;
     top:0;
+    position: relative;
     margin: 0 auto;
-    z-index: 1000;
+    z-index: 3;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -116,30 +114,15 @@ h4 {
     background-position: 20%, -20%;
     background-repeat: no-repeat;
 }
-
-#notes>div {
-    transition: all 0.3s ease-out;
-}
-
 /* search bar */
 .search-container {
     min-width: 40%;
+    position:relative;
     color: inherit;
     width:50%;
     transition: all 0.2s ease-in-out;
 }
 
-.search-container-top {
-    width: 250px;
-    position: absolute;
-    top:-100px;
-    right: -120px;
-    z-index: 100;
-    margin: 5px 0;
-    margin-right: 8em;
-
-
-}
 
 .progress-bar {
     position: absolute;
@@ -354,7 +337,9 @@ h4 {
 
 .results-container {
     width: 100%;
-    box-shadow: 0 0 100px 10000px rgba(8, 8, 8, 0.651);
+    z-index:5;
+    position:absolute;
+    box-shadow: 0 0 10px 4000px rgba(8, 8, 8, 0.596);
     max-height: 50vh;
     border-radius: 2px;
     overflow-y: auto;
