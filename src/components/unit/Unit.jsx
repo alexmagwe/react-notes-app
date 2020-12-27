@@ -16,9 +16,7 @@ function Unit(props) {
     const [unit, setUnit] = useState(code)
     const getNotes = useCallback(async code => {
         setLoading(true);
-        console.log('fetcing notes for:', code);
         const resp = await axios.post(unitNotesUrl, { unit_code: code })
-        console.log(resp)
         setNotes(resp.data);
         setLoading(false);
     }, [setLoading])
@@ -38,7 +36,7 @@ function Unit(props) {
 
     useEffect(() => {
         getNotes(code);
-    }, [getNotes,code])
+    }, [getNotes, code])
 
     return (
         <div className="grid-container">
@@ -54,7 +52,7 @@ function Unit(props) {
                     </div>
                 </div>
             </div>
-            <Tabs properties={notes}/>
+            <Tabs properties={notes} />
             {/* {!isEmpty(notes) ? (
                 <div className='notes-section'>
                     <Notes showlink={true} properties={{ notes, setNotes }} />

@@ -2,6 +2,8 @@
     /* border:2px solid red; */
     display:flex;
     justify-content:center;
+    max-height:500px;
+    overflow:auto;
     align-items:center;
 }
 .notes{
@@ -13,9 +15,7 @@
 }
 .notes-list{
     display:flex;
-    margin-top:1em;
-    max-height:500px;
-    overflow:auto;
+    margin-top:10px;
     flex-direction:column;
     /* box-shadow: 0 0 4px rgb(223, 221, 221); */
 
@@ -24,14 +24,13 @@
     display:flex;
     margin:1px 0;
     padding:5px;
-    background-color:rgb(237, 237, 237);
     width:100%;
     justify-content: space-between;
     align-items:center;
     color:#000;
     display:flex;
     flex-wrap:wrap;
-    box-shadow: -4px 2px 2px rgb(213, 211, 211);
+    /* box-shadow: -4px 2px 2px rgb(213, 211, 211); */
 }
 .unit-code{
     color:#111;
@@ -42,7 +41,8 @@
     word-break: break-all;
     color:inherit;
     font-weight: 400;
-    text-transform:capitalize;
+    text-transform: lowercase;
+    /* text-transform: capitalize; */
     max-width:70% ;
     font-size: 14px;
 
