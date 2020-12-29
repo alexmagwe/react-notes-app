@@ -1,31 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import NoteItem from "./NoteItem";
-
 function Notes(props) {
-  const data = props.properties;
+  const data = props.currentData;
+  const resources = data.resources;
   let showlink = props.showlink;
-  useEffect(() => {
-    console.log("recieved data", data);
-  }, []);
 
-  //  useEffect(() => {
-  //    return () => {
-  //       setNotes({})
-  //   }
-  // }, [setNotes])
-  return data.notes.length > 0 ? (
+  return resources.length > 0 ? (
     <div className="notes">
       <ul className="notes-list">
-        {data.notes.map((el, i) => (
+        {resources.map((el, i) => (
           <NoteItem key={i} item={el} showlink={showlink} />
         ))}
       </ul>
     </div>
-  ) : (
-      <div className="unavailable">
-        <h3>{data.unit} resources not available yet</h3>
-      </div>
-    );
+  ) : null;
 }
 
 export default Notes;

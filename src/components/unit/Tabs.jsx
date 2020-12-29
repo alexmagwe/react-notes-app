@@ -4,19 +4,31 @@ import Notes from "../notes/notes";
 import useStyles from "./styles";
 import { isEmpty } from "../../helpers";
 
+const tabinfo = [
+  { label: "notes", category: "document" },
+  { label: "assignments", category: "assignment" },
+  { label: "videos", category: "video" },
+];
 function Tabs(props) {
-  const tablabels = ["notes", "assignments", "videos"];
+  const data = props.properties;
   const [active, setActive] = useState(0);
   const styles = useStyles();
-  const data = props.properties;
+  const [activeData, setActiveData] = useState({ category: "", resources: [] });
   const handleClick = (i) => {
     setActive(i);
   };
-
+  useEffect(() => {
+    if (!isEmpty(data)) {
+      setActiveData({
+        category: tabinfo[active].category,
+        resources: data.notes[tabinfo[active].category],
+      });
+    }
+  }, [active, data, setActiveData]);
   return (
     <div className="notes-section">
       <ul className="tab-navigation font-primary font-16">
-        {tablabels.map((label, i) => (
+        {tabinfo.map((tab, i) => (
           <Button
             key={i}
             className={styles.tabNav}
@@ -25,7 +37,7 @@ function Tabs(props) {
             }}
           >
             <li className="tab-nav-item font" key={i}>
-              {label}
+              {tab.label}
               <span
                 className={active === i ? "active slider" : "slider"}
               ></span>
@@ -36,7 +48,7 @@ function Tabs(props) {
 
       {!isEmpty(data) ? (
         <div className="notes-container">
-          <Notes showlink={true} properties={data} />
+          <Notes showlink={true} currentData={activeData} />
         </div>
       ) : null}
     </div>

@@ -10,8 +10,8 @@ body {
   background:linear-gradient(#0009,#0009), url(./images/library.jpg);
   background-size: cover;
   backdrop-filter: contrast(105%) brightness(80%);
-  background-position: 0  20%;
-  background-repeat: no-repeat;
+  background-position: 0  10%;
+  /* background-repeat: no-repeat; */
 
 }
 html,body{

@@ -1,6 +1,6 @@
-import React, {useEffect, useContext } from 'react';
+import React, {useEffect, useContext} from 'react';
 import Search from '../search/Search.jsx'
-import { Searchcontext, Loadingcontext, Datacontext } from '../../context'
+import {Loadingcontext, Datacontext} from '../../context'
 import { isEmpty } from '../../helpers'
 import { allUnitsUrl} from '../api/urls'
 import axios from 'axios'
@@ -8,8 +8,6 @@ import axios from 'axios'
 const Landing = () => {
     const { setLoading } = useContext(Loadingcontext)
     const { data, setData } = useContext(Datacontext)
-    const {movetop,setMoveTop } = useContext(Searchcontext)
-
     useEffect(() => {
         if (isEmpty(data)) {
             setLoading(true)
@@ -19,9 +17,7 @@ const Landing = () => {
             }
             )
         }
-        return ()=>{
-            setMoveTop(false)
-        }
+     
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setLoading, setData])
 
