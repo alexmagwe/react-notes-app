@@ -1,19 +1,30 @@
 .landing{
+    /* padding:2em; */
     width:100%;
-    background-size:cover;
-    z-index:-1;
-    padding:2em;
     color:#000;
-    min-height:89vh;
+    min-height:87vh;
     overflow:auto;
-    background-position: center;
- 
+    position: relative;
+    
+}
+.landing-content{
+    width:85%;
+    margin: auto;
+    padding: 0 10px;
+    display:flex;
+    position:absolute;
+    top:25%;
+    left:50%;
+    transform: translate(-50%);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    
 }
 .landing-banner{
-    color:skyblue;
-    font-size: 36px;
-    font-weight: bold;
-    display: block;
+    display:block;
+    margin: auto;
+    width:300px;
     
 }
 .landing-logo{
@@ -26,85 +37,16 @@
 }
 
 .landing-info{
-    /* width:60%; */
-    position:absolute;
-    text-align: center;
-    top:15%;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:500;
-    font-size:22px;
-    left:50%;
-    transform:translate(-50%);
-}
-
-h1,h2,h3,h4{
-    color:inherit;
-    font-family: sans-serif;
+    max-width:38%;
+    font-size: 36px;
+    align-self:flex-start;
+    /* position:absolute; */
+    /* top:40%; */
+    line-height: 1.5em;
+    /* left:5em; */
+    /* transform:translate(-50%); */
 }
 
 .text-light{
 color:#fff;
 }
-
-@media screen and (max-width:600px){
-.landing-info{
-    top:20%;
-    width:100%;
-}
-.search-container{
-    top:45%;
-}
-.search-container-top{
-    position: relative;
-    width:90%;
-    margin: 0 auto;
-
-}
-.landing-logo{
-    width:250px;
-    display:block;
-}
-  } 
-
-  @media screen and (max-width:300px){
-    .landing-info{
-        top:20%;
-        width:90%;
-    }
-    .landing-logo{
-        width:200px;
-        display:block;
-    }
-
-      } 
-@media screen and (max-height:400px){
-
-    .search-container{
-        top:55%;
-    }
-    .landing-logo{
-        width:150px;
-        display:none;
-    }
-    .landing-info{
-        top:40%;
-    }
-    .footer{
-        width:20%;
-        right:0;
-    }
-  } 
-  @media screen and (max-height:500px){
-
-    .search-container{
-        top:55%;
-    }
-    .landing-logo{
-        width:150px;
-    }
-
-    .footer{
-        width:20%;
-        right:0;
-    }
-  } 

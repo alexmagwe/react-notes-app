@@ -1,14 +1,19 @@
-import React,{useRef} from 'react'
+import React,{useEffect,useRef} from 'react'
+import searchIcon from '../../images/icons/search.png'
 
 const SearchBar=(props)=>{
     const {handleSearch,searchTerm,ref} =props.form
+    const inputbox=useRef(null)
 
-    let focusref=useRef()
+    useEffect(() => {
+        inputbox.current.focus()
+    }, [])
 
    
         return (
             <div className='search-bar'>
-                    <input autoComplete='off' ref={focusref} className='open-search search-input' onChange={handleSearch} value={searchTerm} placeholder={`${ref}`} />
+                    <input autoComplete='off' ref={inputbox} className='open-search search-input' onChange={handleSearch} value={searchTerm} placeholder={`${ref}`} />
+                    <img className='fa-search' src={searchIcon} alt=''/>
             </div>
         )
 }

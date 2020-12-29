@@ -38,25 +38,3 @@
 	font-family: monospace;
   font-weight: bold;
 }
-/* .torch {
-  margin: -150px 0 0 -150px;
-  width: 200px;
-  height: 200px;
-  pointer-events: all;
-  box-shadow: 0 0 0 999em #000000f7;
-	opacity: 1;
-  border-radius: 50%;
-  position: fixed;
-	background: rgba(0,0,0,0.3);
-}
-  .torch::after {
-    content: '';
-    display: block;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    box-shadow: inset 0 0 40px 2px #000,
-			0 0 20px 4px rgba(13,13,10,0.2);  
-} */

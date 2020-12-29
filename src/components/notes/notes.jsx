@@ -1,30 +1,19 @@
-import React,{useEffect} from 'react'
-import NoteItem from './NoteItem';
-
-
+import React from "react";
+import NoteItem from "./NoteItem";
 function Notes(props) {
-    let {notes,setNotes}=props.notes;
-    let showlink=props.showlink
-  
-    useEffect(() => {
-    return () => {
-        setNotes({})
-    }
-}, [setNotes])
-    return (
-       notes.notes.length>0?(<div className='notes'>
-     <h4 className='notes-unit-name'><span className='unit-code'>{notes.code}</span> {notes.unit}</h4>
-      <ul className='notes-list'>
-          {notes.notes.map((el,i)=>
+  const data = props.currentData;
+  const resources = data.resources;
+  let showlink = props.showlink;
 
+  return resources.length > 0 ? (
+    <div className="notes">
+      <ul className="notes-list">
+        {resources.map((el, i) => (
           <NoteItem key={i} item={el} showlink={showlink} />
-          )} 
-        </ul>
-
-    
-        </div>):(<div className="unavailable"><h3>{notes.unit} resources not available yet</h3></div>
-          )
-          )
+        ))}
+      </ul>
+    </div>
+  ) : null;
 }
 
-export default Notes
+export default Notes;

@@ -2,6 +2,7 @@
    .upload-container{
     width:100%;
     height:100%;
+    color:#000;
    
 } 
 .upload-header{
@@ -111,14 +112,3 @@
     text-align: center ;
 }
 
-@media screen and (max-width:600px){
-    .toupload-container{
-        min-width:80%;
-        width:90%;
-    }
-}
-@media screen and (max-width:200px){
-   
-    .upload-item-name{
-    word-break: break-all;
-}}

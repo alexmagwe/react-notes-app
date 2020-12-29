@@ -31,6 +31,7 @@ function Upload() {
 
     const onDrop = useCallback(acceptedFiles => {
         let validFiles = []
+        acceptedFiles.reverse()
         acceptedFiles.forEach(file => {
             if (isValid(file.name)) {
                 validFiles.push(file)
@@ -42,6 +43,10 @@ function Upload() {
     const { getRootProps, isDragActive } = useDropzone({
         onDrop
     })
+    useEffect(() => {
+        console.log(files)
+     
+    }, [files])
 
 
     let inputref = useRef()
@@ -116,6 +121,7 @@ function Upload() {
         filescopy.forEach(file => formData.append('notes', file))
 
         try {
+            console.log('uploading')
             let res = await axios.post(uploadUrl, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
