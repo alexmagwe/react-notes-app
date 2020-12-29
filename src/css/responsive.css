@@ -7,23 +7,18 @@
 }
 
 @media screen and (min-width:1600px) {
-
     .form-container {
         width: 80%;
     }
-
     .search-container {
         top: 45%;
     }
-
 }
 
 @media screen and (max-height:600px) {
-
     .search-container {
         top: 35%;
     }
-
     .footer {
         width: 20%;
         right: 0;
@@ -45,12 +40,10 @@
 }
 
 @media screen and (max-width:270px) {
-
     .unavailable {
         position: absolute;
         top: 40%;
         width: 80%;
-
     }
 }
 
@@ -59,7 +52,6 @@
         width: 80%;
         top: 65%;
     }
-
     .unavailable {
         top: 60%;
     }
@@ -69,53 +61,37 @@
 
 @media screen and (max-width:650px) {
     .landing-info {
-      font-size:30px;
-      max-width: 40%;
-      
+        font-size: 30px;
+        max-width: 40%;
     }
-
-    .search-container-top {
-        position: relative;
-        margin: 0 auto;
-
-    }
-
     .landing-logo {
         width: 250px;
         display: block;
     }
 }
-@media screen and (max-width:600px) {
-    .grid-container{
-        grid-template-columns:1fr;
-    }
-    .top-content-section{
-        grid-column:1;
-    }
-    .top-content-inner-section{
-        /* flex-direction: row-reverse; */
-    }
-    .landing-content{
-        top:15%;
+
+@media (max-width:600px) {
+    
+    
+    .landing-content {
+        top: 15%;
     }
     .landing-info {
         max-width: 100%;
-        font-size:28px;
+        font-size: 28px;
     }
-
     .landing-logo {
         width: 250px;
         display: block;
     }
-        .toupload-container {
+    .toupload-container {
         min-width: 80%;
         width: 90%;
     }
-        .search-container {
+    .search-container {
         width: 100%;
         margin: 10px auto;
     }
-
     .banner {
         top: -150px;
         width: 200px;
@@ -130,29 +106,23 @@
         top: 20%;
         width: 90%;
     }
-
     .landing-logo {
         width: 200px;
         display: block;
     }
-
 }
 
 @media screen and (max-height:400px) {
-
     .search-container {
         top: 55%;
     }
-
     .landing-logo {
         width: 150px;
         display: none;
     }
-
     .landing-info {
         top: 40%;
     }
-
     .footer {
         width: 20%;
         right: 0;
@@ -160,15 +130,12 @@
 }
 
 @media screen and (max-height:500px) {
-
     .search-container {
         top: 55%;
     }
-
     .landing-logo {
         width: 150px;
     }
-
     .footer {
         width: 20%;
         right: 0;
@@ -177,9 +144,7 @@
 
 /* Upload container */
 
-
 @media screen and (max-width:200px) {
-
     .upload-item-name {
         word-break: break-all;
     }

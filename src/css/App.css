@@ -78,15 +78,17 @@ h4 {
 .hide {
     display: none;
 }
-
+.nav-container{
+    height:var(--nav-height);
+ width:100%;   
+}
 .nav {
     color: inherit;
     width: 85%;
+    margin: 0 auto;
     padding:1em 0;
     top:0;
     position: relative;
-    margin: 0 auto;
-    height:var(--nav-height);
     z-index: 3;
     display: flex;
     flex-wrap: wrap;

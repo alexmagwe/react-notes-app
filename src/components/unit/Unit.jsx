@@ -11,6 +11,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { allUnitsUrl, unitNotesUrl } from "../api/urls";
 import Tabs from "./Tabs";
+import Recent from './Recent'
 
 function Unit(props) {
   const { code } = useParams();
@@ -62,13 +63,7 @@ function Unit(props) {
         </div>
       </div>
       <Tabs properties={notes} />
-      {/* {!isEmpty(notes) ? (
-                <div className='notes-section'>
-                    <Notes showlink={true} properties={{ notes, setNotes }} />
-                </div>
-            ) : (
-                    "no notes found"
-                )} */}
+      <Recent/>
     </div>
   );
 }

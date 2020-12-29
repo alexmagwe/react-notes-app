@@ -12,7 +12,8 @@ const Navigation = (props) => {
 
   return (
 
-    <div className={lighttheme ? 'nav light-bg' : 'nav'} >
+    <div className={lighttheme ? 'nav-container light-bg' : 'nav-container'} >
+      <div className='nav'>
       <Link to='/' ><Button><img className={styles.navHomeIcon} src={banner} alt='HOME' /></Button></Link>
       <ul className='nav-list'>
 
@@ -26,6 +27,7 @@ const Navigation = (props) => {
         </li>
 
       </ul>
+      </div>
     </div>
 
 
