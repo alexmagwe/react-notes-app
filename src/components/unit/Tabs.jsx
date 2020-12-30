@@ -2,13 +2,8 @@ import { Button } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import Notes from "../notes/notes";
 import useStyles from "./styles";
-import { isEmpty } from "../../helpers";
+import { isEmpty, Categories } from "../../helpers";
 
-const tabinfo = [
-  { label: "notes", category: "document" },
-  { label: "assignments", category: "assignment" },
-  { label: "videos", category: "video" },
-];
 function Tabs(props) {
   const data = props.properties;
   const [active, setActive] = useState(0);
@@ -20,15 +15,15 @@ function Tabs(props) {
   useEffect(() => {
     if (!isEmpty(data)) {
       setActiveData({
-        category: tabinfo[active].category,
-        resources: data.notes[tabinfo[active].category],
+        category: Categories[active].category,
+        resources: data.notes[Categories[active].category], //fil;ter the data by category
       });
     }
   }, [active, data, setActiveData]);
   return (
     <div className="notes-section">
       <ul className="tab-navigation font-primary font-16">
-        {tabinfo.map((tab, i) => (
+        {Categories.map((tab, i) => (
           <Button
             key={i}
             className={styles.tabNav}

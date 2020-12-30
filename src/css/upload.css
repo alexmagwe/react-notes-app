@@ -57,16 +57,17 @@
         margin-top:10px;
         max-height:50vh;
         border-radius: 5px;;
-        background-color:#fafafa56 ;
+        background-color:var(--primary) ;
         overflow: auto;
         }
     .toupload-item{
-            display: flex ;
+            display: grid;
             padding:5px;
-            flex-wrap: wrap ;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr;
             width:100%;
             align-items: center ;
-            justify-content: space-between ;
+            justify-content: space-evenly ;
 
         }
     .upload-input{
@@ -86,6 +87,8 @@
         margin:1em;
         top:20%;
         padding:1em;
+        max-height:500px;
+        overflow-y: auto;
          min-width:300px;
         background-color:rgb(252, 252, 252);
         border-radius:5px;
@@ -95,7 +98,6 @@
 
     }
 .upload-item-name{
-    max-width:70%;
     word-wrap: break-word;
     /* word-break: break-all; */
     

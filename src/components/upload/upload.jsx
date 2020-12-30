@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext, useRef, useCallback } from 'react'
 import Button from '@material-ui/core/Button';
 import { useUploadFile, useSearch } from '../hooks';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
 import ProgressBar from './ProgressBar'
+import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { isEmpty } from '../../helpers'
 import { Loadingcontext, Datacontext } from '../../context'
@@ -12,9 +11,18 @@ import { allUnitsUrl, addNotesUrl, uploadUrl, unitNotesUrl } from '../api/urls'
 import NoteItem from '../notes/NoteItem';
 import { useDropzone } from 'react-dropzone'
 import DragOverScreen from './DragOverScreen'
+import ToUploadItem from './ToUploadItem';
+
+const useStyles = makeStyles((theme) => ({
+
+  addBtn: {
+    backgroundColor:'#71e1f0',
+  },
+}));
 
 function Upload() {
-    let [ref, desc] = ['unit', 'name']
+    const classes = useStyles();
+    let [reference, desc] = ['unit', 'name']
     const [files, bindFiles, isValid, handleDropFiles, removeFile, resetFiles,] = useUploadFile([])
     const [uploadedfiles, setUploadedfiles] = useState([])
     const [progress, setProgress] = useState(0)
@@ -28,6 +36,7 @@ function Upload() {
     const [value, setValue] = useState('')
     const [notes, setNotes] = useState([])
     const [uploaded, setUploaded] = useState(false)
+    const [searchTerm, setSearchTerm] = useState('')
 
     const onDrop = useCallback(acceptedFiles => {
         let validFiles = []
@@ -44,17 +53,17 @@ function Upload() {
         onDrop
     })
     useEffect(() => {
-        console.log(files)
-     
+        console.log('files :', files)
+
     }, [files])
 
 
     let inputref = useRef()
 
-    const [searchTerm, setSearchTerm] = useState('')
 
     useSearch(searchTerm, data, setResults, 'code')
     useEffect(() => {
+        inputref.current.focus()
         if (isEmpty(data)) {
             setLoading(true)
             axios.get(allUnitsUrl).then(res => {
@@ -67,17 +76,18 @@ function Upload() {
                 alert(err)
             })
         }
-        inputref.current.focus()
     }, [data, setData, setLoading])
-
+    //get current files from server
     useEffect(() => {
-        if (selected || uploaded) {
+        if (selected || uploaded) {//update current files after selection and after upload
             setUnitCode(selected.code)
             let data = { "unit_code": selected.code }
             setLoading(true)
             axios.post(unitNotesUrl, data)
                 .then(res => {
-                    setNotes(res.data)
+                    const { document, video, assignment } = res.data.notes//res.data.notes is an object which we want to destructure to a list
+                    const allfiles = [...document, ...video, ...assignment]
+                    setNotes(allfiles)
                     setLoading(false)
                 })
                 .catch(err => {
@@ -176,31 +186,24 @@ function Upload() {
 
             <div className='upload-flexbox'>
                 <form className='upload-form' onSubmit={handleSubmit}>
-                    <input id='unit' ref={inputref} placeholder={ref} className='upload-input'
+                    <input id='unit' ref={inputref} placeholder={reference} className='upload-input'
                         value={value} onChange={handleChange} onInvalid={() => inputref.current.setCustomValidity('Please enter the unit for the files')} required type='text' />
-                    {results.length > 0 && searchTerm.length > 0 ? (<Results props={{ handleClose, results, ref, desc }} />) : null}
+                    {results.length > 0 && searchTerm.length > 0 ? (<Results props={{ handleClose, results, reference, desc }} />) : null}
                     <input className='hide' id='add_file' type='file' {...bindFiles} multiple />
-                    <label className='upload-file-label' htmlFor='add_file' ><Button variant='outlined' className='buttontext' component='span'>&#43;</Button></label>
+                    <label className='upload-file-label' htmlFor='add_file' ><Button variant='contained' className={classes.addBtn} component='span'>&#43;</Button></label>
                     <Button variant='contained' disabled={disable} aria-label='upload button' color='primary' type='submit'>Upload</Button>
                     <ProgressBar value={progress} />
                 </form>
                 {files.length > 0 ? (
                     <div className='toupload-container'>
-                        {files.map((book, i) => (
-                            <div className='toupload-item' data-key={i} key={i}>
-                                <span className='upload-item-name'>{book.name}</span>
-                                <span>
-                                    <IconButton key={i} data-key={i} onClick={(e) => handleDelete(e, i)} aria-label="delete" className='margins'>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </span>
-                            </div>
+                        {files.map((file, index) => (
+                            <ToUploadItem key={index} state={{ files, index, handleDelete, file }} />
                         ))}
                     </div>) : null}
-                {!isEmpty(notes) && notes.notes.length > 0 ?
+                {notes.length > 0 ?
                     (<ul className='current-files-list'>
                         <h3 className='faded'>Current available resources for {unitCode}</h3>
-                        {notes.notes.map((note, i) => <NoteItem key={i} item={note} showlink={false} />)}
+                        {notes.map((note, i) => <NoteItem key={i} item={note} showlink={true} />)}
                     </ul>)
                     : null
                 }
