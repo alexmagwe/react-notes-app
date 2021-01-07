@@ -13,7 +13,8 @@ function Tabs(props) {
     setActive(i);
   };
   useEffect(() => {
-    if (!isEmpty(data)) {
+    if (!isEmpty(data)) 
+    {
       setActiveData({
         category: Categories[active].category,
         resources: data.notes[Categories[active].category], //fil;ter the data by category

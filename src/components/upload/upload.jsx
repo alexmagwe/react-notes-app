@@ -110,13 +110,14 @@ function Upload() {
         }
     }, [setLoaderBackground, setSelected])
     //RUNS AFTER FILES HAVE BEEN UPLOADED IT UPDATES THE SERVER WITH THE NOTES  UPLOADED
-    useEffect(() => {
+useEffect(() => {
         if (uploadedfiles.length > 0) {
             setLoading(true)
             let payload = { "notes": uploadedfiles, "unit_code": unitCode.toUpperCase() }
             axios.post(addNotesUrl, payload).then(resp => {
                 setProgress(0)
                 setUploaded(true)
+                setDisable(false)
             }).catch(err => {
                 alert(err)
                 setLoading(false)
