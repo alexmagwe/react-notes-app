@@ -113,6 +113,7 @@ function Upload() {
 useEffect(() => {
         if (uploadedfiles.length > 0) {
             setLoading(true)
+            
             let payload = { "notes": uploadedfiles, "unit_code": unitCode.toUpperCase() }
             axios.post(addNotesUrl, payload).then(resp => {
                 setProgress(0)
@@ -154,7 +155,13 @@ useEffect(() => {
             setDisable(val => !val)
             let res = await serverupload()
             if (res.status === 200) {
-                setUploadedfiles(res.data)
+                let data=res.data
+                //asigns a categoru to each uploaded file
+                await files.forEach((file,index)=>{
+                    data[index].category=file.category
+                })
+                setUploadedfiles(data)
+                console.log(data)
                 resetFiles()
 
             }
