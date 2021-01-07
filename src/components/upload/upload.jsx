@@ -52,10 +52,10 @@ function Upload() {
     const { getRootProps, isDragActive } = useDropzone({
         onDrop
     })
-    useEffect(() => {
-        console.log('files :', files)
+    // useEffect(() => {
+    //     console.log('files :', files)
 
-    }, [files])
+    // }, [files])
 
 
     let inputref = useRef()
@@ -133,7 +133,6 @@ useEffect(() => {
         filescopy.forEach(file => formData.append('notes', file))
 
         try {
-            console.log('uploading')
             let res = await axios.post(uploadUrl, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
@@ -161,7 +160,6 @@ useEffect(() => {
                     data[index].category=file.category
                 })
                 setUploadedfiles(data)
-                console.log(data)
                 resetFiles()
 
             }
