@@ -19,8 +19,8 @@ useEffect(()=>{
               </div>
 
             <div className='card card2'>
-                <Link to='/support'> 
-                    <h3 className='card-text'>Support the developer</h3>
+                <Link to='/contact'> 
+                    <h3 className='card-text'>Contact</h3>
                 </Link> 
             </div>
            

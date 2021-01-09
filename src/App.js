@@ -2,6 +2,7 @@ import React, {useState } from "react";
 import "./css/App.css";
 import "./css/landing.css";
 import "./css/notes.css";
+import "./css/forms.css";
 import "./css/upload.css";
 import "./css/responsive.css";
 import "./css/unit.css";
@@ -23,7 +24,7 @@ import { isEmpty } from "./helpers";
 
 // import AddUnits from './components/addunits'
 import ErrorPage from "./components/errors/404";
-import Support from "./components/contribute/support";
+import Contact from "./components/contribute/Contact";
 import Loader from "./components/reusables/Loader";
 import Graphik from "./components/Graphik";
 import Unit from "./components/unit/Unit";
@@ -54,7 +55,7 @@ function App() {
                 <Switch>
                   <Route path="/contribute" exact component={Contribute} />
                   <Route path="/unit/:code" component={Unit} />
-                  <Route path="/support" exact component={Support} />
+                  <Route path="/contact" exact component={Contact} />
                   <Route path="/" exact component={Landing} />
                   <Route path="/about" exact component={About} />
                   <Route path="/upload" exact component={Upload} />

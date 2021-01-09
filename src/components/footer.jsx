@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Footer() {
-    return (
-        <div className='footer'>
-            <small>@Keplalabs</small> 
-        </div>
-    )
+function Footer () {
+  return (
+    <footer className='footer'>
+      <small>@Keplalabs</small>
+    </footer>
+  )
 }
 
 export default Footer

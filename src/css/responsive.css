@@ -21,6 +21,7 @@
     }
     .footer {
         width: 20%;
+        display:none;
         right: 0;
     }
 }
@@ -87,6 +88,13 @@
     .toupload-container {
         min-width: 80%;
         width: 90%;
+    }
+    .toupload-item{
+    /* width:90%; */
+    }
+    .upload-item-name{
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
     }
     .search-container {
         width: 100%;

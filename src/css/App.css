@@ -63,6 +63,7 @@ h4 {
 
 }
 
+
 .dark {
     background-color: #1114;
 }
@@ -319,7 +320,9 @@ h4 {
 }
 
 .container {
-    padding: 2em;
+    width:85%;
+    margin:auto;
+    padding: 2em 1em;
 }
 
 .bb-only {
