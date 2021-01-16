@@ -44,16 +44,42 @@ export const Categories = [
 export const getLocalData = type => {
   switch (type) {
     case 'units':
-      let units = localStorage.getItem('units')
-      if (units) return JSON.parse(units)
+      let data = JSON.parse(localStorage.getItem('data'))
+      if (data) {
+        if (checkIfExpired(data)) return null
+        else {
+          if (data.units) return data.units
+        }
+      }
       break
     case 'recent':
       let recent = localStorage.getItem('recent')
       if (recent) {
-        return JSON.parse(recent)
-      }
+        if (checkIfExpired(recent)) return null
+      } else return JSON.parse(recent)
       break
     default:
-      return false
+      return null
   }
+}
+export const setLocalDataWithExpiry = (key, value, ttl) => {
+  const now = new Date()
+  // `item` is an object which contains the original value
+  // as well as the time when it's supposed to expire
+  const item = {
+    ...value,
+    expiry: now.getTime() + ttl * 3600 * 1000
+  }
+  localStorage.setItem(key, JSON.stringify(item))
+}
+//compares current date with expiry date of data and returns true if the current date is greater and viceversa
+const checkIfExpired = data => {
+  if (!data.expiry) {
+    return false
+  }
+  const now = new Date()
+  if (now > data.expiry) {
+    return true
+  }
+  return false
 }

@@ -24,7 +24,7 @@ import { Redirect } from 'react-router'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
-import { isEmpty, getLocalData } from './helpers'
+import { isEmpty, getLocalData, setLocalDataWithExpiry } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
 // import AddUnits from './components/addunits'
@@ -39,6 +39,7 @@ function App () {
   let [movetop, setMoveTop] = useState(false)
   const [loaderbg, setLoaderBackground] = useState('dark')
   let [selected, setSelected] = useState({})
+  const [expiry] = useState(48) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
 
   useEffect(() => {
@@ -51,12 +52,12 @@ function App () {
       } else {
         axios.get(allUnitsUrl).then(resp => {
           setData(resp.data)
-          localStorage.setItem('units', JSON.stringify(resp.data))
+          setLocalDataWithExpiry('data', { units: resp.data }, expiry)
           setLoading(false)
         })
       }
     }
-  }, [data])
+  }, [data, expiry])
   return (
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
