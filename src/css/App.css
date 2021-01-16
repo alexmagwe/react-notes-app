@@ -342,7 +342,6 @@ h4 {
 .results-container {
     width: 100%;
     z-index:5;
-    position:absolute;
     box-shadow: 0 0 10px 4000px rgba(8, 8, 8, 0.596);
     max-height: 50vh;
     border-radius: 2px;
