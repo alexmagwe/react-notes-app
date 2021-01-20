@@ -5,9 +5,9 @@ const SearchBar = props => {
   const { handleSearch, searchTerm, ref } = props.form
   const inputbox = useRef(null)
 
-  useEffect(() => {
-    inputbox.current.focus()
-  }, [])
+  // useEffect(() => {
+  //   inputbox.current.focus()
+  // }, [])
 
   return (
     <div className='search-bar'>
@@ -17,6 +17,7 @@ const SearchBar = props => {
         className='open-search search-input'
         onChange={handleSearch}
         value={searchTerm}
+        // autoFocus
         placeholder={`${ref}`}
       />
       <img className='fa-search' src={searchIcon} alt='' />
