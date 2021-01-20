@@ -19,10 +19,7 @@
     .search-container {
         top: 35%;
     }
-    .footer {
-        width: 20%;
-        right: 0;
-    }
+  
 }
 
 @media screen and (max-width:396px) {

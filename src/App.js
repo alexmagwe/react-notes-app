@@ -39,7 +39,7 @@ function App () {
   let [movetop, setMoveTop] = useState(false)
   const [loaderbg, setLoaderBackground] = useState('dark')
   let [selected, setSelected] = useState({})
-  const [expiry] = useState(48) //expiry time of data in terms of hours
+  const [expiry] = useState(72) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
 
   useEffect(() => {

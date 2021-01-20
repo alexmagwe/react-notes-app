@@ -72,7 +72,7 @@ h4 {
 }
 
 .grey {
-    color: silver;
+    color: rgb(151, 149, 149);
 }
 
 .hide {
@@ -129,15 +129,18 @@ h4 {
 
 
 .progress-bar {
-    position: absolute;
-    top: 50%;
+
     right: 0;
-    transform: translateY(-15%);
-    border-radius: 50%;
+    width: 50px;
+    margin: 10px auto;
+    padding:5px;
+    
+    /* transform: translateY(-15%); */
+    border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff3;
+    background-color:var(--primary);
 }
 
 .search-bar {
@@ -342,15 +345,20 @@ h4 {
 .results-container {
     width: 100%;
     z-index:5;
-    box-shadow: 0 0 10px 4000px rgba(8, 8, 8, 0.596);
+    opacity:0;
+    box-shadow: 0 0 1000px 8000px rgba(8, 8, 8, 0.596);
     max-height: 50vh;
+    animation:slidein 0.5s forwards ease-in-out ;
     border-radius: 2px;
     overflow-y: auto;
+    transform: translateY(20px);
+    position: absolute;
 }
+
 
 .results-list {
     width: 100%;
-    height: auto;
+    height:auto;
     display: flex;
     justify-content: center;
     word-wrap: break-word;
@@ -363,9 +371,18 @@ h4 {
     flex-shrink: 1;
     flex-wrap: wrap;
 
-
 }
-
+@keyframes slidein{
+0%{
+opacity:0.2;
+}
+50%{
+opacity:0.6;
+}
+100%{
+opacity:1;
+transform:translateY(0);}
+}
 .open-search {
     opacity: 1;
     transition: 0.2s ease-in-out;
@@ -397,20 +414,21 @@ h4 {
 
 .loading {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    opacity:1;
     position: absolute;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 100;
     left: 0;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.6s ease-in-out;
 
 }
 
 .dark-bg {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.9);
 
 }
 
@@ -424,8 +442,10 @@ h4 {
 
 .loading-closed {
     opacity: 0;
-    transform: translateY(-200px);
-    height: 0;
+    /* transform: translateY(-200px); */
+    height: 100%;
+    position: absolute;
+    z-index:-1;
 }
 
 /* about page css */
