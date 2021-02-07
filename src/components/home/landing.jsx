@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react'
 import Search from '../search/Search.jsx'
 import { Loadingcontext, Datacontext } from '../../context'
-
+import Recent from '../reusables/Recent'
 const Landing = () => {
   const { setLoading } = useContext(Loadingcontext)
-  const { data } = useContext(Datacontext)
+  const { data ,recent} = useContext(Datacontext)
 
   useEffect(() => {
     setLoading(false)
@@ -15,17 +15,14 @@ const Landing = () => {
       <div className='landing-content'>
         <div className='landing-info'>
           <h4 className='text-primary'>
-            {' '}
-            <span className='u-line'>Access all</span> Course notes and other
-            Resources from anywhere
+            <span className='u-line'>Access</span> all Course notes and 
+            Resources
           </h4>
         </div>
         <div className='search-container'>
-          <h4 className='text-primary font-20 mb-2'>
-            Search the catalogue for hundreds of resources
-          </h4>
           <Search source={data} />
         </div>
+        <Recent/>
       </div>
       {/* {!isEmpty(notes) ? (<Notes showlink={true} notes={{ notes, setNotes }} />) : null} */}
     </div>

@@ -12,7 +12,7 @@ export const Fetch = (url, method, payload = '') => {
   }
   return data
 }
-//try catch block t ocatch invalid regexp characters that user tpyes
+//try catch block to catch invalid regexp characters that user types
 export const Search = (term, data, category) => {
   const defaultcategory = 'name'
   try {
@@ -44,7 +44,7 @@ export const Categories = [
 export const getLocalData = type => {
   switch (type) {
     case 'units':
-      let data = JSON.parse(localStorage.getItem('data'))
+      let data = JSON.parse(localStorage.getItem('units'))
       if (data) {
         if (checkIfExpired(data)) return null
         else {
@@ -56,7 +56,9 @@ export const getLocalData = type => {
       let recent = JSON.parse(localStorage.getItem('recent'))
       if (recent) {
         if (checkIfExpired(recent)) return null
-      } else return JSON.parse(recent)
+        
+        else return recent
+      } 
       break
     default:
       return null
@@ -64,8 +66,8 @@ export const getLocalData = type => {
 }
 //get no of items in a js object
 const getObjLength = (obj) => {
- return Object.keys(obj).length
-  
+  return Object.keys(obj).length
+
 }
 export const setLocalData = (key, value, ttl) => {
   const now = new Date()

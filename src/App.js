@@ -41,8 +41,10 @@ function App () {
   let [selected, setSelected] = useState({})
   const [expiry] = useState(72) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
+  const [recent,setRecent]=useState({})
 
   useEffect(() => {
+    setRecent(getLocalData('recent'))
     if (isEmpty(data)) {
       setLoading(true)
       const localdata = getLocalData('units')
@@ -58,6 +60,10 @@ function App () {
       }
     }
   }, [data, expiry])
+  useEffect(() => {
+    console.log('in app:',recent)
+
+  }, [recent])
   return (
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
@@ -66,7 +72,7 @@ function App () {
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
-          <Datacontext.Provider value={{ data, setData }}>
+          <Datacontext.Provider value={{ data, setData ,recent}}>
             <div className='App'>
               <Router>
                 <Navigation />
