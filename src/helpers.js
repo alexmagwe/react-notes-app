@@ -44,7 +44,7 @@ export const Categories = [
 export const getLocalData = type => {
   switch (type) {
     case 'units':
-      let data = JSON.parse(localStorage.getItem('data'))
+      let data = JSON.parse(localStorage.getItem('units'))
       if (data) {
         if (checkIfExpired(data)) return null
         else {

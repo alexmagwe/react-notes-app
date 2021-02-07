@@ -3,7 +3,11 @@
     position: relative;
     width: 100%;
     min-height: 100%;
+    /* backdrop-filter: contrast(105%) brightness(90%); */
     font-family: Verdana, sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     /* overflow:auto; */
 }
 
@@ -16,9 +20,7 @@
     --secondary: #7C2500;
 }
 
-h1 h2,
-h3,
-h4 {
+h1 h2, h3, h4 {
     color: inherit;
     font-family: 'Open-Sans', sans-serif;
 }
@@ -59,7 +61,6 @@ h4 {
 .primary {
     color: skyblue;
 }
-
 
 .dark {
     background-color: #1114;
@@ -118,7 +119,6 @@ h4 {
     background-position: 20%, -20%;
     background-repeat: no-repeat;
 }
-
 
 /* search bar */
 
@@ -318,8 +318,8 @@ h4 {
 }
 
 .container {
-    width:85%;
-    margin:auto;
+    width: 85%;
+    margin: auto;
     padding: 2em 1em;
 }
 
@@ -445,7 +445,6 @@ h4 {
     position: absolute;
     z-index: -1;
 }
-
 
 /* about page css */
 

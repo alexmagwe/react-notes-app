@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { Loadingcontext } from '../../context'
+import { Loadingcontext, Themecontext } from '../../context'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -15,28 +15,28 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 const Contact = () => {
   const { setLoading } = useContext(Loadingcontext)
+  const { setLightTheme } = useContext(Themecontext)
+
+
   const handleSubmit = e => {
     e.preventDefault()
     console.log(e)
   }
   useEffect(() => {
     setLoading(false)
-  }, [setLoading])
+    setLightTheme(true)
+    return () => {
+      setLightTheme(false)
+    }
+  }, [setLoading, setLightTheme])
 
   const useStyles = makeStyles(theme => ({
     root: {
-      height: '100vh'
+      height: '100vh',
+
     },
-    image: {
-      backgroundImage: 'url(https://source.unsplash.com/JgOeRuGD_Y4)',
-      backgroundRepeat: 'no-repeat',
-      backdropFilter: 'brightness(80%)',
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? theme.palette.grey[50]
-          : theme.palette.grey[900],
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
+    bg: {
+      background: "linear-gradient( #141E30,#243B55)",
     },
     paper: {
       margin: theme.spacing(8, 4),
@@ -50,11 +50,12 @@ const Contact = () => {
     },
     form: {
       width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1)
+      marginTop: theme.spacing(1),
+      backgroundColor: 'transparent'
     },
-    center: {
-      textAlign: 'center',
-      width: '100%'
+    h2: {
+      textAlign: 'left',
+      width: '300px'
     },
 
     submit: {
@@ -62,7 +63,7 @@ const Contact = () => {
     },
     green: {
       color: '#fff',
-      backgroundColor: 'green'
+      backgroundColor: '#243B55'
     }
   }))
 
@@ -71,24 +72,24 @@ const Contact = () => {
   return (
     <Grid container component='main' className={classes.root}>
       <CssBaseline />
-      <Grid item xs={12} sm={12} md={7} className={classes.image}>
+      <Grid item xs={12} sm={12} md={7} className={classes.bg}>
         <div className='contact-info-container'>
           <div className='contact-info'>
-            <Typography className={classes.center} component='h2' variant='h5'>
+            <Typography className={classes.h2} component='h2' variant='h5'>
               Contact Information
             </Typography>
             <div className='contact-info-item'>
               <Avatar className={classes.green}>
                 <PhoneIcon />
               </Avatar>
-              <h5 className='contact phone'>0796914452</h5>
+              <span className='contact phone'>0796914452</span>
             </div>
             <div className='contact-info-item'>
               <Avatar className={classes.green}>
                 <EmailIcon />
               </Avatar>
               <a
-                className='text-primary contact email'
+                className='contact email'
                 href='mailto:keplalabs@gmail.com'
               >
                 keplalabs@gmail.com

@@ -25,6 +25,7 @@ import { Redirect } from 'react-router'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
+import image from './images/globelibrary.jpg'
 import { isEmpty, getLocalData, setLocalData } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
@@ -35,6 +36,7 @@ import Loader from './components/reusables/Loader'
 import Graphik from './components/Graphik'
 import Unit from './components/unit/Unit'
 function App () {
+  
   let [data, setData] = useState({})
   let [loading, setLoading] = useState(true)
   let [movetop, setMoveTop] = useState(false)
@@ -42,33 +44,44 @@ function App () {
   let [selected, setSelected] = useState({})
   const [expiry] = useState(72) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
+  const [bgImage,setBgImage]=useState(image)//background image link 
+  const [Bg,setBg]=useState({})//controls setting a different background on a specific page
 
+ //enables changing of background image depending on the page you are on
+  useEffect(()=>{
+    let Background= {
+      backgroundImage: `linear-gradient(#0002, #0002), url(${bgImage})`,
+     }
+      setBg(Background)
+    },[bgImage,setBg,])
+//fetches and stores unit data in local storage 
   useEffect(() => {
     if (isEmpty(data)) {
       setLoading(true)
-      const localdata = getLocalData('units')
+      const localdata = getLocalData('units')//get data from local storage
       if (localdata) {
         setData(localdata)
         setLoading(false)
       } else {
         axios.get(allUnitsUrl).then(resp => {
           setData(resp.data)
-          setLocalData('units', { units: resp.data }, expiry)
+          setLocalData('units', { units: resp.data }, expiry)//expiry is a limit  to time how old the data can get before we refresh 
           setLoading(false)
         })
       }
     }
   }, [data, expiry])
+  
   return (
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
     >
-      <Themecontext.Provider value={{ lighttheme, setLightTheme }}>
+      <Themecontext.Provider value={{ lighttheme, setLightTheme,bgImage,setBgImage }}>
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
           <Datacontext.Provider value={{ data, setData }}>
-            <div className='App'>
+            <div className='App' style={Bg}>
               <Router>
                 <Navigation />
                 <Loader bg={`${loaderbg}`} />
