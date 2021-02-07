@@ -62,6 +62,7 @@ export const getLocalData = type => {
       return null
   }
 }
+//get no of items in a js object
 const getObjLength = (obj) => {
  return Object.keys(obj).length
   
@@ -84,13 +85,14 @@ export const setLocalData = (key, value, ttl) => {
       if (recent && !undefined) {
         const objlen = getObjLength(recent)
         console.log(objlen)
-        if (objlen >= 6) {
+        if (objlen >= 6) {//6 is the limit of number of items to keep in search history
           //LRU algorithm to remove least recently searched item
           for (let unit in recent) {
             delete recent[unit]
             break// to only delete oldest item
           }
         }
+        //combine old items in history with the recently searched item
         item = {
           ...recent,
           [code]: {
