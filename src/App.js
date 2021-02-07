@@ -25,7 +25,7 @@ import { Redirect } from 'react-router'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
-import { isEmpty, getLocalData, setLocalDataWithExpiry } from './helpers'
+import { isEmpty, getLocalData, setLocalData } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
 // import AddUnits from './components/addunits'
@@ -53,7 +53,7 @@ function App () {
       } else {
         axios.get(allUnitsUrl).then(resp => {
           setData(resp.data)
-          setLocalDataWithExpiry('data', { units: resp.data }, expiry)
+          setLocalData('units', { units: resp.data }, expiry)
           setLoading(false)
         })
       }

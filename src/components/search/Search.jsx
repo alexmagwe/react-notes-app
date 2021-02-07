@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import SearchBar from './SearchBar.jsx'
 import Results from './Results'
 import { Searchcontext } from '../../context'
+import { setLocalData } from '../../helpers'
 import { useSearch } from '../hooks'
 
 const Search = props => {
@@ -18,6 +19,7 @@ const Search = props => {
   const handleClose = choice => {
     setResults([])
     setSelected(choice)
+    setLocalData('recent', choice, null)//saves search to local storage for more personalization
     setSearchTerm('')
   }
   return (

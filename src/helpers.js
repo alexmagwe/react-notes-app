@@ -53,7 +53,7 @@ export const getLocalData = type => {
       }
       break
     case 'recent':
-      let recent = localStorage.getItem('recent')
+      let recent = JSON.parse(localStorage.getItem('recent'))
       if (recent) {
         if (checkIfExpired(recent)) return null
       } else return JSON.parse(recent)
@@ -62,13 +62,54 @@ export const getLocalData = type => {
       return null
   }
 }
-export const setLocalDataWithExpiry = (key, value, ttl) => {
+//get no of items in a js object
+const getObjLength = (obj) => {
+ return Object.keys(obj).length
+  
+}
+export const setLocalData = (key, value, ttl) => {
   const now = new Date()
-  // `item` is an object which contains the original value
-  // as well as the time when it's supposed to expire
-  const item = {
-    ...value,
-    expiry: now.getTime() + ttl * 3600 * 1000
+  let item;
+  switch (key) {
+    case "units":
+      // `item` is an object which contains the original value
+      // as well as the time when it's supposed to expire
+      item = {
+        ...value,
+        expiry: ttl ? now.getTime() + ttl * 3600 * 1000 : null
+      }
+      break
+    case "recent":
+      const { code } = value
+      let recent = JSON.parse(localStorage.getItem("recent"))//recent is an Array of recntly searched units
+      if (recent && !undefined) {
+        const objlen = getObjLength(recent)
+        console.log(objlen)
+        if (objlen >= 6) {//6 is the limit of number of items to keep in search history
+          //LRU algorithm to remove least recently searched item
+          for (let unit in recent) {
+            delete recent[unit]
+            break// to only delete oldest item
+          }
+        }
+        //combine old items in history with the recently searched item
+        item = {
+          ...recent,
+          [code]: {
+            ...value
+          }
+        }
+      }
+      else {
+        item = {
+          [code]: {
+            ...value
+          }
+        }
+      }
+      break
+    default:
+      return null
   }
   localStorage.setItem(key, JSON.stringify(item))
 }
