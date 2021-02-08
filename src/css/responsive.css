@@ -19,7 +19,6 @@
     .search-container {
         top: 35%;
     }
-  
 }
 
 @media screen and (max-width:396px) {
@@ -57,10 +56,6 @@
 /* Landing css */
 
 @media screen and (max-width:650px) {
-    .landing-info {
-        font-size: 30px;
-        max-width: 40%;
-    }
     .landing-logo {
         width: 250px;
         display: block;
@@ -68,13 +63,11 @@
 }
 
 @media (max-width:600px) {
-    
-    
     .landing-content {
-        top: 15%;
+        margin: 3rem auto 0;
     }
     .landing-info {
-        max-width: 100%;
+        width: 100%;
         font-size: 28px;
     }
     .landing-logo {
@@ -87,7 +80,7 @@
     }
     .search-container {
         width: 100%;
-        margin: 10px auto;
+        margin: 1rem auto;
     }
     .banner {
         top: -150px;
@@ -95,6 +88,23 @@
     }
     .form-container {
         width: 80%;
+    }
+    .recent-ul {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+    .top-content-inner-section h3 {
+        margin-bottom: 10px;
+    }
+    .tab-navigation {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .tab-navigation {
+        width: 100%;
     }
 }
 
@@ -144,5 +154,11 @@
 @media screen and (max-width:200px) {
     .upload-item-name {
         word-break: break-all;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .search-container {
+        min-width: 70%;
     }
 }

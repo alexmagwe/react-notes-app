@@ -10,10 +10,11 @@
 .landing-content {
     width: 80%;
     position: relative;
-    margin: 4em auto 0;
-    height: 60%;
+    margin: 6rem auto 0;
+    min-height: 60vh;
     padding: 0 10px;
     display: flex;
+    /* border: 1px solid rgb(46, 165, 72); */
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -32,45 +33,68 @@
     display: block;
 }
 
-.img-bg {
-    background-image: url(../images/butterfly.jpg)
-}
-
 .landing-info {
-    width: 40%;
-    font-size: 28px;
+    width: 50%;
     margin: 0 auto;
-    align-self: flex-start;
+    line-height: 2.5rem;
     text-align: center;
-    line-height: 1.5em;
 }
 
-.recent-container {
-    /* border: 1px solid rgb(46, 165, 72); */
-    height: 80px;
+.landing-info h4 {
+    width: 100%;
+    font-size: 2rem;
 }
 
 .recent-ul {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 1em;
     align-items: center;
-    height: 100%;
+    /* border: 1px solid rgb(15, 201, 15); */
 }
 
 .recent-item {
-    /* border: 1px solid rgb(40, 42, 175); */
-    border-radius: 50%;
-    height: 100%;
-    background-color: rgb(41, 79, 182);
-    width: 80px;
-    font-weight: bold;
+    border-radius: 5%;
+    min-height: 50px;
+    /* background-color: rgb(41, 79, 182); */
+    background-color: rgb(231, 231, 231);
+    width: 150px;
+    font-weight: 600;
     display: flex;
+    font-family: inherit;
     font-size: 14px;
-    padding: 1.5rem;
-    justify-content: center;
+    padding: 0.5rem;
     align-items: center;
+    text-align: center;
 }
 
-.text-light {
-    color: #fff;
+.recent-item:nth-child(1) {
+    background-color: #BF0D00;
+}
+
+.recent-item:nth-child(2) {
+    background-color: #ED6700;
+}
+
+.recent-item:nth-child(3) {
+    background-color: #190AB5;
+}
+
+.recent-item:nth-child(4) {
+    background-color: #75108D;
+}
+
+.recent-item:nth-child(5) {
+    background-color: #008712;
+}
+
+.recent-item:nth-child(6) {
+    background-color: #A37041;
+}
+
+.inherit {
+    color: inherit;
 }

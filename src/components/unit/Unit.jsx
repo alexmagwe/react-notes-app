@@ -10,7 +10,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { unitNotesUrl } from '../api/urls'
 import Tabs from './Tabs'
-import Recent from './Recent'
+// import Recent from '../reusables/Recent'
 
 function Unit (props) {
   const { code } = useParams()
@@ -55,7 +55,7 @@ function Unit (props) {
         </div>
       </div>
       <Tabs properties={notes} />
-      <Recent />
+      {/* <Recent /> */}
     </div>
   )
 }

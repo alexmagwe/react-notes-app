@@ -9,7 +9,7 @@ function Results (props) {
         {results.map((el, i) => (
           <Button key={i} onClick={() => handleClose(el)}>
             <li className='single-result result-text'>
-              <small className='grey'>{el['code']}</small>
+              <small className='dark-grey'>{el['code']}</small>
               {el[desc]}
             </li>
           </Button>

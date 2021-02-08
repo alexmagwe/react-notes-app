@@ -4,7 +4,7 @@ import { Loadingcontext, Datacontext } from '../../context'
 import Recent from '../reusables/Recent'
 const Landing = () => {
   const { setLoading } = useContext(Loadingcontext)
-  const { data ,recent} = useContext(Datacontext)
+  const { data} = useContext(Datacontext)
 
   useEffect(() => {
     setLoading(false)
@@ -15,8 +15,8 @@ const Landing = () => {
       <div className='landing-content'>
         <div className='landing-info'>
           <h4 className='text-primary'>
-            <span className='u-line'>Access</span> all Course notes and 
-            Resources
+            <span className='u-line'>Access</span> all Course  
+            Material
           </h4>
         </div>
         <div className='search-container'>

@@ -1,108 +1,122 @@
-.grid-container{
-    display:grid;
-    width:100%;
-    min-height:calc(100vh - 85px);
+/* css for unit notes page */
+
+.grid-container {
+    display: grid;
+    width: 100%;
+    min-height: calc(100vh - 85px);
+    height: 100%;
     background-color: #fff;
-    position:relative;
+    position: relative;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows:repeat(3,minmax(120px,auto));
-    grid-template-areas: "top  top  top"
-                         "notes notes  recent"
-                         "notes notes  recent"
-                         
-}
-.top-content-section{
-    grid-area:top;
-    max-height:200px;
-    padding:1em;
-    display:flex;
-    justify-content:center;
-    background:linear-gradient(to right,#7C2500,#55CFD7);
-    align-items:center;
+    grid-template-rows: repeat(3, minmax(120px, auto));
+    grid-template-areas: "notes  notes top" "notes notes  recent";
 }
 
-.top-content-inner-section{
-    display:flex;
-    width:85%;
-    position:relative;
+.top-content-section {
+    grid-area: top;
+    padding: 1rem;
+    display: flex;
+    color: #1119;
+    justify-content: center;
+    /* background: linear-gradient(to right, #7C2500, #55CFD7); */
+    /* background: var(--card1-bg); */
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 19px 19px 38px #cccccc, -19px -19px 38px #ffffff;
+    align-items: center;
+}
+
+.top-content-inner-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(100px, 120px);
+    gap: 1rem;
+    width: 85%;
+    flex-direction: column;
+    position: relative;
     flex-wrap: wrap;
-    margin:0 auto;
-    height:100%;
-    justify-content:space-between;
-    align-items:center;
+    height: auto;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
 }
 
-.inner-section-content{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
-
+.inner-section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 100%;
 }
+
+.inner-section-content h2 {
+    font-size: 22px;
+}
+
 .search-container-top {
-    position:relative;
+    position: relative;
     width: 300px;
     /* top:0; */
     /* right: 0; */
     z-index: 10;
 }
-.notes-section{
-    grid-area:notes;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
+
+.notes-section {
+    grid-area: notes;
+    display: flex;
+    min-height: 65vh;
+    flex-direction: column;
+    /* border: 1px solid red; */
+    justify-content: flex-start;
 }
-.recent-container{
+
+.recent-container {
     grid-area: recent;
 }
-.tab-navigation{
-    color:#111;
-    padding:10px;
-    display:flex;
-    justify-content:space-evenly;
+
+.tab-navigation {
+    color: #111;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    width:60%;
-    margin:0 auto;
-}
-.tab-nav-item{
-    position:relative;
+    width: 60%;
+    margin: 0 auto;
 }
 
-.slider{
-    width:0;
-    position:absolute;
-    border-radius:5px;
-    height:5px;
-    bottom:-5px;
-    left:0;
-    transition:all 0.4s ease-in;
-    
+.tab-nav-item {
+    position: relative;
 }
-.active{
-    background-color:var(--secondary-color);
-    width:100%;
-    height:5px;
+
+.slider {
+    width: 0;
+    position: absolute;
+    border-radius: 5px;
+    height: 5px;
+    bottom: -5px;
+    left: 0;
+    transition: all 0.4s ease-in;
 }
+
+.active {
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 5px;
+}
+
 @media screen and (max-width:600px) {
-    
-    .grid-container{
-        grid-template-areas:"top top top"
-                            "notes notes notes"
-                            "recent recent recent"
+    .grid-container {
+        grid-template-areas: "top top top" "notes notes notes" "recent recent recent"
     }
-      .top-content-inner-section h3 {
+    .top-content-inner-section h3 {
         margin-bottom: 10px;
     }
-    .tab-navigation{
-        width:100%;
-        
-
+    .tab-navigation {
+        width: 100%;
     }
 }
-@media screen and (max-width:800px) {
-    
-    .tab-navigation{
-        width:100%;
-    }
-    }    
 
-    
+@media screen and (max-width:800px) {
+    .tab-navigation {
+        width: 100%;
+    }
+}
