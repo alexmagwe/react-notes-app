@@ -1,15 +1,20 @@
 /* css for unit notes page */
 
+.unit-container {
+    width: 100%;
+    background-color: #fff;
+}
+
 .grid-container {
     display: grid;
-    width: 100%;
+    width: 85%;
+    margin: 0 auto;
     min-height: calc(100vh - 85px);
     height: 100%;
-    background-color: #fff;
     position: relative;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(3, minmax(120px, auto));
-    grid-template-areas: "notes  notes top" "notes notes  recent";
+    grid-template-rows: repeat(2, minmax(120px, auto));
+    grid-template-areas: "top top top" "notes notes  recent";
 }
 
 .top-content-section {
@@ -18,38 +23,41 @@
     display: flex;
     color: #1119;
     justify-content: center;
-    /* background: linear-gradient(to right, #7C2500, #55CFD7); */
-    /* background: var(--card1-bg); */
-    border-radius: 10px;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    box-shadow: 19px 19px 38px #cccccc, -19px -19px 38px #ffffff;
+    background: linear-gradient(135deg, #7C2500, #55CFD7);
+    border-radius: 5px;
     align-items: center;
 }
 
 .top-content-inner-section {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(100px, 120px);
-    gap: 1rem;
-    width: 85%;
-    flex-direction: column;
+    display: flex;
+    width: 100%;
     position: relative;
     flex-wrap: wrap;
     height: auto;
     justify-items: center;
     align-items: center;
-    justify-content: center;
+    /* border: 1px solid rgb(182, 74, 74); */
+    justify-content: space-between;
 }
 
 .inner-section-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    /* flex-direction: column; */
+    /* border: 1px solid rgb(182, 74, 74); */
+    flex-direction: row-reverse;
+    width: 60%;
+    align-items: center;
+    margin-bottom: 1rem;
+    justify-content: flex-end;
     max-width: 100%;
 }
 
 .inner-section-content h2 {
-    font-size: 22px;
+    font-size: 20px;
+}
+
+.inner-section-content h3 {
+    margin-right: 1rem;
 }
 
 .search-container-top {
@@ -64,6 +72,7 @@
     grid-area: notes;
     display: flex;
     min-height: 65vh;
+    border-radius: 10px;
     flex-direction: column;
     /* border: 1px solid red; */
     justify-content: flex-start;
@@ -71,6 +80,21 @@
 
 .recent-container {
     grid-area: recent;
+}
+
+.unit-recent {
+    grid-template-columns: 1fr;
+    /* border: 1px solid red; */
+    margin-top: 1rem;
+    justify-content: flex-end;
+    align-content: start;
+    justify-items: flex-end;
+    grid-template-rows: repeat(auto, 1fr);
+}
+
+.unit-recent li {
+    width: 60%;
+    border-radius: 5px;
 }
 
 .tab-navigation {
@@ -85,6 +109,12 @@
 
 .tab-nav-item {
     position: relative;
+}
+
+.tab-nav-item {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(56, 56, 56);
 }
 
 .slider {
@@ -107,8 +137,14 @@
     .grid-container {
         grid-template-areas: "top top top" "notes notes notes" "recent recent recent"
     }
-    .top-content-inner-section h3 {
-        margin-bottom: 10px;
+    .top-content-inner-section {
+        justify-content: center;
+    }
+    .inner-section-content {
+        width: 80%;
+        justify-content: center;
+        margin: 1rem auto;
+        align-content: center;
     }
     .tab-navigation {
         width: 100%;
@@ -117,6 +153,15 @@
 
 @media screen and (max-width:800px) {
     .tab-navigation {
+        width: 100%;
+    }
+    .unit-recent {
+        grid-template-columns: repeat(auto-fit minmax(100px, 150px));
+        grid-template-rows: repeat(1fr, auto);
+        width: 100%;
+        justify-items: center;
+    }
+    .unit-recent li {
         width: 100%;
     }
 }

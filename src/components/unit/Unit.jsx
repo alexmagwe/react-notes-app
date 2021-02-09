@@ -10,9 +10,9 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { unitNotesUrl } from '../api/urls'
 import Tabs from './Tabs'
-// import Recent from '../reusables/Recent'
+import Recent from '../reusables/Recent'
 
-function Unit (props) {
+function Unit(props) {
   const { code } = useParams()
   const { setLoading } = useContext(Loadingcontext)
   let { data, setData } = useContext(Datacontext)
@@ -42,20 +42,23 @@ function Unit (props) {
   }, [getNotes, code])
 
   return (
-    <div className='grid-container'>
-      <div className='top-content-section'>
-        <div className='top-content-inner-section'>
-          <div className='inner-section-content'>
-            <h2 className='text-light mb-1'>{notes.unit} </h2>
-            <h3 className='grey'>{notes.code}</h3>
-          </div>
-          <div className='search-container-top'>
-            <Search source={data} />
+    <div className='unit-container'>
+      <div className='grid-container'>
+        <div className='top-content-section'>
+          <div className='top-content-inner-section'>
+            <div className='inner-section-content'>
+              <h2 className='grey'>{notes.unit} </h2>
+              <h3 className='light-grey'>{notes.code}</h3>
+            </div>
+            <div className='search-container-top'>
+              <Search source={data} />
+            </div>
           </div>
         </div>
+        <Tabs properties={notes} />
+                <Recent data={{page:'unit',unit:notes.code}}/>
+
       </div>
-      <Tabs properties={notes} />
-      {/* <Recent /> */}
     </div>
   )
 }

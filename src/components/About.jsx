@@ -10,7 +10,7 @@ function About() {
     return (
         <div className='about-container'>
             <p className='about-paragraph center-20 font-20 font-primary'>
-           Biblioteka which is polish meaning 'Library' is a platform for accesing course resources,it was created in 2020 and the main aim of the website was to allow easy access to course resources
+           Biblioteka which is polish meaning 'Library' is a platform for accesing course <span className='u-line'>Notes</span>, previous exams,lecture videos and assignments
        </p> </div>
     )
 }

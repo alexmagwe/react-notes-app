@@ -2,10 +2,10 @@
     color: #fff;
     position: relative;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     /* height: 100%; */
     font-family: Verdana, sans-serif;
-    /* overflow:auto; */
+    /* overflow: auto; */
 }
 
 :root {
@@ -75,6 +75,10 @@ h1 h2, h3, h4 {
     color: rgb(110, 110, 110);
 }
 
+.light-grey {
+    color: rgb(224, 224, 224);
+}
+
 .hide {
     display: none;
 }
@@ -96,11 +100,6 @@ h1 h2, h3, h4 {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    max-width: 100px;
-    height: auto;
 }
 
 .nav-list {
@@ -128,7 +127,7 @@ h1 h2, h3, h4 {
     position: relative;
     color: inherit;
     margin: 0 auto 1rem;
-    width: 50%;
+    width: 80%;
     transition: all 0.2s ease-in-out;
 }
 
@@ -352,6 +351,11 @@ h1 h2, h3, h4 {
     position: absolute;
 }
 
+.result-text {
+    color: rgb(78, 78, 78);
+    font-weight: 600;
+}
+
 .results-list {
     width: 100%;
     height: auto;
@@ -471,6 +475,6 @@ h1 h2, h3, h4 {
 
 .footer small {
     width: 100%;
-    color: rgba(107, 106, 103, 0.535);
+    color: rgba(133, 133, 133, 0.535);
     text-align: center;
 }

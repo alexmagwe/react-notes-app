@@ -60,10 +60,6 @@ function App () {
       }
     }
   }, [data, expiry])
-  useEffect(() => {
-    console.log('in app:',recent)
-
-  }, [recent])
   return (
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
@@ -72,7 +68,7 @@ function App () {
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
-          <Datacontext.Provider value={{ data, setData ,recent}}>
+          <Datacontext.Provider value={{ data, setData ,recent,setRecent}}>
             <div className='App'>
               <Router>
                 <Navigation />
@@ -92,8 +88,8 @@ function App () {
                 </Switch>
                 <Graphik />
 
-                <Footer />
               </Router>
+                <Footer />
             </div>
           </Datacontext.Provider>
         </Searchcontext.Provider>
