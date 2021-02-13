@@ -19,12 +19,14 @@ import {
 import Footer from './components/footer'
 import Landing from './components/home/landing'
 import { Redirect } from 'react-router'
+import { useBeforeunload } from 'react-beforeunload';
+
 // import Home from './components/home/Home'
 // import Login from './components/login'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
-import { isEmpty, getLocalData, setLocalData } from './helpers'
+import { isEmpty, getLocalData, setLocalData,recent } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
 // import AddUnits from './components/addunits'
@@ -32,6 +34,7 @@ import ErrorPage from './components/errors/404'
 import Support from './components/contribute/support'
 import Loader from './components/reusables/Loader'
 import Graphik from './components/Graphik'
+import {useLocalData} from './components/hooks'
 import Unit from './components/unit/Unit'
 function App () {
   let [data, setData] = useState({})
@@ -41,10 +44,22 @@ function App () {
   let [selected, setSelected] = useState({})
   const [expiry] = useState(72) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
-  const [recent,setRecent]=useState({})
+  const [recentunits,setRecent]=useState(null)
+  const {updateRecent}=useLocalData({recentunits,setRecent})
+  useBeforeunload((event) => {
+    // event.preventDefault()
+    setLocalData(recent,recentunits)
+  })
+  ;
 
   useEffect(() => {
-    setRecent(getLocalData('recent'))
+    if (getLocalData(recent)){
+      localStorage.removeItem('recent')
+    }
+    else if (getLocalData('data')){
+      localStorage.removeItem('data')
+    }
+    setRecent(getLocalData(recent))
     if (isEmpty(data)) {
       setLoading(true)
       const localdata = getLocalData('units')
@@ -68,7 +83,7 @@ function App () {
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
-          <Datacontext.Provider value={{ data, setData ,recent,setRecent}}>
+          <Datacontext.Provider value={{ data, setData ,recentunits,setRecent,updateRecent}}>
             <div className='App'>
               <Router>
                 <Navigation />

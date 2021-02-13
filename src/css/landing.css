@@ -16,7 +16,7 @@
     display: flex;
     /* border: 1px solid rgb(46, 165, 72); */
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-evenly;
     align-items: center;
 }
