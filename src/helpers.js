@@ -62,7 +62,8 @@ export const getLocalData = type => {
       }
       break
     default:
-      return null
+      let other = JSON.parse(localStorage.getItem(type))
+      return other
   }
 }
 //get no of items in a js object
@@ -70,6 +71,21 @@ export const getObjLength = (obj) => {
   return Object.keys(obj).length
 
 }
+export const geticonLink=(ext)=>{
+switch(ext){
+  case 'pdf':
+    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/pdf'
+  case 'docx':
+    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+   case 'doc':
+    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  case 'ppt':
+    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation'
+  default:
+    return null
+  }
+}
+
 //LRU algorithm to remove least recently searched item
 export const removeLru = (data) => {
   //:params an obj data type

@@ -56,7 +56,7 @@ function App () {
     if (getLocalData(recent)){
       localStorage.removeItem('recent')
     }
-    else if (getLocalData('data')){
+    if (getLocalData('data')){
       localStorage.removeItem('data')
     }
     setRecent(getLocalData(recent))
