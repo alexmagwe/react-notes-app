@@ -202,6 +202,9 @@ h1 h2, h3, h4 {
 .font-lg {
     font-size: 32px;
 }
+.font-12{
+font-size: 12px;
+}
 
 .font-28 {
     font-size: 28px;

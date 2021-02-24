@@ -17,8 +17,8 @@
 }
 
 .link-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     object-fit: contain;
 }
 
@@ -51,6 +51,9 @@
     min-width:70%;
     display: flex;
     justify-content:flex-sta;
+}
+.right-item-section{
+    display:flex;
 }
 .left-item-section .icon{
     object-fit: contain;

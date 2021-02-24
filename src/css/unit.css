@@ -84,10 +84,6 @@
     color: rgb(220, 220, 220);
     
 }
-.recent-item .code{
-    color:var(--secondary-color);
-    font-size:12px;
-}
 
 .recent-container {
     grid-area: recent;
