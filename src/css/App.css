@@ -14,12 +14,21 @@
     --secondary-color: rgb(113, 225, 240);
     --primary: #fff;
     --nav-height: 85px;
-    --secondary: #7C2500;
+    --secondary: #7c2500;
+}
+
+.switch-wrapper {
+    position: relative;
+}
+
+.switch-wrapper>div {
+    position: absolute;
+    width: 100%;
 }
 
 h1 h2, h3, h4 {
     color: inherit;
-    font-family: 'Open-Sans', sans-serif;
+    font-family: "Open-Sans", sans-serif;
 }
 
 .banner {
@@ -156,7 +165,7 @@ h1 h2, h3, h4 {
     width: 30px;
     filter: contrast(10%) sepia(300%);
     bottom: 8px;
-    transition: 0.3s ease-in-out
+    transition: 0.3s ease-in-out;
 }
 
 .search-input {
@@ -202,8 +211,9 @@ h1 h2, h3, h4 {
 .font-lg {
     font-size: 32px;
 }
-.font-12{
-font-size: 12px;
+
+.font-12 {
+    font-size: 12px;
 }
 
 .font-28 {
@@ -219,7 +229,7 @@ font-size: 12px;
 }
 
 .font-primary {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .mg-s {
@@ -246,7 +256,7 @@ font-size: 12px;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 20%
+    top: 20%;
 }
 
 .rounded-md {
@@ -262,14 +272,14 @@ font-size: 12px;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 30%
+    top: 30%;
 }
 
 .center-40 {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 40%
+    top: 40%;
 }
 
 .moderator-form form {
@@ -283,7 +293,7 @@ font-size: 12px;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 10%
+    top: 10%;
 }
 
 .blend {
@@ -303,7 +313,7 @@ font-size: 12px;
 }
 
 .shadow {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 .center {
@@ -438,7 +448,7 @@ font-size: 12px;
 }
 
 .light-bg {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .vague-bg {

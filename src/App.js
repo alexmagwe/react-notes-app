@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import "react-tiger-transition/styles/main.min.css";
 import './css/App.css'
 import './css/landing.css'
 import './css/notes.css'
@@ -8,8 +9,10 @@ import './css/unit.css'
 import './css/search-modal.css'
 import './css/contribute.css'
 import './css/error.css'
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Navigation from './components/nav/navigation'
+import { AnimatedSwitch } from 'react-router-transition';
+
 import {
   Searchcontext,
   Loadingcontext,
@@ -26,7 +29,7 @@ import { useBeforeunload } from 'react-beforeunload';
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
-import { isEmpty, getLocalData, setLocalData,recent } from './helpers'
+import { isEmpty, getLocalData, setLocalData, recent } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
 // import AddUnits from './components/addunits'
@@ -34,9 +37,9 @@ import ErrorPage from './components/errors/404'
 import Support from './components/contribute/support'
 import Loader from './components/reusables/Loader'
 import Graphik from './components/Graphik'
-import {useLocalData} from './components/hooks'
+import { useLocalData } from './components/hooks'
 import Unit from './components/unit/Unit'
-function App () {
+function App() {
   let [data, setData] = useState({})
   let [loading, setLoading] = useState(true)
   let [movetop, setMoveTop] = useState(false)
@@ -44,19 +47,19 @@ function App () {
   let [selected, setSelected] = useState({})
   const [expiry] = useState(72) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
-  const [recentunits,setRecent]=useState(null)
-  const {updateRecent}=useLocalData({recentunits,setRecent})
+  const [recentunits, setRecent] = useState(null)
+  const { updateRecent } = useLocalData({ recentunits, setRecent })
   useBeforeunload((event) => {
     // event.preventDefault()
-    setLocalData(recent,recentunits)
+    setLocalData(recent, recentunits)
   })
-  ;
+    ;
 
   useEffect(() => {
-    if (getLocalData(recent)){
+    if (getLocalData(recent)) {
       localStorage.removeItem('recent')
     }
-    if (getLocalData('data')){
+    if (getLocalData('data')) {
       localStorage.removeItem('data')
     }
     setRecent(getLocalData(recent))
@@ -83,16 +86,22 @@ function App () {
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
-          <Datacontext.Provider value={{ data, setData ,recentunits,setRecent,updateRecent}}>
+          <Datacontext.Provider value={{ data, setData, recentunits, setRecent, updateRecent }}>
             <div className='App'>
               <Router>
+
                 <Navigation />
                 <Loader bg={`${loaderbg}`} />
                 {!isEmpty(selected) ? (
                   <Redirect to={`/unit/${selected.code}`} />
                 ) : null}
 
-                <Switch>
+                <AnimatedSwitch
+                  atEnter={{ opacity: 0 }}
+                  atLeave={{ opacity: 0 }}
+                  atActive={{ opacity: 1 }}
+                  className="switch-wrapper"
+                >
                   <Route path='/contribute' exact component={Contribute} />
                   <Route path='/unit/:code' component={Unit} />
                   <Route path='/support' exact component={Support} />
@@ -100,11 +109,12 @@ function App () {
                   <Route path='/about' exact component={About} />
                   <Route path='/upload' exact component={Upload} />
                   <Route path='*' component={ErrorPage} />
-                </Switch>
+                </AnimatedSwitch>
                 <Graphik />
 
+                {/* </Navigation> */}
               </Router>
-                <Footer />
+              <Footer />
             </div>
           </Datacontext.Provider>
         </Searchcontext.Provider>
