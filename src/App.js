@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import "react-tiger-transition/styles/main.min.css";
 import './css/App.css'
 import './css/landing.css'
 import './css/notes.css'
