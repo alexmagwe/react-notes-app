@@ -5,9 +5,9 @@ body {
   /* object-fit: cover; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(#0006, #0006), url(./images/globelibrary.jpg);
+  background: linear-gradient(#0007, #0d192ba1), url(./images/relax.jpg);
   background-size: cover;
-  backdrop-filter: contrast(105%) brightness(100%);
+  backdrop-filter: contrast(115%) brightness(100%);
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -28,4 +28,10 @@ code {
 #root {
   width: 100%;
   min-height: 100vh;
+}
+@media screen and (max-width:768px){
+  body{
+    background: linear-gradient(#082858, #111);
+  }
+
 }
