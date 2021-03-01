@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import Search from '../search/Search.jsx'
 import { Loadingcontext, Datacontext } from '../../context'
-
+import Recent from '../reusables/Recent'
+import biblioteka from '../../images/logo2.png'
 const Landing = () => {
   const { setLoading } = useContext(Loadingcontext)
   const { data } = useContext(Datacontext)
@@ -13,19 +14,17 @@ const Landing = () => {
   return (
     <div className='landing'>
       <div className='landing-content'>
+        <img className='landing-logo' src={biblioteka} alt='Biblioteka' />
         <div className='landing-info'>
-          <h4 className='text-primary'>
-            {' '}
-            <span className='u-line'>Access all</span> Course notes and other
-            Resources from anywhere
-          </h4>
+          <h5 className=' text-primary'>
+            Get <span className='u-line'>Access</span> to all Course
+            Material
+          </h5>
         </div>
         <div className='search-container'>
-          <h4 className='text-primary font-20 mb-2'>
-            Search the catalogue for hundreds of resources
-          </h4>
           <Search source={data} />
         </div>
+        <Recent data={{ page: 'landing' }} />
       </div>
       {/* {!isEmpty(notes) ? (<Notes showlink={true} notes={{ notes, setNotes }} />) : null} */}
     </div>

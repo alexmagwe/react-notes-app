@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Footer () {
+function Footer() {
   return (
-    <footer className='footer'>
-      <small>@Keplalabs</small>
-    </footer>
+    <div className='footer'>
+      <small>&#169;Keplalabs</small>
+    </div>
   )
 }
 

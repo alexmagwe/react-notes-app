@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
-import Box from '@material-ui/core/Box'
+import Box from '@material-ui/core/Box'//controls setting a different background on a specific page
 import Grid from '@material-ui/core/Grid'
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import MessageIcon from '@material-ui/icons/Message'

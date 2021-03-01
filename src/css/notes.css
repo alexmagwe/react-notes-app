@@ -10,15 +10,15 @@
     z-index: 0;
     padding: 10px;
     /* border:2px solid red; */
-    max-height: 85%;
-    width: 80%;
+    max-height: 80%;
+    width: 100%;
     overflow-y: auto;
     background-color: #fff;
 }
 
 .link-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     object-fit: contain;
 }
 
@@ -37,8 +37,7 @@
     justify-content: space-between;
     align-items: center;
     color: #000;
-    display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     /* box-shadow: -4px 2px 2px rgb(213, 211, 211); */
 }
 
@@ -48,13 +47,27 @@
     margin-right: 12px;
 }
 
+.left-item-section{
+    min-width:70%;
+    display: flex;
+    justify-content:flex-sta;
+}
+.right-item-section{
+    display:flex;
+}
+.left-item-section .icon{
+    object-fit: contain;
+    width:16px;
+    margin-right: 1rem;
+    /* height:16px; */
+}
+
 .notes-name {
-    word-break: break-all;
+    /* word-break: break-all; */
     color: inherit;
     font-weight: 400;
     /* text-transform: lowercase; */
     text-transform: capitalize;
-    max-width: 70%;
     font-size: 14px;
 }
 

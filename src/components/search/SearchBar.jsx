@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import searchIcon from '../../images/icons/search.png'
+// import searchIcon from '../../images/icons/search.png'
 
 const SearchBar = props => {
   const { handleSearch, searchTerm, ref } = props.form
@@ -20,7 +20,7 @@ const SearchBar = props => {
         // autoFocus
         placeholder={`${ref}`}
       />
-      <img className='fa-search' src={searchIcon} alt='' />
+      {/* <img className='fa-search' src={searchIcon} alt='' /> */}
     </div>
   )
 }

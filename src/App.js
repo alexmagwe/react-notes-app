@@ -9,8 +9,10 @@ import './css/unit.css'
 import './css/search-modal.css'
 import './css/contribute.css'
 import './css/error.css'
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Navigation from './components/nav/navigation'
+import { AnimatedSwitch } from 'react-router-transition';
+
 import {
   Searchcontext,
   Loadingcontext,
@@ -20,13 +22,14 @@ import {
 import Footer from './components/footer'
 import Landing from './components/home/landing'
 import { Redirect } from 'react-router'
+import { useBeforeunload } from 'react-beforeunload';
+
 // import Home from './components/home/Home'
 // import Login from './components/login'
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
-import image from './images/globelibrary.jpg'
-import { isEmpty, getLocalData, setLocalData } from './helpers'
+import { isEmpty, getLocalData, setLocalData, recent } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
 // import AddUnits from './components/addunits'
@@ -34,9 +37,9 @@ import ErrorPage from './components/errors/404'
 import Contact from './components/contribute/Contact'
 import Loader from './components/reusables/Loader'
 import Graphik from './components/Graphik'
+import { useLocalData } from './components/hooks'
 import Unit from './components/unit/Unit'
-function App () {
-  
+function App() {
   let [data, setData] = useState({})
   let [loading, setLoading] = useState(true)
   let [movetop, setMoveTop] = useState(false)
@@ -44,18 +47,30 @@ function App () {
   let [selected, setSelected] = useState({})
   const [expiry] = useState(72) //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false)
-  const [bgImage,setBgImage]=useState(image)//background image link 
-  const [Bg,setBg]=useState({})//controls setting a different background on a specific page
+  const [recentunits, setRecent] = useState(null)
+  const { updateRecent } = useLocalData({ recentunits, setRecent })
+  useBeforeunload((event) => {
+    // event.preventDefault()
+    setLocalData(recent, recentunits)
+  })
+    ;
 
- //enables changing of background image depending on the page you are on
-  useEffect(()=>{
-    let Background= {
-      backgroundImage: `linear-gradient(#0002, #0002), url(${bgImage})`,
-     }
-      setBg(Background)
-    },[bgImage,setBg,])
-//fetches and stores unit data in local storage 
+  //enables changing of background image depending on the page you are on
   useEffect(() => {
+    let Background = {
+      backgroundImage: `linear-gradient(#0002, #0002), url(${bgImage})`,
+    }
+    setBg(Background)
+  }, [bgImage, setBg,])
+  //fetches and stores unit data in local storage 
+  useEffect(() => {
+    if (getLocalData(recent)) {
+      localStorage.removeItem('recent')
+    }
+    if (getLocalData('data')) {
+      localStorage.removeItem('data')
+    }
+    setRecent(getLocalData(recent))
     if (isEmpty(data)) {
       setLoading(true)
       const localdata = getLocalData('units')//get data from local storage
@@ -71,37 +86,44 @@ function App () {
       }
     }
   }, [data, expiry])
-  
+
   return (
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
     >
-      <Themecontext.Provider value={{ lighttheme, setLightTheme,bgImage,setBgImage }}>
+      <Themecontext.Provider value={{ lighttheme, setLightTheme, bgImage, setBgImage }}>
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
-          <Datacontext.Provider value={{ data, setData }}>
-            <div className='App' style={Bg}>
+          <Datacontext.Provider value={{ data, setData, recentunits, setRecent, updateRecent }}>
+            <div className='App'>
               <Router>
+
                 <Navigation />
                 <Loader bg={`${loaderbg}`} />
                 {!isEmpty(selected) ? (
                   <Redirect to={`/unit/${selected.code}`} />
                 ) : null}
 
-                <Switch>
-                  <Route path="/contribute" exact component={Contribute} />
-                  <Route path="/unit/:code" component={Unit} />
-                  <Route path="/contact" exact component={Contact} />
-                  <Route path="/" exact component={Landing} />
-                  <Route path="/about" exact component={About} />
-                  <Route path="/upload" exact component={Upload} />
-                  <Route path="*" component={ErrorPage} />
-                </Switch>
+                <AnimatedSwitch
+                  atEnter={{ opacity: 0 }}
+                  atLeave={{ opacity: 0 }}
+                  atActive={{ opacity: 1 }}
+                  className="switch-wrapper"
+                >
+                  <Route path='/contribute' exact component={Contribute} />
+                  <Route path='/unit/:code' component={Unit} />
+                  <Route path='/support' exact component={Support} />
+                  <Route path='/' exact component={Landing} />
+                  <Route path='/about' exact component={About} />
+                  <Route path='/upload' exact component={Upload} />
+                  <Route path='*' component={ErrorPage} />
+                </AnimatedSwitch>
                 <Graphik />
 
-                <Footer />
+                {/* </Navigation> */}
               </Router>
+              <Footer />
             </div>
           </Datacontext.Provider>
         </Searchcontext.Provider>

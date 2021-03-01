@@ -2,13 +2,10 @@
     color: #fff;
     position: relative;
     width: 100%;
-    min-height: 100%;
-    /* backdrop-filter: contrast(105%) brightness(90%); */
+    min-height: 100vh;
+    /* height: 100%; */
     font-family: Verdana, sans-serif;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* overflow:auto; */
+    /* overflow: auto; */
 }
 
 :root {
@@ -17,12 +14,22 @@
     --secondary-color: rgb(113, 225, 240);
     --primary: #fff;
     --nav-height: 85px;
-    --secondary: #7C2500;
+    --secondary: #7c2500;
+}
+
+.switch-wrapper {
+    position: relative;
+    height:100%;
+}
+
+.switch-wrapper>div {
+    position: absolute;
+    width: 100%;
 }
 
 h1 h2, h3, h4 {
     color: inherit;
-    font-family: 'Open-Sans', sans-serif;
+    font-family: "Open-Sans", sans-serif;
 }
 
 .banner {
@@ -71,7 +78,15 @@ h1 h2, h3, h4 {
 }
 
 .grey {
-    color: rgb(151, 149, 149);
+    color: rgb(197, 195, 195);
+}
+
+.dark-grey {
+    color: rgb(110, 110, 110);
+}
+
+.light-grey {
+    color: rgb(224, 224, 224);
 }
 
 .hide {
@@ -90,16 +105,11 @@ h1 h2, h3, h4 {
     padding: 1em 0;
     top: 0;
     position: relative;
-    z-index: 3;
+    z-index: 5;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    max-width: 100px;
-    height: auto;
 }
 
 .nav-list {
@@ -123,10 +133,11 @@ h1 h2, h3, h4 {
 /* search bar */
 
 .search-container {
-    min-width: 40%;
+    min-width: 50%;
     position: relative;
     color: inherit;
-    width: 50%;
+    margin: 0 auto 1rem;
+    width: 80%;
     transition: all 0.2s ease-in-out;
 }
 
@@ -155,14 +166,14 @@ h1 h2, h3, h4 {
     width: 30px;
     filter: contrast(10%) sepia(300%);
     bottom: 8px;
-    transition: 0.3s ease-in-out
+    transition: 0.3s ease-in-out;
 }
 
 .search-input {
     width: 100%;
     border: 1px solid #e0e0e0;
     background-color: var(--primary);
-    border-radius: 5px;
+    border-radius: 50px;
     outline: none;
     min-height: 40px;
     padding: 15px;
@@ -202,6 +213,10 @@ h1 h2, h3, h4 {
     font-size: 32px;
 }
 
+.font-12 {
+    font-size: 12px;
+}
+
 .font-28 {
     font-size: 28px;
 }
@@ -215,7 +230,7 @@ h1 h2, h3, h4 {
 }
 
 .font-primary {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .mg-s {
@@ -242,7 +257,7 @@ h1 h2, h3, h4 {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 20%
+    top: 20%;
 }
 
 .rounded-md {
@@ -258,14 +273,14 @@ h1 h2, h3, h4 {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 30%
+    top: 30%;
 }
 
 .center-40 {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 40%
+    top: 40%;
 }
 
 .moderator-form form {
@@ -279,7 +294,7 @@ h1 h2, h3, h4 {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 10%
+    top: 10%;
 }
 
 .blend {
@@ -299,7 +314,7 @@ h1 h2, h3, h4 {
 }
 
 .shadow {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 .center {
@@ -350,6 +365,11 @@ h1 h2, h3, h4 {
     overflow-y: auto;
     transform: translateY(20px);
     position: absolute;
+}
+
+.result-text {
+    color: rgb(78, 78, 78);
+    font-weight: 600;
 }
 
 .results-list {
@@ -431,7 +451,7 @@ h1 h2, h3, h4 {
 }
 
 .light-bg {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 .vague-bg {
@@ -448,10 +468,12 @@ h1 h2, h3, h4 {
 
 /* about page css */
 
-.about {
+.about-container {
     width: 100%;
     color: inherit;
     justify-content: center;
+    /* position: relative; */
+    min-height:50vh;
     display: flex;
     align-items: center;
 }
@@ -466,11 +488,12 @@ h1 h2, h3, h4 {
     position: absolute;
     width: 100%;
     bottom: 0;
+    pointer-events: none;
     text-align: center;
 }
 
 .footer small {
     width: 100%;
-    color: rgba(107, 106, 103, 0.535);
+    color: rgba(133, 133, 133, 0.535);
     text-align: center;
 }
