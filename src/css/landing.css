@@ -28,11 +28,11 @@
 }
 
 .landing-logo {
-    max-width: 300px;
+    max-width: 150px;
     object-fit: cover;
     height: auto;
-    filter: contrast(80%);
-    filter: brightness(150%);
+    /* filter: contrast(80%); */
+    /* filter: brightness(150%); */
 }
 
 .landing-info {
@@ -42,7 +42,7 @@
     text-align: center;
 }
 
-.landing-info h4 {
+.landing-info h5 {
     width: 100%;
     font-size: 26px;
 }
