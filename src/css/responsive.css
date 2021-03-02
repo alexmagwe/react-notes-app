@@ -38,6 +38,7 @@
     }
 }
 
+
 /* Landing css */
 
 @media screen and (max-width:650px) {
@@ -69,6 +70,10 @@
     .toupload-container {
         min-width: 80%;
         width: 90%;
+    }
+    .upload-item-name {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
     }
     .search-container {
         width: 90%;
@@ -131,6 +136,7 @@
         right: 0;
     }
 }
+
 
 /* Upload container */
 

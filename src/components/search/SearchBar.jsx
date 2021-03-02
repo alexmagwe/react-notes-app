@@ -1,4 +1,4 @@
-import React, {useRef } from 'react'
+import React, { useRef } from 'react'
 // import searchIcon from '../../images/icons/search.png'
 
 const SearchBar = props => {

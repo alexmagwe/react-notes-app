@@ -4,6 +4,7 @@ import './css/landing.css'
 import './css/notes.css'
 import './css/upload.css'
 import './css/responsive.css'
+import './css/forms.css'
 import './css/unit.css'
 import './css/search-modal.css'
 import './css/contribute.css'
@@ -16,7 +17,8 @@ import {
   Searchcontext,
   Loadingcontext,
   Datacontext,
-  Themecontext
+  Themecontext,
+  Alertcontext
 } from './context'
 import Footer from './components/footer'
 import Landing from './components/home/landing'
@@ -28,12 +30,13 @@ import { useBeforeunload } from 'react-beforeunload';
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
+import Alertbox from './components/Alert'
 import { isEmpty, getLocalData, setLocalData, recent } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
 // import AddUnits from './components/addunits'
 import ErrorPage from './components/errors/404'
-import Support from './components/contribute/support'
+import Contact from './components/contribute/Contact'
 import Loader from './components/reusables/Loader'
 import Graphik from './components/Graphik'
 import { useLocalData } from './components/hooks'
@@ -48,12 +51,15 @@ function App() {
   const [lighttheme, setLightTheme] = useState(false)
   const [recentunits, setRecent] = useState(null)
   const { updateRecent } = useLocalData({ recentunits, setRecent })
+  const [alert, setAlert] = useState({ message: '', type: '' })
+  const [showAlert, setshowAlert] = useState(false)
   useBeforeunload((event) => {
     // event.preventDefault()
     setLocalData(recent, recentunits)
   })
     ;
 
+  //fetches and stores unit data in local storage 
   useEffect(() => {
     if (getLocalData(recent)) {
       localStorage.removeItem('recent')
@@ -64,19 +70,20 @@ function App() {
     setRecent(getLocalData(recent))
     if (isEmpty(data)) {
       setLoading(true)
-      const localdata = getLocalData('units')
+      const localdata = getLocalData('units')//get data from local storage
       if (localdata) {
         setData(localdata)
         setLoading(false)
       } else {
         axios.get(allUnitsUrl).then(resp => {
           setData(resp.data)
-          setLocalData('units', { units: resp.data }, expiry)
+          setLocalData('units', { units: resp.data }, expiry)//expiry is a limit  to time how old the data can get before we refresh 
           setLoading(false)
         })
       }
     }
   }, [data, expiry])
+
   return (
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
@@ -86,35 +93,38 @@ function App() {
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
           <Datacontext.Provider value={{ data, setData, recentunits, setRecent, updateRecent }}>
-            <div className='App'>
-              <Router>
+            <Alertcontext.Provider value={{ alert, setAlert, setshowAlert }}>
+              <div className='App'>
+                <Router>
 
-                <Navigation />
-                <Loader bg={`${loaderbg}`} />
-                {!isEmpty(selected) ? (
-                  <Redirect to={`/unit/${selected.code}`} />
-                ) : null}
+                  <Navigation />
+                  {showAlert ? <Alertbox /> : null}
+                  <Loader bg={`${loaderbg}`} />
+                  {!isEmpty(selected) ? (
+                    <Redirect to={`/unit/${selected.code}`} />
+                  ) : null}
 
-                <AnimatedSwitch
-                  atEnter={{ opacity: 0 }}
-                  atLeave={{ opacity: 0 }}
-                  atActive={{ opacity: 1 }}
-                  className="switch-wrapper"
-                >
-                  <Route path='/contribute' exact component={Contribute} />
-                  <Route path='/unit/:code' component={Unit} />
-                  <Route path='/support' exact component={Support} />
-                  <Route path='/' exact component={Landing} />
-                  <Route path='/about' exact component={About} />
-                  <Route path='/upload' exact component={Upload} />
-                  <Route path='*' component={ErrorPage} />
-                </AnimatedSwitch>
-                <Graphik />
+                  <AnimatedSwitch
+                    atEnter={{ opacity: 0 }}
+                    atLeave={{ opacity: 0 }}
+                    atActive={{ opacity: 1 }}
+                    className="switch-wrapper"
+                  >
+                    <Route path='/contribute' exact component={Contribute} />
+                    <Route path='/unit/:code' component={Unit} />
+                    <Route path='/contact' exact component={Contact} />
+                    <Route path='/' exact component={Landing} />
+                    <Route path='/about' exact component={About} />
+                    <Route path='/upload' exact component={Upload} />
+                    <Route path='*' component={ErrorPage} />
+                  </AnimatedSwitch>
+                  <Graphik />
 
-                {/* </Navigation> */}
-              </Router>
-              <Footer />
-            </div>
+                  {/* </Navigation> */}
+                </Router>
+                <Footer />
+              </div>
+            </Alertcontext.Provider >
           </Datacontext.Provider>
         </Searchcontext.Provider>
       </Themecontext.Provider>
