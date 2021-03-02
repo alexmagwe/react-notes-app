@@ -8,5 +8,5 @@
 ![alt After Search](src/screenshots/after-search.png " after-searching")
 #### Contribute page
 ![alt contribute page](src/screenshots/contribute.png "contribute")
-#### Upload page
-![alt upload page](src/screenshots/upload.png " upload page")
+#### Contact page
+![alt upload page](src/screenshots/contact.png " upload page")
