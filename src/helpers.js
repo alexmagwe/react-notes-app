@@ -81,7 +81,10 @@ switch(ext){
     return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   case 'ppt':
     return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation'
-  default:
+  case 'pptx':
+    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation'
+  
+    default:
     return null
   }
 }
