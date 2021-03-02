@@ -12,7 +12,7 @@ function Recent(props) {
         <div className='recent-container'>
             <ul className={`recent-grid ${page}-recent`}>
                 {!isEmpty(recentunits) && recentunits ? (Object.keys(recentunits).filter(item => item !== unit).map((code, i) => {//hides the current unit from recent items list in unit page
-                    return <li className='recent-item' key={i}><Link className='grey' to={`/unit/${code}`} >
+                    return <li className='recent-item' key={i}><Link className='dark-grey' to={`/unit/${code}`} >
                         <span className='font-12 light-grey'>{code}</span>
                         {recentunits[code].name.toLowerCase()}</Link></li>
                 })) : null}

@@ -17,7 +17,8 @@ import {
   Searchcontext,
   Loadingcontext,
   Datacontext,
-  Themecontext
+  Themecontext,
+  Alertcontext
 } from './context'
 import Footer from './components/footer'
 import Landing from './components/home/landing'
@@ -29,6 +30,7 @@ import { useBeforeunload } from 'react-beforeunload';
 import Contribute from './components/contribute/contribute'
 import Upload from './components/upload/upload'
 import About from './components/About'
+import Alertbox from './components/Alert'
 import { isEmpty, getLocalData, setLocalData, recent } from './helpers'
 import axios from 'axios'
 import { allUnitsUrl } from './components/api/urls'
@@ -49,19 +51,14 @@ function App() {
   const [lighttheme, setLightTheme] = useState(false)
   const [recentunits, setRecent] = useState(null)
   const { updateRecent } = useLocalData({ recentunits, setRecent })
+  const [alert, setAlert] = useState({ message: '', type: '' })
+  const [showAlert, setshowAlert] = useState(false)
   useBeforeunload((event) => {
     // event.preventDefault()
     setLocalData(recent, recentunits)
   })
     ;
 
-  //enables changing of background image depending on the page you are on
-  useEffect(() => {
-    let Background = {
-      backgroundImage: `linear-gradient(#0002, #0002), url(${bgImage})`,
-    }
-    setBg(Background)
-  }, [bgImage, setBg,])
   //fetches and stores unit data in local storage 
   useEffect(() => {
     if (getLocalData(recent)) {
@@ -91,40 +88,43 @@ function App() {
     <Loadingcontext.Provider
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
     >
-      <Themecontext.Provider value={{ lighttheme, setLightTheme, bgImage, setBgImage }}>
+      <Themecontext.Provider value={{ lighttheme, setLightTheme }}>
         <Searchcontext.Provider
           value={{ selected, setSelected, movetop, setMoveTop }}
         >
           <Datacontext.Provider value={{ data, setData, recentunits, setRecent, updateRecent }}>
-            <div className='App'>
-              <Router>
+            <Alertcontext.Provider value={{ alert, setAlert, setshowAlert }}>
+              <div className='App'>
+                <Router>
 
-                <Navigation />
-                <Loader bg={`${loaderbg}`} />
-                {!isEmpty(selected) ? (
-                  <Redirect to={`/unit/${selected.code}`} />
-                ) : null}
+                  <Navigation />
+                  {showAlert ? <Alertbox /> : null}
+                  <Loader bg={`${loaderbg}`} />
+                  {!isEmpty(selected) ? (
+                    <Redirect to={`/unit/${selected.code}`} />
+                  ) : null}
 
-                <AnimatedSwitch
-                  atEnter={{ opacity: 0 }}
-                  atLeave={{ opacity: 0 }}
-                  atActive={{ opacity: 1 }}
-                  className="switch-wrapper"
-                >
-                  <Route path='/contribute' exact component={Contribute} />
-                  <Route path='/unit/:code' component={Unit} />
-                  <Route path='/support' exact component={Support} />
-                  <Route path='/' exact component={Landing} />
-                  <Route path='/about' exact component={About} />
-                  <Route path='/upload' exact component={Upload} />
-                  <Route path='*' component={ErrorPage} />
-                </AnimatedSwitch>
-                <Graphik />
+                  <AnimatedSwitch
+                    atEnter={{ opacity: 0 }}
+                    atLeave={{ opacity: 0 }}
+                    atActive={{ opacity: 1 }}
+                    className="switch-wrapper"
+                  >
+                    <Route path='/contribute' exact component={Contribute} />
+                    <Route path='/unit/:code' component={Unit} />
+                    <Route path='/contact' exact component={Contact} />
+                    <Route path='/' exact component={Landing} />
+                    <Route path='/about' exact component={About} />
+                    <Route path='/upload' exact component={Upload} />
+                    <Route path='*' component={ErrorPage} />
+                  </AnimatedSwitch>
+                  <Graphik />
 
-                {/* </Navigation> */}
-              </Router>
-              <Footer />
-            </div>
+                  {/* </Navigation> */}
+                </Router>
+                <Footer />
+              </div>
+            </Alertcontext.Provider >
           </Datacontext.Provider>
         </Searchcontext.Provider>
       </Themecontext.Provider>
