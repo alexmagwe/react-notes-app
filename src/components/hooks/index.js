@@ -95,9 +95,7 @@ export const useLocalData = (params) => {
       const recentcopy = { ...recentunits };
       if (getObjLength(recentunits) >= 6) {
            for (let unit in recentcopy) {
-             console.log('in loop',recentcopy)
             delete recentcopy[unit]
-            console.log('deleted:',unit)
             break// to only delete oldest item
         } 
       }
