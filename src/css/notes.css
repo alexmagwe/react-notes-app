@@ -63,7 +63,7 @@
 }
 
 .notes-name {
-    /* word-break: break-all; */
+    word-break: break-all;
     color: inherit;
     font-weight: 400;
     /* text-transform: lowercase; */
