@@ -22,7 +22,7 @@ const Landing = () => {
           </h5>
         </div>
         <div className='search-container'>
-          <Search source={data} clear={true} />
+          <Search source={data} placeholder={"Search Unit Code or Name"} clear={true} />
         </div>
         <Recent data={{ page: 'landing' }} />
       </div>

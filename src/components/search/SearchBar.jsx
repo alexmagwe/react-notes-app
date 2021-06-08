@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 // import searchIcon from '../../images/icons/search.png'
 
 const SearchBar = props => {
-  const { handleSearch, searchTerm,handleSubmit, ref } = props.form
+  const { handleSearch, searchTerm,handleSubmit, placeholder} = props.form
   const inputbox = useRef(null)
 
   // useEffect(() => {
@@ -21,7 +21,7 @@ const SearchBar = props => {
         onChange={handleSearch}
         value={searchTerm}
         // autoFocus
-        placeholder={`${ref}`}
+        placeholder={`${placeholder}`}
         />
       {/* <img className='fa-search' src={searchIcon} alt='' /> */}
         </form>

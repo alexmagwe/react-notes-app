@@ -50,7 +50,7 @@ const Search = (props) => {
   };
   return (
     <>
-      <SearchBar focus={props.focus} form={{ handleSearch, searchTerm, handleSubmit, ref }} />
+      <SearchBar focus={props.focus} form={{ handleSearch, searchTerm, handleSubmit, placeholder:props.placeholder }} />
       {results.length > 0 && searchTerm.length > 0 ? (
         <Results props={{ handleClose, setResults, results, ref, desc }} />
       ) : null}

@@ -62,6 +62,7 @@ function Unit(props) {
                   location={props.location.pathname}
                   source={data}
                   clear={true}
+	  	placeholder={"Search unit code or topic"}
                   data={notes}
                 />
               </div>
