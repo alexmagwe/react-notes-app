@@ -48,7 +48,11 @@ const RightNav = ({ open, setOpen }) => {
         <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/contribute'>
           Contribute</Link>
       </li>
-
+          {/* <li>
+        <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/login'>
+          Sign in</Link>
+      </li>
+      */}
       {/* </ul> */}
     </Ul>
   )
