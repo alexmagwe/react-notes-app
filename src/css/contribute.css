@@ -2,7 +2,28 @@
 .pd2{
     padding:0 2em;
 }
+.files-img{
+background: linear-gradient(#0005, #0d192ba1), url(../images/notes.jpg);
+background-size: cover;
+}
+.courses-img{
+background: linear-gradient(#0005, #0d192ba1),url(../images/courses.jpg);
+background-size: cover;
 
+}
+.videos-img{
+background: linear-gradient(#0005, #0d192ba1),url(../images/video.jpg);
+background-size: cover;
+
+}
+.contribute-img{
+    background: linear-gradient(#0005, #0d192ba1),url(../images/help.jpg);
+background-size: cover;
+}
+.contact-img{
+    background: linear-gradient(#0005, #0d192ba1),url(../images/contact.png);
+background-size: cover;
+}
 .cards-container{
     display:flex;
     width:100%;
@@ -19,11 +40,11 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    width:250px;
+    width:300px;
     border-radius: 2px;
     box-shadow: 0 4px 5px rgba(0,0,0,0.6);
     margin:1em 0;
-    height:200px;
+    height:250px;
 transition: all 0.3s ease-in-out;
 }
 .card1{

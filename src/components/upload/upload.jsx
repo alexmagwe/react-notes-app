@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
 import { Loadingcontext, Datacontext } from '../../context'
 import Results from '../search/Results'
-import { addNotesUrl, uploadUrl, unitNotesUrl } from '../api/urls'
+import { addContentUrl, uploadUrl, unitNotesUrl } from '../api/urls'
 import NoteItem from '../notes/NoteItem'
 import { useDropzone } from 'react-dropzone'
 import DragOverScreen from './DragOverScreen'
@@ -110,9 +110,9 @@ function Upload () {
     if (uploadedfiles.length > 0) {
       setLoading(true)
 
-      let payload = { notes: uploadedfiles, unit_code: unitCode.toUpperCase() }
+      let payload = { files: uploadedfiles, unit_code: unitCode.toUpperCase() }
       axios
-        .post(addNotesUrl, payload)
+        .post(addContentUrl, payload)
         .then(resp => {
           setProgress(0)
           setUploaded(true)

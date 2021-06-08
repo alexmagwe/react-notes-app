@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {searchUrl} from './components/api/urls'
 export const recent = 'recentsearch'
 export const Fetch = (url, method, payload = '') => {
   let data = []
@@ -13,7 +14,41 @@ export const Fetch = (url, method, payload = '') => {
   }
   return data
 }
+
 //try catch block to catch invalid regexp characters that user types
+export const fileSearch=async(query,notes)=>{
+  const payload={query:query}
+  let resp=await axios.post(searchUrl,payload)
+  if (resp.data.files){
+    const files=resp.data.files
+    // files.filter(file=>{
+      let ids=[]
+      files.map(file=>ids.push(file.id))
+      let filteredNotes=notes.filter(file=>(ids.includes(file.gid)))//filter the unit notes for the ones that match the topic
+      return filteredNotes
+
+
+    }
+    
+  } 
+export const refreshTokenSetup = (res) => {
+  // Timing to renew access token
+  let refreshTiming = (res.tokenObj.expires_in || 3600 - 5 * 60) * 1000;
+
+  const refreshToken = async () => {
+    const newAuthRes = await res.reloadAuthResponse();
+    refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
+    console.log('newAuthRes:', newAuthRes);
+    // saveUserToken(newAuthRes.access_token);  <-- save new token
+    localStorage.setItem('authToken', newAuthRes.id_token);
+
+    // Setup the other timer after the first one
+    setTimeout(refreshToken, refreshTiming);
+  };
+
+  // Setup first refresh timer
+  setTimeout(refreshToken, refreshTiming);
+};
 export const Search = (term, data, category) => {
   const defaultcategory = 'name'
   try {
@@ -36,6 +71,18 @@ export const Capitalize = str => {
 export const isEmpty = obj => {
   if (!obj) return true
   return Object.keys(obj).length === 0
+}
+export const getGid=(link)=>{
+  const ptn=/\/d\/[\w-]+/g
+  const res=ptn.exec(link)
+  if (res){
+    let match=res[0].split('/')
+    let id=match.pop()
+    return id//google drive id of video
+  }
+  else return null
+
+  // console.log('hey')
 }
 export const Categories = [
   { label: 'notes', category: 'document' },

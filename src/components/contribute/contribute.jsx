@@ -1,32 +1,33 @@
-import React,{useEffect,useContext} from 'react'
-import {Loadingcontext} from '../../context'
-import {Link } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import { Loadingcontext } from "../../context";
+import Card from "./Card";
 
 function Contribute() {
-    const {setLoading}=useContext(Loadingcontext)
-    
-useEffect(()=>{
-    setLoading(false)
-},[setLoading])
-    return (
-        <div>
-          {/* <h2 className='center md pd2 primary'>Improve the site by adding more content</h2> */}
-          <div className='cards-container'>
-              <div className='card card1'>
-                 <Link to='/upload'> 
-                 <h3 className='card-text'>Add Notes</h3>
-                 </Link>
-              </div>
+  const { setLoading } = useContext(Loadingcontext);
 
-            <div className='card card2'>
-                <Link to='/contact'> 
-                    <h3 className='card-text'>Contact</h3>
-                </Link> 
-            </div>
-           
-          </div>
-        </div>
-    )
+  useEffect(() => {
+    setLoading(false);
+  }, [setLoading]);
+  return (
+    <div className='cards-container'>
+      {/* <h2 className='center md pd2 primary'>Improve the site by adding more content</h2> */}
+      <Card
+        values={{
+          desc: "Add Content",
+          link: "add/content",
+          style: "card contribute-img",
+        }}
+      />
+      <Card
+        values={{
+          desc: "Contact us ",
+          link: "contact",
+          style: "card contact-img",
+        }}
+      />
+      
+    </div>
+  );
 }
 
-export default Contribute
+export default Contribute;
