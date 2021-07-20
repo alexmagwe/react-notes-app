@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
         color:'#111',
     },
     navHomeIcon:{
-        width:'30px', 
+        width:'25px', 
     }
 
 }

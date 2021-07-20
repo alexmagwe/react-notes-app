@@ -10,13 +10,12 @@
 .landing-content {
     width: 50%;
     position: relative;
-    margin: 2rem auto;
-    max-height: 90%;
+    margin: 4rem auto;
     padding: 0 10px;
     display: flex;
     /* border: 1px solid rgb(46, 165, 72); */
     flex-direction: column;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -31,20 +30,21 @@
     max-width: 150px;
     object-fit: cover;
     height: auto;
+    margin:0 auto;
     /* filter: contrast(80%); */
     /* filter: brightness(150%); */
 }
 
 .landing-info {
-    width: 50%;
+    width:fit-content;
     margin: 1rem auto;
     line-height: 2.5rem;
     text-align: center;
 }
 
-.landing-info h5 {
-    width: 100%;
-    font-size: 26px;
+.landing-info p {
+    margin:1rem 0;
+    font-weight:bold;
 }
 
 .recent-container {
