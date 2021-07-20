@@ -4,8 +4,12 @@
     width: 100%;
     min-height: 100vh;
     /* height: 100%; */
-    font-family: Verdana, sans-serif;
+    font-family: sans-serif;
     /* overflow: auto; */
+}
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -29,9 +33,13 @@
 
 h1 h2, h3, h4 {
     word-wrap: break-word;
-    word-break:break-word;
+    word-break: break-word;
     color: inherit;
-    font-family: "Open-Sans", sans-serif;
+    font-family: sans-serif;
+}
+
+.semi-bold {
+    font-weight: 600;
 }
 
 .banner {
@@ -87,16 +95,20 @@ h1 h2, h3, h4 {
     width: 50px;
     /* margin:2px 10px; */
 }
-.sp-around{
+
+.sp-around {
     justify-content: space-around;
 }
-.sp-between{
+
+.sp-between {
     justify-content: space-between;
 }
-.sp-evenly{
+
+.sp-evenly {
     justify-content: space-evenly;
 }
-.sp-center{
+
+.sp-center {
     justify-content: center;
 }
 
@@ -151,24 +163,14 @@ h1 h2, h3, h4 {
     align-items: center;
 }
 
-.login-container {
-    min-height: 90vh;
-    /* position: absolute; */
-    width: 100%;
-    background-image: url(../images/butterfly.jpg);
-    background-size: cover;
-    background-position: 20%, -20%;
-    background-repeat: no-repeat;
-}
-
 /* search bar */
 
 .search-container {
     min-width: 50%;
     position: relative;
-    color: inherit;
     margin: 0 auto;
-    width: 80%;
+    color: inherit;
+    min-width: 70%;
     transition: all 0.2s ease-in-out;
 }
 
@@ -231,12 +233,15 @@ h1 h2, h3, h4 {
 .text-dark {
     color: #111;
 }
-.pd-1{
-    padding:0.5rem;
+
+.pd-1 {
+    padding: 0.5rem;
 }
-.pd-2{
-    padding:2rem;
+
+.pd-2 {
+    padding: 2rem;
 }
+
 .font-16 {
     font-size: 16px;
 }
@@ -251,6 +256,14 @@ h1 h2, h3, h4 {
 
 .font-lg {
     font-size: 32px;
+}
+
+.font-36 {
+    font-size: 36px;
+}
+
+.semi-bold {
+    font-weight: semi-bold;
 }
 
 .font-12 {
@@ -354,12 +367,14 @@ h1 h2, h3, h4 {
     transform: translate(-50%);
     top: 40%;
 }
-.center-70{
+
+.center-70 {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     top: 70%;
 }
+
 .moderator-form form {
     display: flex;
     flex-wrap: wrap;

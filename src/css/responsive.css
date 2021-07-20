@@ -10,12 +10,14 @@
     .form-container {
         width: 80%;
     }
+    .landing-content>div {
+        margin-top: 1rem;
+    }
     .landing-content {
-        min-height: 50%;
-        margin-top: 6rem;
+        justify-content: center;
     }
     .search-container {
-        top: 45%;
+        margin: 0 auto;
     }
 }
 
@@ -27,10 +29,11 @@
 
 @media screen and (min-height:800px) {
     .landing-content {
+        margin-top: 2rem;
         min-height: 70%;
+        justify-content: center;
     }
 }
-
 
 @media screen and (max-height:400px) {
     .notes {
@@ -38,32 +41,19 @@
     }
 }
 
-
 /* Landing css */
-
-@media screen and (max-width:650px) {
-    .landing-logo {
-        max-width: 150px;
-        display: block;
-    }
-}
 
 @media (max-width:600px) {
     .landing-content {
         margin: 2rem auto 0;
     }
-    .current-files-list{
-        min-width:250px;
+    .current-files-list {
+        min-width: 250px;
     }
     .landing-info {
-        width: 100%;
-        padding:0 1rem;
+        padding: 0 1rem;
     }
-    .landing-logo {
-        max-width: 150px;
-        display: block;
-    }
-    .landing-info h5{
+    .landing-info h5 {
         font-size: 22px;
         font-weight: 400;
     }
@@ -99,27 +89,15 @@
     }
 }
 
-
 @media (max-width:900px) {
     .tab-navigation {
         width: 100%;
     }
 }
 
-@media screen and (max-width:300px) {
-    .landing-logo {
-        max-width: 100px;
-        display: block;
-    }
-}
-
 @media screen and (max-height:400px) {
     .search-container {
         top: 55%;
-    }
-    .landing-logo {
-        max-width: 150px;
-        display: none;
     }
     .footer {
         width: 20%;
@@ -128,15 +106,11 @@
 }
 
 @media screen and (max-height:500px) {
-    .landing-logo {
-        width: 150px;
-    }
     .footer {
         width: 20%;
         right: 0;
     }
 }
-
 
 /* Upload container */
 
@@ -152,14 +126,8 @@
     }
 }
 
-@media screen and (min-height:1000px) {
-    .landing-content {
-        min-height: 70%;
-    }
-}
-
 @media screen and (max-height:1000px) {
-    .current-files-list{
-        max-height:400px;
+    .current-files-list {
+        max-height: 400px;
     }
 }
