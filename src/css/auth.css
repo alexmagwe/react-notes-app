@@ -1,0 +1,8 @@
+.login-modal-container{
+    width:40vw;
+}
+.login-btn{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

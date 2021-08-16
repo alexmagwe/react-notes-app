@@ -14,7 +14,7 @@ function Contribute() {
       <Card
         values={{
           desc: "Add Content",
-          link: "add/content",
+          link: "upload/content",
           style: "card contribute-img",
         }}
       />
@@ -25,7 +25,7 @@ function Contribute() {
           style: "card contact-img",
         }}
       />
-      
+
     </div>
   );
 }
