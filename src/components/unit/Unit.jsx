@@ -24,7 +24,7 @@ function Unit(props) {
     async (code) => {
       setLoading(true);
       const resp = await axios.post(unitNotesUrl, { unit_code: code });
-      setNotes(resp.data);
+      setNotes(resp.data.message);
       setLoading(false);
     },
     [setLoading]

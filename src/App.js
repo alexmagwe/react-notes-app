@@ -21,6 +21,7 @@ import {
   Themecontext,
   Alertcontext,
 } from "./context";
+import Fade from '@material-ui/core/Fade';
 import Footer from "./components/footer";
 import Landing from "./components/home/landing";
 import { Redirect } from "react-router";
@@ -106,7 +107,7 @@ function App() {
                     <Navigation />
                     {showAlert ? <Alertbox /> : null}
                     <Loader bg={`${loaderbg}`} />
-                    {!isEmpty(selected) && selected.changeRoute? (
+                    {!isEmpty(selected) && selected.changeRoute ? (
                       <Redirect to={`/unit/${selected.code}`} />
                     ) : null}
 

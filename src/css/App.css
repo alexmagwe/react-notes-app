@@ -7,6 +7,11 @@
     font-family: sans-serif;
     /* overflow: auto; */
 }
+.alert{
+    width:85%;
+    margin:0 auto;
+    
+}
 
 .montserrat {
     font-family: 'Montserrat', sans-serif;
