@@ -21,7 +21,7 @@ import {
   Themecontext,
   Alertcontext,
 } from "./context";
-import Fade from '@material-ui/core/Fade';
+// import Fade from '@material-ui/core/Fade';
 import Footer from "./components/footer";
 import Landing from "./components/home/landing";
 import { Redirect } from "react-router";

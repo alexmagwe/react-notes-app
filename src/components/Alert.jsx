@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import Alert from '@material-ui/lab/Alert';
 import { Alertcontext } from '../context';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+// import IconButton from '@material-ui/core/IconButton';
+// import CloseIcon from '@material-ui/icons/Close';
 
 const Alertbox = (props) => {
     //alert types:warning,error,success,info
