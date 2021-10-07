@@ -19,8 +19,9 @@ export const Fetch = (url, method, payload = '') => {
 export const fileSearch=async(query,notes)=>{
   const payload={query:query}
   let resp=await axios.post(searchUrl,payload)
-  if (resp.data.files){
-    const files=resp.data.files
+  if (resp.data.message){
+    const message=resp.data.message
+    const {files}=message
     // files.filter(file=>{
       let ids=[]
       files.map(file=>ids.push(file.id))
