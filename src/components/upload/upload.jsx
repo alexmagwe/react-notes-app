@@ -85,7 +85,7 @@ function Upload () {
       axios
         .post(unitNotesUrl, data)
         .then(res => {
-          const { document, video, assignment } = res.data.notes //res.data.notes is an object which we want to destructure to a list
+          const { document, video, assignment } = res.data.message.notes //res.data.notes is an object which we want to destructure to a list
           const allfiles = [...document, ...video, ...assignment]
           setNotes(allfiles)
           setLoading(false)
