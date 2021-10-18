@@ -53,7 +53,7 @@ function App() {
   const [filteredNotes, setfilteredNotes] = useState([]);
   const [loaderbg, setLoaderBackground] = useState("dark");
   let [selected, setSelected] = useState({});
-  const [expiry] = useState(72); //expiry time of data in terms of hours
+  const [expiry] = useState(24); //expiry time of data in terms of hours
   const [lighttheme, setLightTheme] = useState(false);
   const [recentunits, setRecent] = useState(null);
   const { updateRecent } = useLocalData({ recentunits, setRecent });
