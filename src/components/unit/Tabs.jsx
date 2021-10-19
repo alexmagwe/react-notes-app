@@ -46,7 +46,7 @@ function Tabs(props) {
         <div className="notes-container">
           <Notes showlink={true} currentData={activeData} />
         </div>
-      ) : null}
+      ) : <h2>No content current available here,we are working hard to make sure you never have to see this place as empty again</h2>}
     </div>
   );
 }
