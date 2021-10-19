@@ -1,6 +1,7 @@
 import React,{useEffect,useState,useContext} from "react";
 import { SearchQuerycontext } from "../../context";
 import NoteItem from "./NoteItem";
+import { Link } from 'react-router-dom';
 function Notes(props) {
   const {filteredNotes,setfilteredNotes}=useContext(SearchQuerycontext)
   const data = props.currentData;
@@ -9,20 +10,15 @@ function Notes(props) {
   let showlink = props.showlink;
 
  useEffect(()=>{
-    console.log('mounting',filteredNotes)
+ console.log("resources:",resources)
     if (filteredNotes.length>0){
       setIds(filteredNotes.map(file=>{return file.gid}))
-
-    }
-    return ()=>{
-      console.log('unmounting')
 
     }
   },[filteredNotes])
 
   useEffect(()=>{
 
-    console.log('mounting notes component ')
     return ()=>{
             setfilteredNotes([])
     }
@@ -41,7 +37,10 @@ function Notes(props) {
           )}
       </ul>
     </div>
-  ) : null;
+
+  ) :  
+	<h2 className='notesTagLine'>No content current available here,we are working hard to make sure you never have to see this place empty again,if you have any content,you can also <Link to='/contribute'>contribute</Link> and help others! </h2>
+
 }
 
 export default Notes;
