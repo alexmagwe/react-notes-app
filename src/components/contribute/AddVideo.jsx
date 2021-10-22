@@ -40,10 +40,11 @@ function AddVideos(props) {
     e.preventDefault();
     let id = getGid(link)
     if (id) {
-      let data = { name, gid:id,category:"video" };
+      let data = { name, gid: id, category: "video" };
       setVideos([...videos, data]);
     }
     else {
+
       alert("invalid link,the link needs to be a google drive file link")
     }
   };
@@ -60,19 +61,19 @@ function AddVideos(props) {
       setUnit(selected);
     }
   }, [selected]);
-  const handleUpload =async () => {
+  const handleUpload = async () => {
     if (isEmpty(selected)) {
       alert("Unit missing")
       return;
     }
 
     if (videos.length > 0) {
-      const payload = { unit_code: selected.code, files:videos }
+      const payload = { unit_code: selected.code, files: videos }
       console.log('uploading:', payload)
       setDisable(true)
       setLoading(true)
-      const resp=await axios.post(addContentUrl,payload)
-      if (resp.status===201){
+      const resp = await axios.post(addContentUrl, payload)
+      if (resp.status === 201) {
         setVideos([])
         setSelected({})
         setLoading(false)
@@ -97,7 +98,7 @@ function AddVideos(props) {
             source={data}
             focus={true}
             clear={false}
-	    placeholder={"Enter Unit code or Name"}
+            placeholder={"Enter Unit code or Name"}
             selected
             location={props.location.pathname}
           />
@@ -118,7 +119,7 @@ function AddVideos(props) {
             required
             value={link}
             name="link"
-            placeholder="Google drive Video Link"
+            placeholder="Link"
             onChange={handleChange}
           />
           <Button type="submit" color="primary" variant="contained">
