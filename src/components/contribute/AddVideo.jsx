@@ -39,13 +39,15 @@ function AddVideos(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     let id = getGid(link)
+    let data = {}
     if (id) {
-      let data = { name, gid: id, category: "video" };
+      data = { name, gid: id, category: "video" };
       setVideos([...videos, data]);
     }
     else {
-
-      alert("invalid link,the link needs to be a google drive file link")
+      console.log("sending file with link")
+      data = { name, gid: "", link, category: "video" };
+      setVideos([...videos, data]);
     }
   };
   useEffect(() => {

@@ -14,7 +14,7 @@ function NoteItem(props) {
     icon =
       "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.video";
   }
-  
+
   return (
     <>
       <li
@@ -27,14 +27,19 @@ function NoteItem(props) {
         </div>
         <div className="right-item-section">
           {note.size ? <h4>{parseInt(note.size) / 1024}</h4> : null}
-          {showlink ? (
+          {showlink && note.gid && (
             <Button
               href={`https://drive.google.com/file/d/${note.gid}/view`}
               target="_blank"
             >
               <img className="link-icon" src={Link} alt="view" />
             </Button>
-          ) : null}
+          )}
+          {note.link && note.link.length > 0 && (
+            <Button href={`${note.link}`} target="_blank">
+              <img className="link-icon" src={Link} alt="view" />
+            </Button>
+          )}
 
           {note.category !== "video" ? (
             <Button
