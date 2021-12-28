@@ -33,7 +33,7 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open, setOpen }) => {
-  const { lighttheme,setLightTheme,} = useContext(Themecontext)
+  const { lighttheme,setLightTheme,inDashboard} = useContext(Themecontext)
   let styles = useStyles()
 
   return (
@@ -41,18 +41,18 @@ const RightNav = ({ open, setOpen }) => {
       {/* <ul className='nav-list'> */}
 
       <li>
-        <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/about'>
+        <Link className={!open && lighttheme && inDashboard? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/about'>
           About</Link>
       </li>
       <li>
-        <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/contribute'>
+        <Link className={!open && lighttheme && inDashboard ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/contribute'>
           Contribute</Link>
         
       </li>
         <DarkModeToggle
         onChange={setLightTheme}
         checked={lighttheme}
-        size={60}
+        size={50}
       />
           {/* <li>
         <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/login'>

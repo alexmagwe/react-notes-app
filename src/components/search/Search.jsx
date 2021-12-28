@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import SearchBar from "./SearchBar.jsx";
 import Results from "./Results";
-import { Searchcontext, SearchQuerycontext, Datacontext } from "../../context";
+import { Searchcontext, SearchQuerycontext, Datacontext,Alertcontext } from "../../context";
 import { useSearch } from "../hooks";
 import { fileSearch } from "../../helpers";
 
@@ -10,6 +10,7 @@ const Search = (props) => {
   const [results, setResults] = useState([]);
   const {setSelected } = useContext(Searchcontext);
   const { setfilteredNotes } = useContext(SearchQuerycontext);
+  const { setAlert,setShowAlert} = useContext(Alertcontext)
   const { updateRecent } = useContext(Datacontext);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -28,6 +29,10 @@ const Search = (props) => {
         searchTerm,
         props.data.notes.document//all pdfs for the unit
       ); //filters notes that match search term
+      if (filteredNotes.length==0){
+        setShowAlert(true)
+        setAlert({message:"Content not found",type:'info'})
+      }
       setfilteredNotes(filteredNotes);
     }
   };

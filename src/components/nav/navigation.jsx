@@ -21,7 +21,7 @@ const Navigation = (props) => {
       </div>
     </div>
     :
-    <div className={lighttheme && window.location.pathname!=='/'? 'nav-container light-bg' : 'nav-container'} >
+    <div className='nav-container'>
       <div className='nav'>
         <Link to='/' ><Button><img className={styles.navHomeIcon} src={logo} alt='HOME' /></Button></Link>
         <Burger />

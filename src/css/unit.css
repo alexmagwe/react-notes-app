@@ -13,6 +13,7 @@
     margin: 0 auto;
     min-height: calc(100vh - 85px);
     height: 100%;
+    overflow-x:hidden;
     position: relative;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(2, minmax(120px, auto));
@@ -25,8 +26,7 @@
     grid-area: top;
     padding: 1rem;
     display: flex;
-    overflow:hidden;
-    max-height:200px;
+    max-height:250px;
     position:relative;
     justify-content: center;
     border-radius: 5px;
@@ -54,6 +54,7 @@
 }
 
 .inner-section-content {
+
     display: flex;
     /* flex-direction: column; */
     /* border: 1px solid rgb(182, 74, 74); */
@@ -154,7 +155,12 @@
     width: 100%;
     height: 5px;
 }
-
+@media screen and (max-width:370px){
+ .search-container-top{
+     width:250px;
+ }   
+  
+}
 @media screen and (max-width:600px) {
     .grid-container {
         grid-template-areas: "top top top" "notes notes notes" "recent recent recent"
@@ -171,6 +177,26 @@
     .tab-navigation {
         width: 100%;
     }
+}
+@media screen and (max-width:420px){
+ .inner-section-content h2{
+     font-size: 18px;
+ }   
+}
+@media screen and (max-width:740px){
+ .top-content-inner-section {
+ align-items:center;
+ justify-content: center;
+}   
+.inner-section-content {
+    /* margin-right:0.5rem; */
+    width:100%;
+    align-items:center;
+    justify-content: center;
+ }   
+}
+@media screen and (max-width:920px){
+ 
 }
 
 @media screen and (max-width:800px) {

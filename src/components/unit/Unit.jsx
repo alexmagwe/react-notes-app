@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useCallback } from "react";
 import Search from "../search/Search";
 import {
   Searchcontext,
+  Alertcontext,
   SearchQuerycontext,
   Loadingcontext,
   Datacontext,
@@ -17,6 +18,7 @@ function Unit(props) {
   const { code } = useParams();
   const { setLoading } = useContext(Loadingcontext);
   const { filteredNotes,setfilteredNotes} = useContext(SearchQuerycontext)
+  const { setAlert,setShowAlert} = useContext(Alertcontext)
   let { data, setData } = useContext(Datacontext);
   let {lighttheme,setLightTheme,setInDashboard } = useContext(Themecontext);
   const { setSelected } = useContext(Searchcontext);
@@ -24,9 +26,17 @@ function Unit(props) {
   const getNotes = useCallback(
     async (code) => {
       setLoading(true);
-      const resp = await axios.post(unitNotesUrl, { unit_code: code });
-      setNotes(resp.data.message);
-      setLoading(false);
+      try{
+
+        const resp = await axios.post(unitNotesUrl, { unit_code: code });
+        setNotes(resp.data.message);
+        setLoading(false);
+      }
+      catch(err){
+        setLoading(false)
+        setAlert({message:err.message,type:"error"})
+        setShowAlert(true)
+      }
     },
     [setLoading]
   );
@@ -35,15 +45,12 @@ function Unit(props) {
 // setfilteredNotes([])
 //   },[code, setfilteredNotes])
   useEffect(() => {
-    setLightTheme(true);
     setInDashboard(true)
-    console.log('mounting unit')
     setLoading(false);
     return () => {
       setSelected({});
       setInDashboard(false);
       setfilteredNotes([])
-      setLightTheme((theme) => (theme = false));
     };
   }, [setLoading, setData, setLightTheme, setSelected, setfilteredNotes,setInDashboard]);
 
@@ -54,7 +61,7 @@ function Unit(props) {
   return (
       <div className={lighttheme? "unit-container lightMode":'unit-container darkMode'}>
         <div className="grid-container">
-          <div className={lighttheme?"top-content-section lightGradient":"top-content-section darkGradient"}>
+          <div className="top-content-section">
           <InfiniteBackground/>
             <div className="top-content-inner-section">
               <div className="inner-section-content">

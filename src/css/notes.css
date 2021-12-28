@@ -98,3 +98,12 @@
     text-align: center;
     color:#787878;
 }
+@media screen and (max-width:420px){
+.notes-name{
+    font-size: 14px;
+}
+.left-item-section{
+    min-width:60%;
+}
+ 
+}
