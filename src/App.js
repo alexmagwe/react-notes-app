@@ -46,7 +46,6 @@ import Unit from "./components/unit/Unit";
 import Content from "./components/contribute/Content";
 import AddVideos from "./components/contribute/AddVideo";
 import Login from "./components/authentication/Login";
-import InfiniteBackground from "./components/reusables/infiniteBackground";
 function App() {
   let [data, setData] = useState({});
   let [loading, setLoading] = useState(true);

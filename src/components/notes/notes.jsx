@@ -10,7 +10,6 @@ function Notes(props) {
   let showlink = props.showlink;
 
  useEffect(()=>{
- console.log("resources:",resources)
     if (filteredNotes.length>0){
       setIds(filteredNotes.map(file=>{return file.gid}))
 

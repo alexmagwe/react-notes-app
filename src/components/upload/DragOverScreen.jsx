@@ -1,6 +1,4 @@
-import { grey } from '@material-ui/core/colors'
 import React from 'react'
-import plus from '../../images/icons/plus.png'
 function DragOverScreen() {
     const classes = {
         container: {

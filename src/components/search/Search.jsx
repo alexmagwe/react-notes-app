@@ -29,7 +29,7 @@ const Search = (props) => {
         searchTerm,
         props.data.notes.document//all pdfs for the unit
       ); //filters notes that match search term
-      if (filteredNotes.length==0){
+      if (filteredNotes.length===0){
         setShowAlert(true)
         setAlert({message:"Content not found",type:'info'})
       }

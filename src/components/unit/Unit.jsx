@@ -38,7 +38,7 @@ function Unit(props) {
         setShowAlert(true)
       }
     },
-    [setLoading]
+    [setLoading,setAlert,setShowAlert]
   );
 //   useEffect(()=>{
 //     console.log('changed unit')
