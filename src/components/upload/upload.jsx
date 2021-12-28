@@ -10,7 +10,7 @@ import { useUploadFile, useSearch } from '../hooks'
 import ProgressBar from './ProgressBar'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
-import { Loadingcontext, Datacontext } from '../../context'
+import { Loadingcontext, Datacontext,Alertcontext } from '../../context'
 import Results from '../search/Results'
 import { addContentUrl, uploadUrl, unitNotesUrl } from '../api/urls'
 import NoteItem from '../notes/NoteItem'
@@ -41,6 +41,7 @@ function Upload () {
   const [disable, setDisable] = useState(false)
   const [unitCode, setUnitCode] = useState('')
   const { setLoading, setLoaderBackground } = useContext(Loadingcontext)
+  const { setAlert,setShowAlert } = useContext(Alertcontext)
   const [selected, setSelected] = useState(null)
   const { data, setData } = useContext(Datacontext)
   const [results, setResults] = useState([])
@@ -80,7 +81,7 @@ function Upload () {
       //update current files after selection and after upload
       setUnitCode(selected.code)
       let data = { unit_code: selected.code }
-      console.log(data)
+      // console.log(data)
       setLoading(true)
       axios
         .post(unitNotesUrl, data)
@@ -92,10 +93,11 @@ function Upload () {
         })
         .catch(err => {
           setLoading(false)
-          alert(err)
-        })
+          setAlert({message:err.message,type:"error"}) 
+          setShowAlert(true) 
+     })
     }
-  }, [selected, uploaded, setLoading])
+  }, [selected, uploaded, setLoading,setAlert,setShowAlert])
 
   useEffect(() => {
     setLoaderBackground('vague')
@@ -117,10 +119,14 @@ function Upload () {
           setProgress(0)
           setUploaded(true)
           setDisable(false)
+          setAlert({message:resp.message,type:"success"}) 
+          setShowAlert(true) 
+
         })
         .catch(err => {
-          alert(err)
           setLoading(false)
+          setAlert({message:err.message,type:"error"}) 
+          setShowAlert(true) 
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -143,7 +149,9 @@ function Upload () {
       })
       return res
     } catch (err) {
-      alert(err)
+      setAlert({message:err.message,type:"error"}) 
+      setShowAlert(true) 
+      return
     }
   }
   const handleSubmit = async e => {
@@ -151,7 +159,7 @@ function Upload () {
     if (files.length > 0) {
       setDisable(val => !val)
       let res = await serverupload()
-      if (res.status === 200) {
+      if (res && res.status === 200) {
         let data = res.data
         //asigns a categoru to each uploaded file
         await files.forEach((file, index) => {

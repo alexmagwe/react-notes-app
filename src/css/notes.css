@@ -4,6 +4,7 @@
     overflow: auto;
     align-items: flex-start;
     height: 100%;
+    transition:background 0.3s ease-in;
 }
 
 .notes {
@@ -13,7 +14,6 @@
     max-height: 80%;
     width: 100%;
     overflow-y: auto;
-    background-color: #fff;
 }
 
 .link-icon {
@@ -36,9 +36,15 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    color: #000;
+    color: inherit;
+    transition:all 0.2s ease-in-out;
+    /* flex-wrap: wrap; */
     /* flex-wrap: wrap; */
     /* box-shadow: -4px 2px 2px rgb(213, 211, 211); */
+}
+.notes-item:hover{
+    background-color: #505050;
+    color:#fff;
 }
 
 .unit-code {
@@ -68,7 +74,7 @@
     font-weight: 400;
     /* text-transform: lowercase; */
     text-transform: capitalize;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .notes-unit-name {

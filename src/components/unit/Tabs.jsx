@@ -1,19 +1,22 @@
 import { Button } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import Notes from "../notes/notes";
 import useStyles from "./styles";
+import {
+  Themecontext,
+} from "../../context";
 import { isEmpty, Categories } from "../../helpers";
 
 function Tabs(props) {
   const data = props.properties;
   const [active, setActive] = useState(0);
   const styles = useStyles();
+  let {lighttheme, } = useContext(Themecontext);
   const [activeData, setActiveData] = useState({ category: "", resources: [] });
   const handleClick = (i) => {
     setActive(i);
   };
   useEffect(() => {
-console.log(activeData)
     if (!isEmpty(data)) 
     {
       setActiveData({
@@ -23,12 +26,12 @@ console.log(activeData)
     }
   }, [active, data, setActiveData]);
   return (
-    <div className="notes-section">
+    <div className={lighttheme?"notes-section ":"notes-section darkMode"}>
       <ul className="tab-navigation font-primary font-16">
         {Categories.map((tab, i) => (
           <Button
             key={i}
-            className={styles.tabNav}
+            className={lighttheme?styles.tabNav:styles.tabNavDark}
             onClick={() => {
               handleClick(i);
             }}
@@ -44,7 +47,7 @@ console.log(activeData)
       </ul>
 
       {!isEmpty(data) ? (
-        <div className="notes-container">
+        <div className={lighttheme?"notes-container lightMode":"notes-container darkMode"}>
           <Notes showlink={true} currentData={activeData} />
         </div>
       ) :null}

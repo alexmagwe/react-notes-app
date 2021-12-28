@@ -1,0 +1,18 @@
+.infiniteBackground{
+    position:absolute;
+    width:5760px;
+    background-repeat: repeat-y;
+    /* background-size: 100%; */
+    background:url(../../images/bgs/bg1.png);
+    height:100%;
+    animation:inflation 150s linear infinite;
+}
+@keyframes inflation{
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1840px,0, 0); /* The image width */
+  }
+
+}

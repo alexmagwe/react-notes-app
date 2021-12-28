@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import Link from "../../images/icons/link.svg";
-import Downloadicon from "../../images/icons/downloadicon.png";
+import Link from "../../images/icons/linkDark.png";
+import Downloadicon from "../../images/icons/downloadIcon.png";
 import { geticonLink } from "../../helpers";
 
 function NoteItem(props) {

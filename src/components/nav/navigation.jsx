@@ -8,20 +8,25 @@ import logo from '../../images/logo.png'
 import { Themecontext } from '../../context'
 
 const Navigation = (props) => {
-  const { lighttheme } = useContext(Themecontext)
+  const { lighttheme,inDashboard } = useContext(Themecontext)
   let styles = useStyles()
 
   return (
 
-    <div className={lighttheme ? 'nav-container light-bg' : 'nav-container'} >
+    inDashboard?<div className={lighttheme && window.location.pathname!=='/'? 'nav-container light-bg' : 'nav-container darkMode '} >
+    
       <div className='nav'>
         <Link to='/' ><Button><img className={styles.navHomeIcon} src={logo} alt='HOME' /></Button></Link>
         <Burger />
       </div>
     </div>
-
-
-
+    :
+    <div className={lighttheme && window.location.pathname!=='/'? 'nav-container light-bg' : 'nav-container'} >
+      <div className='nav'>
+        <Link to='/' ><Button><img className={styles.navHomeIcon} src={logo} alt='HOME' /></Button></Link>
+        <Burger />
+      </div>
+    </div>
 
   );
 };

@@ -12,12 +12,13 @@ import { useParams } from "react-router-dom";
 import { unitNotesUrl } from "../api/urls";
 import Tabs from "./Tabs";
 import Recent from "../reusables/Recent";
+import InfiniteBackground from '../reusables/infiniteBackground';
 function Unit(props) {
   const { code } = useParams();
   const { setLoading } = useContext(Loadingcontext);
   const { filteredNotes,setfilteredNotes} = useContext(SearchQuerycontext)
   let { data, setData } = useContext(Datacontext);
-  let { setLightTheme } = useContext(Themecontext);
+  let {lighttheme,setLightTheme,setInDashboard } = useContext(Themecontext);
   const { setSelected } = useContext(Searchcontext);
   const [notes, setNotes] = useState({});
   const getNotes = useCallback(
@@ -35,26 +36,29 @@ function Unit(props) {
 //   },[code, setfilteredNotes])
   useEffect(() => {
     setLightTheme(true);
+    setInDashboard(true)
     console.log('mounting unit')
     setLoading(false);
     return () => {
       setSelected({});
+      setInDashboard(false);
       setfilteredNotes([])
       setLightTheme((theme) => (theme = false));
     };
-  }, [setLoading, setData, setLightTheme, setSelected, setfilteredNotes]);
+  }, [setLoading, setData, setLightTheme, setSelected, setfilteredNotes,setInDashboard]);
 
   useEffect(() => {
     getNotes(code);
   }, [getNotes, code]);
 
   return (
-      <div className="unit-container">
+      <div className={lighttheme? "unit-container lightMode":'unit-container darkMode'}>
         <div className="grid-container">
-          <div className="top-content-section text-dark">
+          <div className={lighttheme?"top-content-section lightGradient":"top-content-section darkGradient"}>
+          <InfiniteBackground/>
             <div className="top-content-inner-section">
               <div className="inner-section-content">
-                <h2 className="grey">{notes.unit} </h2>
+                <h2 >{notes.unit} </h2>
                 <h3 className="light-grey">{notes.code}</h3>
               </div>
               <div className="search-container-top">

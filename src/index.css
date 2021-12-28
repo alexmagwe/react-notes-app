@@ -5,13 +5,13 @@ body {
   /* object-fit: cover; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(#5804692a, #701dce41),url(./images/bgs/2100305.jpg);
-  background-size: cover;
+  /* background-size: 100%; */
+  background: linear-gradient(to right, #00b4db, #0083b0)
+  /* background-position: center; */
 
-  backdrop-filter: contrast(115%) brightness(100%);
-  background-position: center;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
+ 
 
 html, body {
   min-height: 100vh;

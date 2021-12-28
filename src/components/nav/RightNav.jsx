@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import useStyles from './styles'
 import { Themecontext } from '../../context'
-
+import DarkModeToggle from "react-dark-mode-toggle";
 
 const Ul = styled.ul`
   list-style: none;
@@ -33,7 +33,7 @@ const Ul = styled.ul`
 `;
 
 const RightNav = ({ open, setOpen }) => {
-  const { lighttheme } = useContext(Themecontext)
+  const { lighttheme,setLightTheme,} = useContext(Themecontext)
   let styles = useStyles()
 
   return (
@@ -47,7 +47,13 @@ const RightNav = ({ open, setOpen }) => {
       <li>
         <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/contribute'>
           Contribute</Link>
+        
       </li>
+        <DarkModeToggle
+        onChange={setLightTheme}
+        checked={lighttheme}
+        size={60}
+      />
           {/* <li>
         <Link className={!open && lighttheme && window.location.pathname !== '/' ? styles.navLinkDark : styles.navLinkLight} onClick={() => setOpen(false)} to='/login'>
           Sign in</Link>

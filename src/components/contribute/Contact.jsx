@@ -16,7 +16,7 @@ const Contact = () => {
     email: '',
     message: ''
   }
-  const { alert, setAlert, setshowAlert } = useContext(Alertcontext)
+  const { alert, setAlert, setShowAlert } = useContext(Alertcontext)
   const [formData, setFormData] = useState(initial)
 
 
@@ -37,20 +37,20 @@ const Contact = () => {
     }
     emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, variables).then(res => {
       setAlert({ ...alert, message: "Message sent succesfully,you can expect to hear from us soon", type: 'success' })
-      setshowAlert(true)
+      setShowAlert(true)
       setFormData(initial)
     }).catch(err => {
       setAlert({ ...alert, message: err.text, type: 'error' })
-      setshowAlert(true)
+      setShowAlert(true)
     })
 
   }
   useEffect(() => {
 
     return () => {
-      setshowAlert(false)
+      setShowAlert(false)
     }
-  }, [setshowAlert])
+  }, [setShowAlert])
 
   const useStyles = makeStyles(theme => ({
 

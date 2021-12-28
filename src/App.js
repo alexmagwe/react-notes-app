@@ -46,10 +46,12 @@ import Unit from "./components/unit/Unit";
 import Content from "./components/contribute/Content";
 import AddVideos from "./components/contribute/AddVideo";
 import Login from "./components/authentication/Login";
+import InfiniteBackground from "./components/reusables/infiniteBackground";
 function App() {
   let [data, setData] = useState({});
   let [loading, setLoading] = useState(true);
   let [movetop, setMoveTop] = useState(false);
+  let [inDashboard, setInDashboard] = useState(false);
   const [filteredNotes, setfilteredNotes] = useState([]);
   const [loaderbg, setLoaderBackground] = useState("dark");
   let [selected, setSelected] = useState({});
@@ -58,17 +60,20 @@ function App() {
   const [recentunits, setRecent] = useState(null);
   const { updateRecent } = useLocalData({ recentunits, setRecent });
   const [alert, setAlert] = useState({ message: "", type: "" });
-  const [showAlert, setshowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+
   useBeforeunload((event) => {
     // event.preventDefault()
     setLocalData(recent, recentunits);
   });
+
 
   //fetches and stores unit data in local storage
   useEffect(() => {
     if (getLocalData(recent)) {
       localStorage.removeItem("recent");
     }
+  
     if (getLocalData("data")) {
       localStorage.removeItem("data");
     }
@@ -94,14 +99,14 @@ function App() {
       value={{ loading, setLoading, loaderbg, setLoaderBackground }}
     >
       <SearchQuerycontext.Provider value={{ filteredNotes, setfilteredNotes }}>
-        <Themecontext.Provider value={{ lighttheme, setLightTheme }}>
+        <Themecontext.Provider value={{ lighttheme, setLightTheme,inDashboard,setInDashboard }}>
           <Searchcontext.Provider
             value={{ selected, setSelected, movetop, setMoveTop }}
           >
             <Datacontext.Provider
               value={{ data, setData, recentunits, setRecent, updateRecent }}
             >
-              <Alertcontext.Provider value={{ alert, setAlert, setshowAlert }}>
+              <Alertcontext.Provider value={{ alert, setAlert, setShowAlert }}>
                 <div className="App">
                   <Router>
                     <Navigation />

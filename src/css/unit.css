@@ -2,7 +2,9 @@
 
 .unit-container {
     width: 100%;
-    background-color: #fff;
+    /* background-color: #fff; */
+    color:#fff;
+    transition:background 0.3s ease-in;
 }
 
 .grid-container {
@@ -23,10 +25,20 @@
     grid-area: top;
     padding: 1rem;
     display: flex;
+    overflow:hidden;
+    max-height:200px;
+    position:relative;
     justify-content: center;
-    background: linear-gradient(135deg, #7C2500, #55CFD7);
     border-radius: 5px;
     align-items: center;
+}
+.darkGradient{
+    background: linear-gradient(135deg, #4f0800, #37beac);
+    
+}
+.lightGradient{
+    background: linear-gradient(135deg, #7C2500, #55CFD7);
+
 }
 
 .top-content-inner-section {
@@ -107,13 +119,14 @@
 }
 
 .tab-navigation {
-    color: #111;
     padding: 10px;
+    color:inherit;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 60%;
     margin: 0 auto;
+    transition:background 0.3s ease-in;
 }
 
 .tab-nav-item {
@@ -123,7 +136,7 @@
 .tab-nav-item {
     font-size: 14px;
     font-weight: 600;
-    color: rgb(56, 56, 56);
+    color:inherit;
 }
 
 .slider {
