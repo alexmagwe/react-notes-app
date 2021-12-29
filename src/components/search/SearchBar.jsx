@@ -1,14 +1,9 @@
 import React, { useRef } from 'react'
 // import searchIcon from '../../images/icons/search.png'
-
+import ClipLoader from "react-spinners/ClipLoader";
 const SearchBar = props => {
-  const { handleSearch, searchTerm,handleSubmit, placeholder} = props.form
+  const { handleSearch, searchTerm,handleSubmit,formSubmissionLoading:loading, placeholder} = props.form
   const inputbox = useRef(null)
-
-  // useEffect(() => {
-  //   inputbox.current.focus()
-  // }, [])
-
   return (
     <div className='search-bar'>
       <form onSubmit={handleSubmit}>
@@ -24,6 +19,7 @@ const SearchBar = props => {
         placeholder={`${placeholder}`}
         />
       {/* <img className='fa-search' src={searchIcon} alt='' /> */}
+      <ClipLoader color='#3edac5' css='position:absolute;top:7px;right:20px;' loading={loading} size={25} />
         </form>
     </div>
   )

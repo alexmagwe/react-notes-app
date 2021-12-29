@@ -12,6 +12,7 @@ const Search = (props) => {
   const { setfilteredNotes } = useContext(SearchQuerycontext);
   const { setAlert,setShowAlert} = useContext(Alertcontext)
   const { updateRecent } = useContext(Datacontext);
+  const [formSubmissionLoading,setFormSubmissionLoading]=useState(false)
   const [searchTerm, setSearchTerm] = useState("");
 
   useSearch(searchTerm, props.source, setResults, "code", 3); //last argument specifies min characters typed for it to start searching
@@ -25,16 +26,28 @@ const Search = (props) => {
     //handle form submission for topic search in unit page
     let ptn = /^\/unit/;
     if (ptn.test(props.location) & (searchTerm.length > 2)) {
-      let filteredNotes = await fileSearch(
-        searchTerm,
-        props.data.notes.document//all pdfs for the unit
-      ); //filters notes that match search term
-      if (filteredNotes.length===0){
-        setShowAlert(true)
-        setAlert({message:"Content not found",type:"info"})
-      }
-      setfilteredNotes(filteredNotes);
+      try{
+
+        setFormSubmissionLoading(true)
+        let filteredNotes = await fileSearch(
+          searchTerm,
+          props.data.notes.document//all pdfs for the unit
+          ); //filters notes that match search term
+          if (filteredNotes.length===0){
+            setShowAlert(true)
+            setAlert({message:"Content not found",type:"info"})
+            setFormSubmissionLoading(false)
+          }
+          setfilteredNotes(filteredNotes);
+          setFormSubmissionLoading(false)
+        }
+        catch(err){
+          setShowAlert(true)
+          setAlert({message:err.message,type:"error"})
+          setFormSubmissionLoading(false)
+  }
     }
+
   };
   const handleClose = async (choice) => {
     console.log(props.location, choice);
@@ -55,7 +68,7 @@ const Search = (props) => {
   };
   return (
     <>
-      <SearchBar focus={props.focus} form={{ handleSearch, searchTerm, handleSubmit, placeholder:props.placeholder }} />
+      <SearchBar focus={props.focus} form={{ handleSearch,formSubmissionLoading, searchTerm, handleSubmit, placeholder:props.placeholder }} />
       {results.length > 0 && searchTerm.length > 0 ? (
         <Results props={{ handleClose, setResults, results, ref, desc }} />
       ) : null}

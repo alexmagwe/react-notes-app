@@ -27,10 +27,7 @@ export const fileSearch=async(query,notes)=>{
       files.map(file=>ids.push(file.id))
       let filteredNotes=notes.filter(file=>(ids.includes(file.gid)))//filter the unit notes for the ones that match the topic
       return filteredNotes
-
-
     }
-    
   } 
 export const refreshTokenSetup = (res) => {
   // Timing to renew access token
