@@ -58,7 +58,7 @@ function App() {
   const [lighttheme, setLightTheme] = useState(false);
   const [recentunits, setRecent] = useState(null);
   const { updateRecent } = useLocalData({ recentunits, setRecent });
-  const [alert, setAlert] = useState({ message: "", type: "" });
+  const [alert, setAlert] = useState({ message: "", type: "info" });
   const [showAlert, setShowAlert] = useState(false);
 
   useBeforeunload((event) => {

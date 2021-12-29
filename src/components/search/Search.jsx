@@ -31,7 +31,7 @@ const Search = (props) => {
       ); //filters notes that match search term
       if (filteredNotes.length===0){
         setShowAlert(true)
-        setAlert({message:"Content not found",type:'info'})
+        setAlert({message:"Content not found",type:"info"})
       }
       setfilteredNotes(filteredNotes);
     }

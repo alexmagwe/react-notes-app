@@ -119,21 +119,47 @@ export const getObjLength = (obj) => {
   return Object.keys(obj).length
 
 }
-export const geticonLink=(ext)=>{
+export const getLinks=({ext,gid,category})=>{
+  if (category==='video'){
+    return {
+      icon:"https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.video",
+      link:`https://drive.google.com/file/d/${gid}/view`,
+      downloadLink:null
+    }
+  }
 switch(ext){
   case 'pdf':
-    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/pdf'
+    return {icon:'https://drive-thirdparty.googleusercontent.com/16/type/application/pdf',
+            link:`https://drive.google.com/file/d/${gid}/view`,
+            downloadLink:`https://drive.google.com/uc?id=${gid}&export=download`
+        }
   case 'docx':
-    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-   case 'doc':
-    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  case 'ppt':
-    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation'
-  case 'pptx':
-    return 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation'
+    return {icon:'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      link:`https://docs.google.com/document/d/${gid}/edit`,
+      downloadLink:`https://drive.google.com/uc?id=${gid}&export=download`
+        } 
+  case 'doc':
+    return {icon:'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      link:`https://docs.google.com/document/d/${gid}/edit`,
+      downloadLink:`https://drive.google.com/uc?id=${gid}&export=download`
+        } 
+  case 'pptx':  
+    return {icon:'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      link:`https://docs.google.com/presentation/d/${gid}/edit?dls=true`,
+      downloadLink:`https://drive.google.com/uc?id=${gid}&export=download`
+        }
+  case 'ppt':  
+    return {icon:'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      link:`https://docs.google.com/presentation/d/${gid}/edit?dls=true`,
+      downloadLink:`https://drive.google.com/uc?id=${gid}&export=download`
+        }
   
     default:
-    return null
+    return {
+      icon:null,
+      link:null,
+      downloadLink:null
+    }
   }
 }
 

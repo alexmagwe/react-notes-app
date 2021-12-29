@@ -9,8 +9,9 @@
     /* overflow: auto; */
 }
 .alert{
-    width:85%;
+    width:100%;
     margin:0 auto;
+    /* position:absolute; */
 }
 
 .montserrat {

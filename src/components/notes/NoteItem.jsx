@@ -2,19 +2,15 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Link from "../../images/icons/linkDark.png";
 import Downloadicon from "../../images/icons/downloadIcon.png";
-import { geticonLink } from "../../helpers";
+import { getLinks } from "../../helpers";
 
 function NoteItem(props) {
   const note = props.item;
   const showlink = props.showlink;
   const [name, ext] = note.name.split(".");
-  let icon = null;
-  icon = geticonLink(ext);
-  if (note.category === "video") {
-    icon =
-      "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.video";
-  }
-
+  
+  let {icon,link,downloadLink} = getLinks({ext:ext,gid:note.gid,category:note.category});
+  
   return (
     <>
       <li
@@ -29,7 +25,7 @@ function NoteItem(props) {
           {note.size ? <h4>{parseInt(note.size) / 1024}</h4> : null}
           {showlink && note.gid && (
             <Button
-              href={`https://drive.google.com/file/d/${note.gid}/view`}
+              href={link}
               target="_blank"
             >
               <img className="link-icon" src={Link} alt="view" />
@@ -44,7 +40,7 @@ function NoteItem(props) {
           {note.category !== "video" ? (
             <Button
               target="_blank"
-              href={`https://drive.google.com/uc?id=${note.gid}&export=download`}
+              href={downloadLink}
             >
               <img className="link-icon" src={Downloadicon} alt="download" />
             </Button>

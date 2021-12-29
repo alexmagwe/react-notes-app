@@ -53,7 +53,7 @@ function Upload () {
   const onDrop = useCallback(
     acceptedFiles => {
       let validFiles = []
-      acceptedFiles.reverse()
+      // acceptedFiles.reverse()
       acceptedFiles.forEach(file => {
         if (isValid(file.name)) {
           validFiles.push(file)
@@ -119,7 +119,7 @@ function Upload () {
           setProgress(0)
           setUploaded(true)
           setDisable(false)
-          setAlert({message:resp.message,type:"success"}) 
+          setAlert({message:'Files added successfully',type:"success"}) 
           setShowAlert(true) 
 
         })
@@ -127,6 +127,7 @@ function Upload () {
           setLoading(false)
           setAlert({message:err.message,type:"error"}) 
           setShowAlert(true) 
+          setDisable(false)
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -151,6 +152,7 @@ function Upload () {
     } catch (err) {
       setAlert({message:err.message,type:"error"}) 
       setShowAlert(true) 
+      setDisable(false)
       return
     }
   }
