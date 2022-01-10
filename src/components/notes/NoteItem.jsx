@@ -7,8 +7,11 @@ import { getLinks } from "../../helpers";
 function NoteItem(props) {
   const note = props.item;
   const showlink = props.showlink;
-  const [name, ext] = note.name.split(".");
-  
+  const nameparts= note.name.split(".");
+  const ext=nameparts[nameparts.length-1]
+  let name=nameparts.slice(0,nameparts.length-1)
+  name=name.join(".")
+  console.log(name)
   let {icon,link,downloadLink} = getLinks({ext:ext,gid:note.gid,category:note.category});
   
   return (
