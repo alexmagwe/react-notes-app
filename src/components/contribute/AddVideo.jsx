@@ -45,7 +45,6 @@ function AddVideos(props) {
       setVideos([...videos, data]);
     }
     else {
-      console.log("sending file with link")
       data = { name, gid: "", link, category: "video" };
       setVideos([...videos, data]);
     }
@@ -71,7 +70,6 @@ function AddVideos(props) {
 
     if (videos.length > 0) {
       const payload = { unit_code: selected.code, files: videos }
-      console.log('uploading:', payload)
       setDisable(true)
       setLoading(true)
       const resp = await axios.post(addContentUrl, payload)

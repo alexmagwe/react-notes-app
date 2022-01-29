@@ -7,12 +7,15 @@ import { getLinks } from "../../helpers";
 function NoteItem(props) {
   const note = props.item;
   const showlink = props.showlink;
+  let name=note.name
+  let ext=".pdf"
   const nameparts= note.name.split(".");
-  const ext=nameparts[nameparts.length-1]
-  let name=nameparts.slice(0,nameparts.length-1)
-  name=name.join(".")
-  console.log(name)
-  let {icon,link,downloadLink} = getLinks({ext:ext,gid:note.gid,category:note.category});
+  if(nameparts.length>1){
+    ext=nameparts[nameparts.length-1]
+    name=nameparts.slice(0,nameparts.length-1)
+    name=name.join(".")
+  }
+  let {icon,link,downloadLink} = getLinks({ext:ext,gid:note.gid || note.id,category:note.category});
   
   return (
     <>
@@ -26,7 +29,7 @@ function NoteItem(props) {
         </div>
         <div className="right-item-section">
           {note.size ? <h4>{parseInt(note.size) / 1024}</h4> : null}
-          {showlink && note.gid && (
+          {showlink && (note.gid || note.id) && (
             <Button
               href={link}
               target="_blank"
