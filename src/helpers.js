@@ -23,10 +23,7 @@ export const fileSearch=async(query,notes)=>{
     const message=resp.data.message
     const {files}=message
     // files.filter(file=>{
-      let ids=[]
-      files.map(file=>ids.push(file.id))
-      let filteredNotes=notes.filter(file=>(ids.includes(file.gid)))//filter the unit notes for the ones that match the topic
-      return filteredNotes
+      return files
     }
   } 
 export const refreshTokenSetup = (res) => {
@@ -36,7 +33,6 @@ export const refreshTokenSetup = (res) => {
   const refreshToken = async () => {
     const newAuthRes = await res.reloadAuthResponse();
     refreshTiming = (newAuthRes.expires_in || 3600 - 5 * 60) * 1000;
-    console.log('newAuthRes:', newAuthRes);
     // saveUserToken(newAuthRes.access_token);  <-- save new token
     localStorage.setItem('authToken', newAuthRes.id_token);
 

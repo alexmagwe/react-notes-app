@@ -456,6 +456,7 @@ transition:background 0.3s ease-in;
     width: 100%;
     z-index: 5;
     opacity: 0;
+    transition: all 0.2s;
     box-shadow: 0 0 1000px 8000px rgba(8, 8, 8, 0.596);
     max-height: 50vh;
     animation: slidein 0.6s forwards ease-in-out;
@@ -463,11 +464,6 @@ transition:background 0.3s ease-in;
     overflow-y: auto;
     transform: translateY(20px);
     position: absolute;
-}
-
-.result-text {
-    color: rgb(78, 78, 78);
-    font-weight: 600;
 }
 
 .results-list {
@@ -480,7 +476,6 @@ transition:background 0.3s ease-in;
     text-align: center;
     flex-direction: column;
     flex: 1;
-    background-color: rgb(255, 255, 255);
     color: inherit;
     flex-shrink: 1;
     flex-wrap: wrap;
@@ -518,9 +513,10 @@ transition:background 0.3s ease-in;
 }
 
 .results-list li {
+    
     width: 100%;
     border-bottom: 1px solid rgb(212, 212, 208);
-    padding: 10px 0;
+    padding: 15px;
     font-family: sans-serif;
     font-size: 12px;
 }
