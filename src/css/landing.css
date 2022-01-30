@@ -10,7 +10,7 @@
 .landing-content {
     width: 50%;
     position: relative;
-    margin: 4rem auto;
+    margin: 1rem auto;
     padding: 0 10px;
     display: flex;
     /* border: 1px solid rgb(46, 165, 72); */
@@ -25,12 +25,26 @@
     margin: auto;
     width: 300px;
 }
-
-.landing-logo {
-    max-width: 150px;
-    object-fit: cover;
-    height: auto;
-    margin:0 auto;
+.landing-logo{
+    font-size:64px;
+    font-family: sans-serif;
+    color:#fff;
+}
+.landing-slogan{
+    display: flex;
+    justify-content: center;
+    color:#fff;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    width:100%;
+    font-size: 18px;
+    font-family: 'Montserrat' sans-serif;
+}
+.landing-logo-img {
+    width: 50px; 
+    /* height:100px; */
+    object-fit: contain;
+    margin-left:10px;
     /* filter: contrast(80%); */
     /* filter: brightness(150%); */
 }
@@ -111,4 +125,10 @@
 
 .inherit {
     color: inherit;
+}
+@media screen and (max-width:600px){
+
+    .landing-slogan{
+        font-size: 14px;
+    }
 }

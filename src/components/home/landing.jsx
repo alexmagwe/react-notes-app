@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Search from "../search/Search.jsx";
 import { Loadingcontext, Datacontext } from "../../context";
 import Recent from "../reusables/Recent";
+import laibu from "../../images/laibu.png";
 const Landing = () => {
   const { setLoading } = useContext(Loadingcontext);
   const { data } = useContext(Datacontext);
@@ -13,12 +14,12 @@ const Landing = () => {
   return (
     <div className="landing">
       <div className="landing-content">
-        {/* <img className="landing-logo" src={biblioteka} alt="Biblioteka" /> */}
         <div className="landing-info montserrat">
-          <p className=" text-primary font-lg">
-            Your Personal Campus Library
-          </p>
-          <span className='grey font-sm semi-bold '>Never have to worry about where to get notes ever again</span>
+          <p className=" landing-logo">Laibu</p>
+          <span className="landing-slogan  ">
+           Your personal campus library
+            {/* <img className="landing-logo-img" src={laibu} alt="Laibu" /> */}
+          </span>
         </div>
         <div className="search-container">
           <Search
