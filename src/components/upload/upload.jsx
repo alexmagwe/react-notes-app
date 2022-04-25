@@ -204,11 +204,11 @@ function Upload () {
             className='upload-input'
             value={value}
             onChange={handleChange}
-            onInvalid={() =>
-              inputref.current.setCustomValidity(
-                'Please enter the unit for the files'
-              )
-            }
+            // onInvalid={() =>
+            //   inputref.current.setCustomValidity(
+            //     'Please enter the unit for the files'
+            //   )
+            // }
             required
             type='text'
           />
